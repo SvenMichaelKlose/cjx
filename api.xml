@@ -1,0 +1,161 @@
+<!--
+
+    Hier mein Vorschlag: der Server liefert (wenn die HTTP–Authentifizierung
+    geklappt hat) eine einzige XML–Datei aus. Die URL wäre entsprechend
+    simpel. z.B. http://pitouchserver/config.xml
+
+    Die Datei hat folgendes Format:
+
+-->
+
+<client xresolution="PIXEL"
+        yresolution="PIXEL"
+        color="COPRORATE IDENTITY RGB"
+        is_blocked="yes">
+    <location latitude="" longitude=""/>
+    <address>
+         <name>
+         <street>
+         <city>
+         <zip>
+         <phone>
+         <email>
+     </address>
+    <media/>                <!-- Werbung bei Anwendungsstart -->
+    <loop>                  <!-- Modul "Loop" bei inaktivität -->
+        <medialist is_interruptable="yes"/>
+        <medialist/>
+    </loop>
+    <pi x="" y="" size=""/> <!-- Position und Größe des Pucks beim Start -->
+    <modules/>              <!-- Die Module und ihre Konfigurationen --> 
+</client>
+
+
+<!-- Bilder/Videos/PDFs -->
+<!--
+    Statt unterschiedlichen Elementen allet eine Soße. Die Dateiendung
+    entscheidet.
+-->
+
+<media id=""
+       src="URL"
+       x=""
+       y=""
+       rotation="GRADZAHL"
+       size="%"
+       link=""/>
+
+
+<!-- Links
+
+    Es gibt die gewöhnlichen HTTP–URLs für sämtliche Dateien.
+    Links to bestimmten Modulinhalten haben die Form:
+
+    /modulname/medien-ID/[PDF-Seite]
+
+-->
+
+
+<!-- Medienlisten -->
+
+<medialist>
+    <item>
+        <!-- Modul "Media" -->
+        <image/>
+        <video/>    <!-- optional -->
+
+        <!-- Modul "Flippic" -->
+        <image/>    <!-- Vorderseite -->
+        <image/>    <!-- Rückseite -->
+        <video/>
+
+        <!-- Modul "Flipbook" -->
+        <pdf/>
+
+        <!-- Modul "Coverflow" -->
+        <image/>    <!-- Vorderseite -->
+        <image/>    <!-- Rückseite -->
+        <pdf/>
+
+        <!-- Modul "Slidebook" -->
+        <image/>
+        <pdf/>
+
+        <!-- Modul "Memorie" -->
+        <!-- Modul "3D–Wall" -->
+        <!-- Modul "Dashboard" -->
+        <image/>
+    </item>
+    ...
+</medialist>
+
+
+<!-- Modul "Slidebook" -->
+
+<slidebook interval="SECONDS">
+    <medialist/>
+</slidebook>
+
+
+<!-- Modul "Map" -->
+
+<map type="normal|hybrid|physical|satellite" startzoom="">
+    <location latitude="" longitude=""/> <!-- Mitte der Karte -->
+    <locations>
+        <location latitude="" longitude="">ORTSBESCHREIBUNG</location>
+        ...
+    </locations>
+</map>
+
+
+<!-- Modul "Puzzle" -->
+
+Häh? Soll hier etwa eine Photoshop-Datei rein?
+
+
+<!-- Modul "Memorie" -->
+
+<memory>
+    <image/>        <!-- Gemeinsame Rückseite -->
+    <medialist/>    <!-- 12 Bilder -->
+</memory>
+
+
+<!-- Modul "Feedback" -->
+<!-- Server-Formular? -->
+
+
+<!-- Modul "Pinboard" -->
+
+<pinboard>
+    <items>
+        <item size="%">TEXT</item>
+    <items>
+</pinboard>
+
+
+<!-- Modul "Browser" -->
+
+<browser has_address_field="yes" has_keyboard="yes">
+    <blacklist>
+        <url>URL</url>
+        ...
+    </blacklist>
+    <whitelist>
+        <url>URL</url>
+        ...
+    </whitelist>
+</browser>
+
+
+<!-- Modul "3D–Wall" -->
+
+<wall lines="1">
+    <medialist>
+</wall>
+
+
+<!-- Modul "Dashboard" -->
+<dashboard>
+    <medialist/>
+</dashboard>
