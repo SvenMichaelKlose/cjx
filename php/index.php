@@ -1,7 +1,8 @@
 <?php
 // Author: Sven Michael Klose <pixel@copei.de>
 
-header ("Content-Type: application/xml");
+header ("Content-Type: text/xml; charset=utf-8");
+
 $xmlstr = <<<XML
 <client version="0"
         xresolution="800"
@@ -29,7 +30,6 @@ $xmlstr = <<<XML
     <pi x="400" y="320" size="50%"/>
     <!-- Die Module und ihre Konfigurationen --> 
     <modules>
-        <!-- Modul Dashboard -->
         <dashboard>
             <medialist>
                 <item x="100" y="40" size="100%" rotation="350">
@@ -42,7 +42,6 @@ $xmlstr = <<<XML
             </medialist>
         </dashboard>
 
-        <!-- Modul Mediaviewer -->
         <mediaviewer>
             <medialist>
                 <item x="100" y="40" size="100%" rotation="350">
@@ -55,7 +54,6 @@ $xmlstr = <<<XML
             </medialist>
         </mediaviewer>
 
-        <!-- Modul Flippic -->
         <flippic>
              <medialist>
                 <item x="100" y="40" size="100%" rotation="350">
@@ -66,7 +64,6 @@ $xmlstr = <<<XML
             </medialist>
         </flippic>
 
-        <!-- Modul Flipbook -->
         <flipbook>
              <medialist>
                 <item x="100" y="40" size="100%" rotation="350">
@@ -75,7 +72,6 @@ $xmlstr = <<<XML
             </medialist>
         </flipbook>
 
-        <!-- Modul Coverflow -->
         <coverflow>
              <medialist>
                 <item>
@@ -86,7 +82,6 @@ $xmlstr = <<<XML
             </medialist>
         </coverflow>
 
-        <!-- Modul Slidebook -->
         <slidebook>
              <medialist>
                 <item>
@@ -96,9 +91,8 @@ $xmlstr = <<<XML
             </medialist>
         </slidebook>
 
-        <!-- Modul Memorie -->
         <memorie>
-            <media src="http://copei.de/pi/memorie.jpg"/> <!-- Gemeinsame Rückseite -->
+            <media src="http://copei.de/pi/memorie-back.jpg"/>
             <media src="http://copei.de/pi/memorie-1.jpg"/>
             <media src="http://copei.de/pi/memorie-2.jpg"/>
             <media src="http://copei.de/pi/memorie-3.jpg"/>
@@ -113,7 +107,6 @@ $xmlstr = <<<XML
             <media src="http://copei.de/pi/memorie-12.jpg"/>
         </memorie>
 
-        <!-- Modul Map -->
         <map type="normal" zoom="1">
             <!-- Mitte der Karte -->
             <location latitude="0" longitude="0">Feelgood Apotheke</location>
@@ -122,13 +115,11 @@ $xmlstr = <<<XML
             <location latitude="0" longitude="0">Bioladen</location>
         </map>
 
-        <!-- Modul Pinboard -->
         <pinboard>
             <item>Suche Tapedeck für Compact-Cassetten! 015736385044</item>
             <item>Wo is der Doc? 017134375773</item>
         </pinboard>
 
-        <!-- Modul "Browser" -->
         <browser has_address_field="yes" has_keyboard="yes">
             <blacklist>
                 <url>http://facebook.com</url>
@@ -138,7 +129,6 @@ $xmlstr = <<<XML
             </whitelist>
         </browser>
 
-        <!-- Modul "3D–Wall" -->
         <wall lines="4">
             <media src="http://copei.de/pi/wall-1.jpg"/>
             <media src="http://copei.de/pi/wall-2.jpg"/>
