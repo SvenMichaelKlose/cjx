@@ -17,17 +17,20 @@ $xmlstr = <<<XML
          <zip>10245</zip>
          <tel>030/110824</tel>
     </address>
+
     <!-- Werbung bei Anwendungsstart -->
-    <media src="http://copei.de/pi/start-ad.jpg"
-           duration="6"/>
+    <media src="http://copei.de/pi/start-ad.jpg" duration="6"/>
+
     <!-- Modul "Loop" bei inaktivität -->
     <loop>
         <medialist is_interruptable="yes">
             <media src="http://copei.de/pi/start-ad.jpg"/>
         </medialist>
     </loop>
+
     <!-- Position und Größe des Pucks beim Start -->
     <pi x="400" y="320" size="50%"/>
+
     <!-- Die Module und ihre Konfigurationen --> 
     <modules>
         <dashboard>
