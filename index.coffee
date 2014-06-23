@@ -1,5 +1,5 @@
 field_label = (field) ->
-  ($ "<label>").text field.desc + ":"
+  ($ "<label for=\"#{field.name}\">").text field.desc + ":"
 
 insert_field = (parent, field) ->
   if field.type is "struct"
