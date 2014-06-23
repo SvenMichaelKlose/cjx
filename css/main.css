@@ -1,0 +1,28 @@
+body {
+    background: #ddd;
+}
+
+.struct {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.struct .struct {
+    border: 1px solid black;
+    margin-left: 1em;
+}
+
+.struct,
+.struct h2 {
+    padding-bottom: 1em;
+    border-bottom: 1px solid black;
+}
+
+.struct .struct h2 {
+    padding: .25em;
+    border: 0;
+}
+
+.struct label {
+    margin-left: 1em;
+}
