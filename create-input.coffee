@@ -8,12 +8,12 @@ create_image_selection = (field) ->
     src: field.src
 
 ELMGEN =
-    text:   create_text_input
-    tel:    create_text_input
-    image:  create_image_selection
+  text:   create_text_input
+  tel:    create_text_input
+  image:  create_image_selection
 
 field_label = (field) ->
-    $("<label>").text field.desc + ":"
+  $("<label>").text field.desc + ":"
 
 create_input = (field) ->
-    ELMGEN[field.type] field
+  ELMGEN[field.type] field
