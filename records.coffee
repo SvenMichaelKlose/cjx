@@ -1,13 +1,14 @@
 RECORD_INFOS =
   client: [
-    name: "name"
-    type: "textline"
-    desc: "Name der Applikation"
+    name:  "name"
+    type:  "textline"
+    desc:  "Name der Applikation"
    ,
-    name: "name"
-    type: "option"
-    opts: ["Tisch", "Stele"]
-    desc: "Type"
+    name:  "name"
+    type:  "option"
+    opts:  ["Tisch", "Stele"]
+    value: "Tisch"
+    desc:  "Type"
    ,
     name: "keyboard"
     type: "struct"
@@ -17,14 +18,17 @@ RECORD_INFOS =
       type: "range"
       min: 0
       max: 8
+      value: 1
       desc: "Skalierung"
      ,
       name: "xpos"
       type: "pixel"
+      value: 0
       desc: "X–Verschiebung"
      ,
       name: "ypos"
       type: "pixel"
+      value: 0
       desc: "Y–Verschiebung"
     ]
    ,

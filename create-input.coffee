@@ -1,7 +1,8 @@
 create_text_input = (field) ->
   $ "<input>"
-    type: field.type
-    name: field.name
+    type:  field.type
+    name:  field.name
+    value: field.value
 
 create_image_selection = (field) ->
   $ "<img>"
@@ -16,6 +17,7 @@ extend_field_type = (field) ->
   filter = field.filter
   if t = TYPES[field.type]
     $.extend field, t
+    delete field.type if not t.type
     field = extend_field_type field
     if filter
       field.filter = filter

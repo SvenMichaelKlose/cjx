@@ -1,4 +1,10 @@
 TYPES =
+  range:
+    filter: (field, x) -> x.spinner min:  field.min,
+                                    max:  field.max,
+                                    step: field.step
+    desc:  "Wertebereich"
+
   scaling:
     type:  "range"
     min:   0
