@@ -1,3 +1,6 @@
+field_label = (field) ->
+  ($ "<label>").text field.desc + ":"
+
 insert_field = (parent, field) ->
   parent.append (field_label field), (create_input field), $ "<br>"
 
