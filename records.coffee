@@ -11,7 +11,7 @@ RECORD_INFOS =
    ,
     name: "keyboard"
     type: "struct"
-    data:
+    data: [
       name: "scaling"
       type: "range"
       min: 0
@@ -25,6 +25,7 @@ RECORD_INFOS =
       name: "ypos"
       type: "pixel"
       desc: "Y–Verschiebung"
+    ]
    ,
     name: "resulotion"
     type: "xref"
@@ -49,7 +50,7 @@ RECORD_INFOS =
    ,
     name: "direct_mail"
     type: "struct"
-    data:
+    data: [
       name: "enable"
       type: "radio"
       desc: "Aktiviert?"
@@ -63,16 +64,17 @@ RECORD_INFOS =
       desc: "Datenschutzrichtlinien"
      ,
       name: "title"
-      type: "line"
+      type: "textline"
       desc: "Titel"
      ,
       name: "subtitle"
-      type: "line"
+      type: "textline"
       desc: "Untertitel"
+    ]
    ,
     name: "loop"
     type: "struct"
-    data:
+    data: [
       name: "enable"
       type: "radio"
       desc: "Aktiviert?"
@@ -80,6 +82,7 @@ RECORD_INFOS =
       name: "interval"
       type: "seconds"
       desc: "Intervall in Sekunden"
+    ]
    ,
     name: "color"
     type: "color"
@@ -135,9 +138,9 @@ RECORD_INFOS =
    ,
     name: "email"
     type: "struct"
-    data:
+    data: [
       name: "sender_name"
-      type: "line"
+      type: "textline"
       desc: "Absendername"
      ,
       name: "sender"
@@ -146,19 +149,20 @@ RECORD_INFOS =
      ,
       name: "feedback"
       type: "struct"
-      data:
+      data: [
         name: "subject"
-        type: "line"
+        type: "textline"
         desc: "Feedback–Betreff"
        ,
         name: "receiver"
         type: "email"
         desc: "Feedback–Email–Empfänger"
+      ]
      ,
       name: "clipboard"
       type: "struct"
       desc: "Ablagen–Emails"
-      data:
+      data: [
         name: "subject"
         type: "text"
         desc: "Betreff"
@@ -174,6 +178,8 @@ RECORD_INFOS =
         name: "footer"
         type: "text"
         desc: "Fußnote"
+      ]
+    ]
   ]
 
   address: [
