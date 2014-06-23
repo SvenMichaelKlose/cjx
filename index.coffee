@@ -8,7 +8,10 @@ insert_field = (parent, field) ->
     insert_fields div, field.data
     parent.append div
   else
-    parent.append (field_label field), (create_input field), $ "<br>"
+    parent.append ($ "<div class='field'>").append (field_label field),
+                                                   (create_input field),
+                                                   (($ "<span>").text m) if m = (extend_field_type field).measure,
+                                                   $ "<br>"
 
 insert_fields = (parent, fields) ->
   insert_field parent, field for field in fields

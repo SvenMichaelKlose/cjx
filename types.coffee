@@ -5,33 +5,33 @@ TYPES =
                                     step: field.step
     desc:  "Wertebereich"
 
-  scaling:
-    type:  "range"
-    min:   0
-    max:   8
-    step:  0.1
-    desc:  "Skalierung"
+  percent:
+    type:    "range"
+    min:     0
+    step:    0.1
+    measure: "Prozent"
+    desc:    "Prozent"
 
   pixel:
-    type:  "range"
-    min:   0
-    max:   4096
-    step:  1
-    desc:  "Pixel"
+    type:    "range"
+    min:     0
+    step:    1
+    measure: "Pixel"
+    desc:    "Pixel"
 
   seconds:
     type:  "range"
     min:   0
-    max:   3600
     step:  1
+    measure:  "Sekunden"
     desc:  "Sekunden"
 
   minutes:
-    type:  "range"
-    min:   0
-    max:   3600
-    step:  1
-    desc:  "Minuten"
+    type:    "range"
+    min:     0
+    step:    1
+    measure: "Minuten"
+    desc:    "Minuten"
 
   zip_de:
     type:  "range"

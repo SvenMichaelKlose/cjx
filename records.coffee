@@ -8,17 +8,14 @@ RECORD_INFOS =
     type:  "option"
     opts:  ["Tisch", "Stele"]
     value: "Tisch"
-    desc:  "Type"
+    desc:  "Typ"
    ,
     name: "keyboard"
     type: "struct"
     desc: "Keyboard"
     data: [
       name: "scaling"
-      type: "range"
-      min: 0
-      max: 8
-      value: 1
+      type: "percent"
       desc: "Skalierung"
      ,
       name: "xpos"
@@ -39,11 +36,11 @@ RECORD_INFOS =
    ,
     name: "autostart_delay"
     type: "seconds"
-    desc: "Autom. Autostart der App nach Sekunden"
+    desc: "Autom. Autostart der App nach"
    ,
     name: "autorestart_delay"
     type: "minutes"
-    desc: "App geht zum Startbildschirm nach Minuten"
+    desc: "App geht zum Startbildschirm nach"
    ,
     name: "clipboard_doubletap"
     type: "radio"
@@ -93,18 +90,18 @@ RECORD_INFOS =
    ,
     name: "color"
     type: "color"
-    desc: "Highligh–Farbe"
+    desc: "Highlight–Farbe"
    ,
     name: "scaling"
-    type: "scaling"
+    type: "percent"
     desc: "Skalierung"
    ,
     name: "scaling_min"
-    type: "scaling"
+    type: "percent"
     desc: "Skalierung min"
    ,
     name: "scaling_max"
-    type: "scaling"
+    type: "percent"
     desc: "Skalierung max"
    ,
     name: "xpos"
