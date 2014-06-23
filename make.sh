@@ -1,3 +1,3 @@
 #!/bin/sh
 
-coffee -c -b records.coffee create-input.coffee index.coffee
+coffee -c -b levenshtein.coffee records.coffee create-input.coffee index.coffee
