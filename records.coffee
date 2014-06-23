@@ -11,6 +11,7 @@ RECORD_INFOS =
    ,
     name: "keyboard"
     type: "struct"
+    desc: "Keyboard"
     data: [
       name: "scaling"
       type: "range"
@@ -50,6 +51,7 @@ RECORD_INFOS =
    ,
     name: "direct_mail"
     type: "struct"
+    desc: "Direktversand"
     data: [
       name: "enable"
       type: "radio"
@@ -74,6 +76,7 @@ RECORD_INFOS =
    ,
     name: "loop"
     type: "struct"
+    desc: "Loop"
     data: [
       name: "enable"
       type: "radio"
@@ -138,6 +141,7 @@ RECORD_INFOS =
    ,
     name: "email"
     type: "struct"
+    desc: "E–Mail"
     data: [
       name: "sender_name"
       type: "textline"
@@ -149,6 +153,7 @@ RECORD_INFOS =
      ,
       name: "feedback"
       type: "struct"
+      desc: "Feedback"
       data: [
         name: "subject"
         type: "textline"
@@ -161,7 +166,7 @@ RECORD_INFOS =
      ,
       name: "clipboard"
       type: "struct"
-      desc: "Ablagen–Emails"
+      desc: "Ablagen"
       data: [
         name: "subject"
         type: "text"

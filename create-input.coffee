@@ -13,4 +13,7 @@ INPUTCONSTRUCTORS =
   image: create_image_selection
 
 create_input = (field) ->
-  INPUTCONSTRUCTORS[field.type] field
+  if t = TYPES[field.type]
+    field.type = t.type
+    field = $.extend t, field
+  (INPUTCONSTRUCTORS[field.type] || create_text_input) field
