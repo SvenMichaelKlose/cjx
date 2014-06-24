@@ -2,6 +2,10 @@ body {
     background: black;
 }
 
+.menu {
+    background: #ddd;
+}
+
 .arena {
     margin: 1em;
     padding: 1em;
