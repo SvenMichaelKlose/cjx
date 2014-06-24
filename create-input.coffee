@@ -34,12 +34,15 @@ INPUTCONSTRUCTORS =
 
 extend_field_type = (field) ->
   filter = field.filter
+  desc = field.desc
   if t = TYPES[field.type]
     $.extend field, t
     delete field.type if not t.type
     field = extend_field_type field
     if filter
       field.filter = filter
+    if desc
+      field.desc = desc
   field
 
 create_input = (field) ->
