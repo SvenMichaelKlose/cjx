@@ -1,3 +1,7 @@
+###
+    Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
+###
+
 RECORD_INFOS =
   client: [
     name:   "user"
@@ -258,29 +262,26 @@ RECORD_INFOS =
     ]
   ]
 
-###
-  address: [
+  menuitem: [
     name: "name"
-    type: "text"
-    desc: "Name"
+    type: "textline"
+    desc: "Beschriftung"
    ,
-    name: "vorname"
-    type: "text"
-    desc: "Vorname"
+    name: "ad"
+    type: "selection"
+    desc: "Werbung"
    ,
-    name: "tel"
-    type: "tel"
-    desc: "Telefonnummer"
-  ]
-
-  location: [
-    name: "latitude"
-    type: "range"
-    desc: "Breitengrad"
+    name: "is_active"
+    type: "radio"
+    desc: "aktiv?"
    ,
-    name: "longitude"
-    type: "range"
-    desc: "Längengrad"
+    name: "is_global"
+    type: "radio"
+    desc: "global?"
+   ,
+    name: "code"
+    type: "password"
+    desc: "Code"
   ]
 
   media: [
@@ -304,4 +305,178 @@ RECORD_INFOS =
     type: "degree"
     desc: "Drehung"
   ]
-###
+
+  dashboard: [
+    name: "background"
+    type: "file"
+    desc: "Hintergrundbild"
+   ,
+    name: "items"
+    type: "file"
+    desc: "Medien"
+  ]
+
+  mediaviewer: [
+    name: "background"
+    type: "file"
+    desc: "Hintergrundbild"
+   ,
+    name: "items"
+    type: "file"
+    desc: "Medien"
+  ]
+
+  flippic: [
+    name: "background"
+    type: "file"
+    desc: "Hintergrundbild"
+   ,
+    name: "items"
+    type: "list"
+    desc: "Medien"
+    list: [
+      name: "front"
+      type: "media"
+      desc: "Vorderseite"
+     ,
+      name: "back"
+      type: "media"
+      desc: "Rückseite"
+     ,
+      name: "video"
+      type: "media"
+      desc: "Video"
+    ]
+  ]
+
+  coverflow: [
+    name: "background"
+    type: "file"
+    desc: "Hintergrundbild"
+   ,
+    name: "items"
+    type: "list"
+    desc: "Medien"
+    list: [
+      name: "front"
+      type: "media"
+      desc: "Vorderseite"
+     ,
+      name: "back"
+      type: "media"
+      desc: "Rückseite"
+     ,
+      name: "pdf"
+      type: "media"
+      desc: "PDF"
+    ]
+  ]
+
+  slidebook: [
+    name: "background"
+    type: "file"
+    desc: "Hintergrundbild"
+   ,
+    name: "items"
+    type: "list"
+    desc: "Medien"
+    list: [
+      name: "front"
+      type: "media"
+      desc: "Vorderseite"
+     ,
+      name: "back"
+      type: "media"
+      desc: "Rückseite"
+     ,
+      name: "pdf"
+      type: "media"
+      desc: "PDF"
+    ]
+  ]
+
+  memorie: [
+    name: "back"
+    type: "file"
+    desc: "Rückseite"
+   ,
+    name:  "items"
+    type:  "list"
+    limit: 12
+    desc:  "Medien"
+    list: [
+      name: "front"
+      type: "media"
+      desc: "Vorderseite"
+    ]
+  ]
+
+  pinboard: [
+    name:  "items"
+    type:  "list"
+    desc:  "Nachrichten"
+    list: [
+      name: "messsage"
+      type: "text"
+      desc: "Nachricht"
+    ]
+  ]
+
+  map: [
+    name: "type"
+    type: "selection"
+    opts: ["normal"]
+    desc: "Typ"
+   ,
+    name: "location"
+    type: "location"
+    desc: "Kartenmitte"
+   ,
+    name:  "pins"
+    type:  "list"
+    desc:  "Pins"
+    list: [
+      name: "pin"
+      type: "location"
+      desc: "Pin"
+    ]
+  ]
+
+  browser: [
+    name: "has_address_field"
+    type: "radio"
+    desc: "Adresszeile einblenden?"
+   ,
+    name: "has_keyboard"
+    type: "radio"
+    desc: "Tastatur einblenden?"
+   ,
+    name:  "blacklist"
+    type:  "list"
+    desc:  "Blacklist"
+    list: [
+      name: "url"
+      type: "url"
+      desc: "URL"
+    ]
+   ,
+    name:  "whitelist"
+    type:  "list"
+    desc:  "whitelist"
+    list: [
+      name: "url"
+      type: "url"
+      desc: "URL"
+    ]
+  ]
+
+  wall: [
+    name:  "blacklist"
+    type:  "list"
+    desc:  "Blacklist"
+    list: [
+      name: "item"
+      type: "media"
+      desc: "Medium"
+    ]
+  ]
