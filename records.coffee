@@ -63,6 +63,10 @@ RECORD_INFOS =
     value: "Tisch"
     desc:  "Typ"
    ,
+    name: "zip"
+    type: "zip_de"
+    desc: "Wetter–PLZ"
+   ,
     name: "keyboard"
     type: "struct"
     desc: "Keyboard"
@@ -82,70 +86,78 @@ RECORD_INFOS =
       desc: "Y–Verschiebung"
     ]
    ,
-    name: "resulotion"
-    type: "xref"
-    ref:  "resolution"
-    desc: "Auflösung"
-   ,
-    name: "autostart_delay"
-    type: "seconds"
-    desc: "Autom. Autostart der App nach"
-   ,
-    name: "autorestart_delay"
-    type: "minutes"
-    desc: "App geht zum Startbildschirm nach"
-   ,
-    name: "clipboard_doubletap"
-    type: "radio"
-    desc: "Doppeltippen öffnet Ablage"
-   ,
-    name: "new_iconset"
-    type: "radio"
-    desc: "Neues Icon–Set"
-   ,
-    name: "color"
-    type: "color"
-    desc: "Highlight–Farbe"
-   ,
-    name: "scaling"
-    type: "percent"
-    desc: "Skalierung"
-   ,
-    name: "scaling_min"
-    type: "percent"
-    desc: "Skalierung min"
-   ,
-    name: "scaling_max"
-    type: "percent"
-    desc: "Skalierung max"
-   ,
-    name: "xpos"
-    type: "pixel"
-    desc: "Startkoordinate X"
-   ,
-    name: "ypos"
-    type: "pixel"
-    desc: "Startkoordinate Y"
-   ,
-    name: "zip"
-    type: "zip_de"
-    desc: "Wetter–PLZ"
-   ,
-    name: "do_hide_pi"
-    type: "radio"
-    desc: "PI verstecken?"
-   ,
-    name: "do_display_errors"
-    type: "radio"
-    desc: "Display–Errors?"
-   ,
-    name: "have_mouse"
-    type: "radio"
-    desc: "Maus?"
-   ,
-    name: "have_fixed_navigation"
-    type: "radio"
-    desc: "Fixierte Navigation unten?"
+    name: "display"
+    type: "struct"
+    desc: "Darstellung"
+    data: [
+      name: "resulotion"
+      type: "selection"
+      opts: [
+        "1920 x 1200 px (Beamer)"
+        "1920 x 1080 px (FullHD)"
+        "1280 x 800 px"
+        "625 x 800 px"
+        "1080 x 1920 px"
+        "768 x 1366 px"
+      ]
+      desc: "Auflösung"
+     ,
+      name: "autostart_delay"
+      type: "seconds"
+      desc: "Autom. Autostart der App nach"
+     ,
+      name: "autorestart_delay"
+      type: "minutes"
+      desc: "App geht zum Startbildschirm nach"
+     ,
+      name: "clipboard_doubletap"
+      type: "radio"
+      desc: "Doppeltippen öffnet Ablage"
+     ,
+      name: "new_iconset"
+      type: "radio"
+      desc: "Neues Icon–Set"
+     ,
+      name: "color"
+      type: "color"
+      desc: "Highlight–Farbe"
+     ,
+      name: "scaling"
+      type: "percent"
+      desc: "Skalierung"
+     ,
+      name: "scaling_min"
+      type: "percent"
+      desc: "Skalierung min"
+     ,
+      name: "scaling_max"
+      type: "percent"
+      desc: "Skalierung max"
+     ,
+      name: "xpos"
+      type: "pixel"
+      desc: "Startkoordinate X"
+     ,
+      name: "ypos"
+      type: "pixel"
+      desc: "Startkoordinate Y"
+     ,
+      name: "do_hide_pi"
+      type: "radio"
+      desc: "PI verstecken?"
+     ,
+      name: "do_display_errors"
+      type: "radio"
+      desc: "Display–Errors?"
+     ,
+      name: "have_mouse"
+      type: "radio"
+      desc: "Maus?"
+     ,
+      name: "have_fixed_navigation"
+      type: "radio"
+      desc: "Fixierte Navigation unten?"
+    ]
    ,
     name: "direct_mail"
     type: "struct"
