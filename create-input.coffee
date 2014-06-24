@@ -1,8 +1,16 @@
 create_text_input = (field) ->
   $ "<input>"
     type:  field.type
+    length:  40
     name:  field.name
     value: field.value
+
+create_textarea = (field) ->
+  $ "<textarea>",
+    name: field.name
+    cols: 60
+    rows: 12,
+    field.value
 
 create_image_selection = (field) ->
   $ "<img>"
@@ -18,9 +26,10 @@ create_selection = (field) ->
   ($ "<select>").append (create_option txt, field for txt in field.opts)
 
 INPUTCONSTRUCTORS =
-  text:   create_text_input
-  tel:    create_text_input
-  image:  create_image_selection
+  textline:  create_text_input
+  tel:       create_text_input
+  text:      create_textarea
+  image:     create_image_selection
   selection: create_selection
 
 extend_field_type = (field) ->
