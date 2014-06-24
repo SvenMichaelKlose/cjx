@@ -5,7 +5,7 @@ RECORD_INFOS =
     desc:  "Name der Applikation"
    ,
     name:  "name"
-    type:  "option"
+    type:  "selection"
     opts:  ["Tisch", "Stele"]
     value: "Tisch"
     desc:  "Typ"
