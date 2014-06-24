@@ -1,4 +1,10 @@
 body {
+    background: black;
+}
+
+.arena {
+    margin: 1em;
+    padding: 1em;
     background: #ddd;
 }
 
@@ -26,15 +32,15 @@ label {
 
 .struct,
 .struct h2 {
-    padding-bottom: 1em;
-    border-bottom: 1px solid black;
+    padding-top: .25em;
+    padding-bottom: .25em;
+    margin: 0
 }
 
 .struct .struct h2 {
-    padding: .25em;
     border: 0;
 }
 
-.struct label {
+.struct .field {
     margin-left: 1em;
 }
