@@ -1,8 +1,61 @@
 RECORD_INFOS =
   client: [
+    name:   "user"
+    type:   "textline"
+    desc:   "Login–Name"
+   ,
+    name:   "title"
+    type:   "textline"
+    desc:   "Anrede"
+   ,
+    name:   "surname"
+    type:   "textline"
+    desc:   "Vorname"
+   ,
+    name:   "name"
+    type:   "textline"
+    desc:   "Name"
+   ,
+    name:   "email"
+    type:   "email"
+    desc:   "E–Mail"
+   ,
+    name:   "password"
+    type:   "password"
+    desc:   "Password"
+   ,
+    name:   "role"
+    type:   "selection"
+    opts:   ["User", "Admin", "Superadmin"]
+    desc:   "Rolle"
+  ]
+
+  group: [
+    name:  "name"
+    type:  "textline"
+    desc:  "Name"
+   ,
+    name:  "admin"
+    type:  "user"
+    desc:  "Gruppenadmin"
+   ,
+    name:    "clients"
+    type:    "xreflist"
+    records: "clients"
+    unique:  "yes"
+    desc:    "Apps"
+  ]
+
+  app: [
     name:  "name"
     type:  "textline"
     desc:  "Name der Applikation"
+   ,
+    name:    "client"
+    type:    "xref"
+    records: "clients"
+    field:   "name"
+    desc:    "Kunde"
    ,
     name:  "name"
     type:  "selection"
@@ -188,6 +241,7 @@ RECORD_INFOS =
     ]
   ]
 
+###
   address: [
     name: "name"
     type: "text"
@@ -233,3 +287,4 @@ RECORD_INFOS =
     type: "degree"
     desc: "Drehung"
   ]
+###
