@@ -3,6 +3,8 @@ body {
 }
 
 .menu {
+    padding-left: 1em;
+    padding-right: 1em;
     background: #ddd;
 }
 
@@ -12,8 +14,19 @@ body {
     background: #ddd;
 }
 
+.menu,
+.arena {
+    width: 61em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 label {
     width: 17em;
+    display: block;
+    float: left;
+    border-right: 1px solid #aaa;
+    height: 100%;
 }
 
 .field:first-child {

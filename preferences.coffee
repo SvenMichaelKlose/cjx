@@ -1,2 +1,5 @@
 open_preferences = () ->
-  ($ "form").empty().append create_form RECORD_INFOS.client
+  ($ ".arena").slideUp 400,
+                       () ->
+                         ($ "form").empty().append create_form RECORD_INFOS.app
+                         ($ ".arena").slideDown()

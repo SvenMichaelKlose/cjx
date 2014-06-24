@@ -1,5 +1,8 @@
 tell_its_not_there_yet = () ->
-  alert "Sorry. Noch nix da."
+  ($ ".arena").slideUp 400,
+                       () ->
+                         ($ "form").text "Sorry. Noch nix da."
+                         ($ ".arena").slideDown()
 
 MENUITEMS = [
   ["Home",            tell_its_not_there_yet]
