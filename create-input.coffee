@@ -53,5 +53,6 @@ create_input = (field) ->
   field = extend_field_type field
   e = (INPUTCONSTRUCTORS[field.type] || create_text_input) field
   if f = field.filter
-     f field, e
-  e
+    f field, e
+  else
+    e
