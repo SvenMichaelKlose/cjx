@@ -1,3 +1,7 @@
+###                                                                                                            
+    Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
+###
+
 TYPES =
   range:
     filter: (field, x) -> x.spinner min:  field.min,

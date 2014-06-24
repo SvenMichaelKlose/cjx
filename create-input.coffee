@@ -1,3 +1,7 @@
+###                                                                                                            
+    Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
+###
+
 create_text_input = (field) ->
   $ "<input>"
     type:  field.type

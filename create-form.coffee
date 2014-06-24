@@ -1,3 +1,7 @@
+###                                                                                                            
+    Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
+###
+
 field_label = (field) ->
   ($ "<label for=\"#{field.name}\">").text field.desc + ":"
 

@@ -1,3 +1,7 @@
+###                                                                                                            
+    Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
+###
+
 create_xref_optionbox = (th, selection, field) ->
   o = create_optionbox (get_xref_values field), selection
   o.append (create_optionboxselection "-").click remove_xref_optionbox
