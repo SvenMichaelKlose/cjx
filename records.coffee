@@ -103,6 +103,50 @@ RECORD_INFOS =
     type: "radio"
     desc: "Neues Icon–Set"
    ,
+    name: "color"
+    type: "color"
+    desc: "Highlight–Farbe"
+   ,
+    name: "scaling"
+    type: "percent"
+    desc: "Skalierung"
+   ,
+    name: "scaling_min"
+    type: "percent"
+    desc: "Skalierung min"
+   ,
+    name: "scaling_max"
+    type: "percent"
+    desc: "Skalierung max"
+   ,
+    name: "xpos"
+    type: "pixel"
+    desc: "Startkoordinate X"
+   ,
+    name: "ypos"
+    type: "pixel"
+    desc: "Startkoordinate Y"
+   ,
+    name: "zip"
+    type: "zip_de"
+    desc: "Wetter–PLZ"
+   ,
+    name: "do_hide_pi"
+    type: "radio"
+    desc: "PI verstecken?"
+   ,
+    name: "do_display_errors"
+    type: "radio"
+    desc: "Display–Errors?"
+   ,
+    name: "have_mouse"
+    type: "radio"
+    desc: "Maus?"
+   ,
+    name: "have_fixed_navigation"
+    type: "radio"
+    desc: "Fixierte Navigation unten?"
+   ,
     name: "direct_mail"
     type: "struct"
     desc: "Direktversand"
@@ -141,57 +185,18 @@ RECORD_INFOS =
       desc: "Intervall in Sekunden"
     ]
    ,
-    name: "color"
-    type: "color"
-    desc: "Highlight–Farbe"
-   ,
-    name: "scaling"
-    type: "percent"
-    desc: "Skalierung"
-   ,
-    name: "scaling_min"
-    type: "percent"
-    desc: "Skalierung min"
-   ,
-    name: "scaling_max"
-    type: "percent"
-    desc: "Skalierung max"
-   ,
-    name: "xpos"
-    type: "pixel"
-    desc: "Startkoordinate X"
-   ,
-    name: "ypos"
-    type: "pixel"
-    desc: "Startkoordinate Y"
-   ,
-    name: "zip"
-    type: "zip_de"
-    desc: "Wetter–PLZ"
-   ,
-    name: "do_background_update"
-    type: "radio"
-    desc: "Update im Hintergrund"
-   ,
-    name: "update_interval"
-    type: "radio"
-    desc: "Update–Interval in Sekunden"
-   ,
-    name: "do_hide_pi"
-    type: "radio"
-    desc: "PI verstecken?"
-   ,
-    name: "do_display_errors"
-    type: "radio"
-    desc: "Display–Errors?"
-   ,
-    name: "have_mouse"
-    type: "radio"
-    desc: "Maus?"
-   ,
-    name: "have_fixed_navigation"
-    type: "radio"
-    desc: "Fixierte Navigation unten?"
+    name: "update"
+    type: "struct"
+    desc: "Updates"
+    data: [
+      name: "do_background_update"
+      type: "radio"
+      desc: "Update im Hintergrund?"
+     ,
+      name: "update_interval"
+      type: "seconds"
+      desc: "Update–Interval in Sekunden"
+    ]
    ,
     name: "email"
     type: "struct"
