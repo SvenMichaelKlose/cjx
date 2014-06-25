@@ -1,13 +1,13 @@
-###                                                                                                            
+###
     Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
 ###
 
 create_text_input = (field) ->
   $ "<input>"
-    type:  field.type
-    length:  40
-    name:  field.name
-    value: field.value
+    type:   field.type
+    length: 40
+    name:   field.name
+    value:  field.value
 
 create_textarea = (field) ->
   $ "<textarea>",
@@ -22,6 +22,7 @@ create_image_selection = (field) ->
 
 create_option = (txt, field) ->
   o = ($ "<option>").text txt
+  o.attr "value", txt
   if txt is field.value
     o.attr "selected", "selected"
   o
