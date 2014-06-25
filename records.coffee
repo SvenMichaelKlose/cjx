@@ -524,3 +524,6 @@ RECORD_INFOS =
       type: "media"
     ]
   ]
+
+field_name = (x) ->
+  x.name or x.type
