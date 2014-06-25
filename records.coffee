@@ -60,15 +60,17 @@ RECORD_INFOS =
     field:   "name"
     desc:    "Kunde"
    ,
-    name:  "name"
+    name:  "type"
     type:  "selection"
     opts:  ["Tisch", "Stele"]
     value: "Tisch"
     desc:  "Typ"
+    attr: true
    ,
     name: "zip"
     type: "zip_de"
     desc: "Wetter–PLZ"
+    attr: true
    ,
     name: "keyboard"
     type: "struct"
@@ -107,26 +109,31 @@ RECORD_INFOS =
         "768 x 1366 px"
       ]
       desc: "Auflösung"
+      value: "768 x 1366 px"
       attr: true
      ,
       name: "autostart_delay"
       type: "seconds"
       desc: "Autom. Autostart der App nach"
+      value: 300
       attr: true
      ,
       name: "autorestart_delay"
       type: "minutes"
       desc: "App geht zum Startbildschirm nach"
+      value: 300
       attr: true
      ,
       name: "clipboard_doubletap"
       type: "radio"
       desc: "Doppeltippen öffnet Ablage"
+      value: true
       attr: true
      ,
       name: "new_iconset"
       type: "radio"
       desc: "Neues Icon–Set"
+      value: false
       attr: true
      ,
       name: "color"
@@ -137,46 +144,55 @@ RECORD_INFOS =
       name: "scaling"
       type: "percent"
       desc: "Skalierung"
+      value: 100
       attr: true
      ,
       name: "scaling_min"
       type: "percent"
       desc: "Skalierung min"
+      value: 100
       attr: true
      ,
       name: "scaling_max"
       type: "percent"
       desc: "Skalierung max"
+      value: 100
       attr: true
      ,
       name: "xpos"
       type: "pixel"
       desc: "Startkoordinate X"
+      value: 0
       attr: true
      ,
       name: "ypos"
       type: "pixel"
       desc: "Startkoordinate Y"
+      value: 0
       attr: true
      ,
       name: "do_hide_pi"
       type: "radio"
       desc: "PI verstecken?"
+      value: false
       attr: true
      ,
       name: "do_display_errors"
       type: "radio"
       desc: "Display–Errors?"
+      value: false
       attr: true
      ,
       name: "have_mouse"
       type: "radio"
       desc: "Maus?"
+      value: false
       attr: true
      ,
       name: "have_fixed_navigation"
       type: "radio"
       desc: "Fixierte Navigation unten?"
+      value: false
       attr: true
     ]
    ,
@@ -187,11 +203,13 @@ RECORD_INFOS =
       name: "enable"
       type: "radio"
       desc: "Aktiviert?"
+      value: true
       attr: true
      ,
       name: "enable_cc"
       type: "radio"
       desc: "CC–E–Mail anzeigen?"
+      value: false
       attr: true
      ,
       name: "policy"
@@ -214,11 +232,13 @@ RECORD_INFOS =
       name: "enable"
       type: "radio"
       desc: "Aktiviert?"
+      value: false
       attr: true
      ,
       name: "interval"
       type: "seconds"
       desc: "Intervall in Sekunden"
+      value: 0
       attr: true
     ]
    ,

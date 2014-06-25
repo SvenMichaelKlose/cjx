@@ -1,25 +1,34 @@
-###                                                                                                            
+###
     Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
 ###
 
 field_label = (field) ->
   ($ "<label for=\"#{field.name}\">").text field.desc + ":"
 
-create_form_struct = (field) ->
-  div = $ "<div class='struct'>"
-  div.append (($ "<h2>").text field.desc),
-             create_form field.data
-
-create_form_record = (field) ->
+create_form_record = (xml, field) ->
   ($ "<div class='field'>").append (field_label field),
                                    (create_input field),
                                    (($ "<span>").text m) if m = (extend_field_type field).measure,
 
-create_form_field = (field) ->
-  if field.type is "struct"
-    create_form_struct field
-  else
-    create_form_record field
+create_form_struct = (xml, field) ->
+  div = $ "<div class='struct'>"
+  div.append (($ "<h2>").text field.desc),
+             create_form xml, field.data
 
-create_form = (fields) ->
-  create_form_field x for x in fields
+get_field_input = (parent, x) ->
+  (parent.children (x.name or x.type)) or parent if parent.attr name
+
+create_form_field = (parent, field) ->
+  name = field.name or field.type
+  if field.attr
+    n = parent
+    n.attr name, field.value
+  else
+    (n = get_field_input parent, field) or parent.append (n = ($ "<#{name}>"))
+  if field.type is "struct"
+    create_form_struct n, field
+  else
+    create_form_record n, field
+
+create_form = (xml, fields) ->
+  create_form_field xml, x for x in fields
