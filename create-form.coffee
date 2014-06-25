@@ -23,15 +23,14 @@ get_field_input = (parent, x) ->
          parent
 
 hook_field = (n, field, elm) ->
-  if field.type is "struct"
-    elm
-  else
-    elm.change (x) ->
-                 v = ($ x.target).val()
-                 if field.attr
-                   n.attr (field_name field), v
-                 else
-                   n.text v
+  h = (x) ->
+        v = ($ x.target).val()
+        if field.attr
+          n.attr (field_name field), v
+        else
+          n.text v
+  elm.change h
+  elm.blur h
 
 create_form_field = (parent, field) ->
   name = field.name or field.type
@@ -46,10 +45,10 @@ create_form_field = (parent, field) ->
     if not n = get_field_input parent, field
       parent.append n = ($ "<#{name}>")
       n.text v
-  hook_field n, field, if field.type is "struct"
-                         create_form_struct n, field
-                       else
-                         create_form_record n, field, v
+  if field.type is "struct"
+     create_form_struct n, field
+  else
+     hook_field n, field, create_form_record n, field, v
 
 create_form = (xml, fields) ->
   create_form_field xml, x for x in fields
