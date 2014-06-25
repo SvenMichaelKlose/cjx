@@ -7,7 +7,9 @@ open_preferences = () ->
                        () ->
                          xml = $ "<app>"
                          ($ "form").empty()
-                         ($ "form").append (($ "<button>").text "Magic").click () -> alert ($ ".current_xml")[0].innerHTML
+                         ($ "form").append (($ "<button>").text "Magic").click (x) ->
+                                                                                 alert ($ ".current_xml")[0].innerHTML
+                                                                                 x.preventDefault()
                          ($ "form").append create_form xml, RECORD_INFOS.app
                          ($ ".current_xml").empty().append xml
                          ($ ".arena").slideDown 800
