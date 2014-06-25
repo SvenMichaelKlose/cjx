@@ -2,33 +2,33 @@
     Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
 ###
 
-create_text_input = (field) ->
+create_text_input = (field, value) ->
   $ "<input>"
     type:   field.type
     length: 40
     name:   field.name
-    value:  field.value
+    value:  value
 
-create_textarea = (field) ->
+create_textarea = (field, value) ->
   $ "<textarea>",
     name: field.name
     cols: 60
     rows: 12,
-    field.value
+    value
 
-create_image_selection = (field) ->
+create_image_selection = (field, value) ->
   $ "<img>"
     src: field.src
 
-create_option = (txt, field) ->
+create_option = (txt, field, value) ->
   o = ($ "<option>").text txt
   o.attr "value", txt
-  if txt is field.value
+  if txt is value
     o.attr "selected", "selected"
   o
 
-create_selection = (field) ->
-  ($ "<select>").append (create_option txt, field for txt in field.opts)
+create_selection = (field, value) ->
+  ($ "<select>").append (create_option txt, field, value for txt in field.opts)
 
 INPUTCONSTRUCTORS =
   textline:  create_text_input
@@ -37,22 +37,9 @@ INPUTCONSTRUCTORS =
   image:     create_image_selection
   selection: create_selection
 
-extend_field_type = (field) ->
-  filter = field.filter
-  desc = field.desc
-  if t = TYPES[field.type]
-    $.extend field, t
-    delete field.type if not t.type
-    field = extend_field_type field
-    if filter
-      field.filter = filter
-    if desc
-      field.desc = desc
-  field
-
-create_input = (field) ->
+create_input = (field, value) ->
   field = extend_field_type field
-  e = (INPUTCONSTRUCTORS[field.type] || create_text_input) field
+  e = (INPUTCONSTRUCTORS[field.type] || create_text_input) field, value
   if f = field.filter
     f field, e
   else

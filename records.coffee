@@ -52,6 +52,7 @@ RECORD_INFOS =
   app: [
     name:  "name"
     type:  "textline"
+    value: "Feelgood–Apotheke"
     desc:  "Name der Applikation"
    ,
     name:    "client"
@@ -527,3 +528,16 @@ RECORD_INFOS =
 
 field_name = (x) ->
   x.name or x.type
+
+extend_field_type = (field) ->
+  filter = field.filter
+  desc = field.desc
+  if t = TYPES[field.type]
+    $.extend field, t
+    delete field.type if not t.type
+    field = extend_field_type field
+    if filter
+      field.filter = filter
+    if desc
+      field.desc = desc
+  field
