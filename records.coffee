@@ -126,13 +126,13 @@ RECORD_INFOS =
       attr: true
      ,
       name: "clipboard_doubletap"
-      type: "radio"
+      type: "boolean"
       desc: "Doppeltippen öffnet Ablage"
       value: true
       attr: true
      ,
       name: "new_iconset"
-      type: "radio"
+      type: "boolean"
       desc: "Neues Icon–Set"
       value: false
       attr: true
@@ -173,25 +173,25 @@ RECORD_INFOS =
       attr: true
      ,
       name: "do_hide_pi"
-      type: "radio"
+      type: "boolean"
       desc: "PI verstecken?"
       value: false
       attr: true
      ,
       name: "do_display_errors"
-      type: "radio"
+      type: "boolean"
       desc: "Display–Errors?"
       value: false
       attr: true
      ,
       name: "have_mouse"
-      type: "radio"
+      type: "boolean"
       desc: "Maus?"
       value: false
       attr: true
      ,
       name: "have_fixed_navigation"
-      type: "radio"
+      type: "boolean"
       desc: "Fixierte Navigation unten?"
       value: false
       attr: true
@@ -202,19 +202,19 @@ RECORD_INFOS =
     desc: "Direktversand"
     data: [
       name: "enable"
-      type: "radio"
+      type: "boolean"
       desc: "Aktiviert?"
       value: true
       attr: true
      ,
       name: "enable_cc"
-      type: "radio"
+      type: "boolean"
       desc: "CC–E–Mail anzeigen?"
       value: false
       attr: true
      ,
       name: "policy"
-      type: "text"
+      type: "textarea"
       desc: "Datenschutzrichtlinien"
      ,
       name: "title"
@@ -231,7 +231,7 @@ RECORD_INFOS =
     desc: "Loop"
     data: [
       name: "enable"
-      type: "radio"
+      type: "boolean"
       desc: "Aktiviert?"
       value: false
       attr: true
@@ -248,7 +248,7 @@ RECORD_INFOS =
     desc: "Updates"
     data: [
       name: "background"
-      type: "radio"
+      type: "boolean"
       desc: "Im Hintergrund?"
       attr: true
      ,
@@ -296,11 +296,11 @@ RECORD_INFOS =
         desc: "Email–Empfänger (kommagetrennt)"
        ,
         name: "introduction"
-        type: "text"
+        type: "textarea"
         desc: "Einleitung"
        ,
         name: "footer"
-        type: "text"
+        type: "textarea"
         desc: "Fußnote"
       ]
     ]
@@ -314,12 +314,12 @@ RECORD_INFOS =
     type: "ad"
    ,
     name: "is_active"
-    type: "radio"
+    type: "boolean"
     desc: "aktiv?"
     attr: true
    ,
     name: "is_global"
-    type: "radio"
+    type: "boolean"
     desc: "global?"
     attr: true
    ,
@@ -468,7 +468,7 @@ RECORD_INFOS =
     desc:  "Nachrichten"
     list: [
       name: "messsage"
-      type: "text"
+      type: "textarea"
       desc: "Nachricht"
     ]
   ]
@@ -495,12 +495,12 @@ RECORD_INFOS =
 
   browser: [
     name: "has_address_field"
-    type: "radio"
+    type: "boolean"
     desc: "Adresszeile einblenden?"
     attr: true
    ,
     name: "has_keyboard"
-    type: "radio"
+    type: "boolean"
     desc: "Tastatur einblenden?"
     attr: true
    ,

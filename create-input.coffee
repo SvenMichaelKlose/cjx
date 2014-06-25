@@ -3,11 +3,17 @@
 ###
 
 create_text_input = (field, value) ->
-  $ "<input>"
-    type:   field.type
-    length: 40
-    name:   field.name
-    value:  value
+  e = $ "<input>"
+        type:   field.type
+        length: 40
+        name:   field.name
+        value:  if field.type is "checkbox"
+                   "true"
+                else
+                   value
+  if field.type is "checkbox" && field.value
+    e.attr "checked", "checked"
+  e
 
 create_textarea = (field, value) ->
   $ "<textarea>",
@@ -33,7 +39,7 @@ create_selection = (field, value) ->
 INPUTCONSTRUCTORS =
   textline:  create_text_input
   tel:       create_text_input
-  text:      create_textarea
+  textarea:  create_textarea
   image:     create_image_selection
   selection: create_selection
 

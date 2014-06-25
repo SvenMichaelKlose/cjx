@@ -1,8 +1,13 @@
-###                                                                                                            
+###
     Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
 ###
 
 TYPES =
+  textline:
+    type:   "text"
+
+  boolean:
+    type:   "checkbox"
   range:
     filter: (field, x) -> x.spinner min:  field.min,
                                     max:  field.max,
