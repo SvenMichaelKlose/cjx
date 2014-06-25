@@ -98,7 +98,7 @@ RECORD_INFOS =
     type: "struct"
     desc: "Darstellung"
     data: [
-      name: "resulotion"
+      name: "resolution"
       type: "selection"
       opts: [
         "1920 x 1200 px (Beamer)"
