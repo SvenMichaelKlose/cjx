@@ -8,6 +8,7 @@ TYPES =
 
   boolean:
     type:   "checkbox"
+
   range:
     filter: (field, x) -> x.spinner min:  field.min,
                                     max:  field.max,

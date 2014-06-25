@@ -42,7 +42,9 @@ create_form_field = (parent, field) ->
     else
       v = n.attr name
   else
-    if not n = get_field_input parent, field
+    if n = get_field_input parent, field
+      v = n.text()
+    else
       parent.append n = ($ "<#{name}>")
       n.text v
   if field.type is "struct"
