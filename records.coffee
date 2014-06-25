@@ -247,14 +247,14 @@ RECORD_INFOS =
     type: "struct"
     desc: "Updates"
     data: [
-      name: "do_background_update"
+      name: "background"
       type: "radio"
-      desc: "Update im Hintergrund?"
+      desc: "Im Hintergrund?"
       attr: true
      ,
-      name: "update_interval"
+      name: "interval"
       type: "seconds"
-      desc: "Update–Interval in Sekunden"
+      desc: "Intervall"
       attr: true
     ]
    ,
@@ -288,7 +288,7 @@ RECORD_INFOS =
       desc: "Ablagen"
       data: [
         name: "subject"
-        type: "text"
+        type: "textline"
         desc: "Betreff"
        ,
         name: "receiver"
