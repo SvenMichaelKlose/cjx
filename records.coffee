@@ -24,7 +24,6 @@ RECORD_INFOS =
     type:   "email"
     desc:   "E–Mail"
    ,
-    name:   "password"
     type:   "password"
     desc:   "Password"
    ,
@@ -78,16 +77,19 @@ RECORD_INFOS =
       name: "scaling"
       type: "percent"
       desc: "Skalierung"
+      attr: true
      ,
       name: "xpos"
       type: "pixel"
       value: 0
       desc: "X–Verschiebung"
+      attr: true
      ,
       name: "ypos"
       type: "pixel"
       value: 0
       desc: "Y–Verschiebung"
+      attr: true
     ]
    ,
     name: "display"
@@ -105,62 +107,77 @@ RECORD_INFOS =
         "768 x 1366 px"
       ]
       desc: "Auflösung"
+      attr: true
      ,
       name: "autostart_delay"
       type: "seconds"
       desc: "Autom. Autostart der App nach"
+      attr: true
      ,
       name: "autorestart_delay"
       type: "minutes"
       desc: "App geht zum Startbildschirm nach"
+      attr: true
      ,
       name: "clipboard_doubletap"
       type: "radio"
       desc: "Doppeltippen öffnet Ablage"
+      attr: true
      ,
       name: "new_iconset"
       type: "radio"
       desc: "Neues Icon–Set"
+      attr: true
      ,
       name: "color"
       type: "color"
       desc: "Highlight–Farbe"
+      attr: true
      ,
       name: "scaling"
       type: "percent"
       desc: "Skalierung"
+      attr: true
      ,
       name: "scaling_min"
       type: "percent"
       desc: "Skalierung min"
+      attr: true
      ,
       name: "scaling_max"
       type: "percent"
       desc: "Skalierung max"
+      attr: true
      ,
       name: "xpos"
       type: "pixel"
       desc: "Startkoordinate X"
+      attr: true
      ,
       name: "ypos"
       type: "pixel"
       desc: "Startkoordinate Y"
+      attr: true
      ,
       name: "do_hide_pi"
       type: "radio"
       desc: "PI verstecken?"
+      attr: true
      ,
       name: "do_display_errors"
       type: "radio"
       desc: "Display–Errors?"
+      attr: true
      ,
       name: "have_mouse"
       type: "radio"
       desc: "Maus?"
+      attr: true
      ,
       name: "have_fixed_navigation"
       type: "radio"
       desc: "Fixierte Navigation unten?"
+      attr: true
     ]
    ,
     name: "direct_mail"
@@ -170,10 +187,12 @@ RECORD_INFOS =
       name: "enable"
       type: "radio"
       desc: "Aktiviert?"
+      attr: true
      ,
       name: "enable_cc"
       type: "radio"
       desc: "CC–E–Mail anzeigen?"
+      attr: true
      ,
       name: "policy"
       type: "text"
@@ -195,10 +214,12 @@ RECORD_INFOS =
       name: "enable"
       type: "radio"
       desc: "Aktiviert?"
+      attr: true
      ,
       name: "interval"
       type: "seconds"
       desc: "Intervall in Sekunden"
+      attr: true
     ]
    ,
     name: "update"
@@ -208,10 +229,12 @@ RECORD_INFOS =
       name: "do_background_update"
       type: "radio"
       desc: "Update im Hintergrund?"
+      attr: true
      ,
       name: "update_interval"
       type: "seconds"
       desc: "Update–Interval in Sekunden"
+      attr: true
     ]
    ,
     name: "email"
@@ -267,17 +290,17 @@ RECORD_INFOS =
     type: "textline"
     desc: "Beschriftung"
    ,
-    name: "ad"
-    type: "selection"
-    desc: "Werbung"
+    type: "ad"
    ,
     name: "is_active"
     type: "radio"
     desc: "aktiv?"
+    attr: true
    ,
     name: "is_global"
     type: "radio"
     desc: "global?"
+    attr: true
    ,
     name: "code"
     type: "password"
@@ -285,25 +308,29 @@ RECORD_INFOS =
   ]
 
   media: [
-    name: "file"
-    type: "file"
-    desc: "Datei"
+    name: "src"
+    type: "url"
+    attr: true
    ,
     name: "x"
     type: "pixel"
     desc: "X–Position"
+    attr: true
    ,
     name: "y"
     type: "pixel"
     desc: "Y–Position"
+    attr: true
    ,
     name: "scaling"
     type: "percent"
     desc: "Skalierung"
+    attr: true
    ,
     name: "rotation"
     type: "degree"
     desc: "Drehung"
+    attr: true
   ]
 
   dashboard: [
@@ -322,8 +349,19 @@ RECORD_INFOS =
     desc: "Hintergrundbild"
    ,
     name: "items"
-    type: "file"
+    type: "list"
     desc: "Medien"
+    list: [
+      name: "front"
+      type: "media"
+      desc: "Vorderseite"
+     ,
+      name: "back"
+      type: "media"
+      desc: "Rückseite"
+     ,
+      type: "video"
+    ]
   ]
 
   flippic: [
@@ -343,9 +381,7 @@ RECORD_INFOS =
       type: "media"
       desc: "Rückseite"
      ,
-      name: "video"
-      type: "media"
-      desc: "Video"
+      type: "video"
     ]
   ]
 
@@ -366,9 +402,7 @@ RECORD_INFOS =
       type: "media"
       desc: "Rückseite"
      ,
-      name: "pdf"
-      type: "media"
-      desc: "PDF"
+      type: "pdf"
     ]
   ]
 
@@ -389,9 +423,7 @@ RECORD_INFOS =
       type: "media"
       desc: "Rückseite"
      ,
-      name: "pdf"
-      type: "media"
-      desc: "PDF"
+      type: "pdf"
     ]
   ]
 
@@ -403,11 +435,9 @@ RECORD_INFOS =
     name:  "items"
     type:  "list"
     limit: 12
-    desc:  "Medien"
+    desc:  "Vorderseiten"
     list: [
-      name: "front"
       type: "media"
-      desc: "Vorderseite"
     ]
   ]
 
@@ -427,8 +457,8 @@ RECORD_INFOS =
     type: "selection"
     opts: ["normal"]
     desc: "Typ"
+    attr: true
    ,
-    name: "location"
     type: "location"
     desc: "Kartenmitte"
    ,
@@ -446,37 +476,31 @@ RECORD_INFOS =
     name: "has_address_field"
     type: "radio"
     desc: "Adresszeile einblenden?"
+    attr: true
    ,
     name: "has_keyboard"
     type: "radio"
     desc: "Tastatur einblenden?"
+    attr: true
    ,
     name:  "blacklist"
     type:  "list"
     desc:  "Blacklist"
     list: [
-      name: "url"
       type: "url"
-      desc: "URL"
     ]
    ,
     name:  "whitelist"
     type:  "list"
     desc:  "whitelist"
     list: [
-      name: "url"
       type: "url"
-      desc: "URL"
     ]
   ]
 
   wall: [
-    name:  "blacklist"
     type:  "list"
-    desc:  "Blacklist"
     list: [
-      name: "item"
       type: "media"
-      desc: "Medium"
     ]
   ]
