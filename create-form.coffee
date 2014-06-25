@@ -22,7 +22,7 @@ hook_field = (n, field, elm) ->
   elm.change (x) ->
                v = ($ x.target).val()
                if field.attr
-                 n.attr v
+                 n.attr (field_name field), v
                else
                  n.text v
 
