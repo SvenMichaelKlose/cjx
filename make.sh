@@ -5,6 +5,7 @@ coffee -c -b -o js \
     types.coffee \
     schemas.coffee \
     xml-gen.coffee \
+    overlay.coffee \
     create-input.coffee \
     create-form.coffee \
     preferences.coffee \
