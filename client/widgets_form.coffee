@@ -39,7 +39,7 @@ measure = (field) ->
 
 create_form_record = (field, value) ->
   ($ "<div class='field'>").append (field_label field),
-                                   (create_input field, value),
+                                   (create_widget field.type, (extend_field_type field), value),
                                    (create_measure_label field)
 
 create_form_struct = ({desc, data}) ->

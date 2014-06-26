@@ -6,7 +6,7 @@ get_field_input = (parent, x) ->
   (ensure_elements parent.children (x.name or x.type)) or if parent.attr name then parent
 
 create_hooked_field = (n, field, v) ->
-  hook_field n, field, create_form_record n, field, v
+  hook_field n, field, create_widget "record", n, field, v
 
 create_form_attribute_value = (parent, {name, value}) ->
   if not parent.attr name
@@ -26,7 +26,7 @@ create_form_element = (parent, field) ->
     parent.append n = ($ "<#{field.name}>")
     n.text v
   if field.type is "struct"
-    create_form_struct n, field
+    create_widget "struct", n, field
   else
     create_hooked_field n, field, v
 
