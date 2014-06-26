@@ -3,7 +3,7 @@
 ###
 
 tell_its_not_there_yet = () ->
-  ($ ".arena").slideUp 400,
+  ($ ".arena").slideUp 200,
                        () ->
                          ($ "form").text "Sorry. Noch nix da."
                          ($ ".arena").slideDown()

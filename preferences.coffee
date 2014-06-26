@@ -3,7 +3,7 @@
 ###
 
 open_preferences = () ->
-  ($ ".arena").slideUp 400,
+  ($ ".arena").slideUp 200,
                        () ->
                          xml = if ($ ".current_xml > app").length
                                  $ "app"
@@ -16,4 +16,4 @@ open_preferences = () ->
                          ($ "form").append button, create_form xml, RECORD_INFOS.app
                          unless ($ ".current_xml > app").length > 0
                            ($ ".current_xml").empty().append xml
-                         ($ ".arena").slideDown 800
+                         ($ ".arena").slideDown 200

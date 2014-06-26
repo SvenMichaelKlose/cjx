@@ -5,7 +5,6 @@
 create_text_input = (field, value) ->
   e = $ "<input>"
         type:   field.type
-        length: 40
         name:   field.name
         value:  if field.type is "checkbox"
                    "true"
@@ -18,8 +17,8 @@ create_text_input = (field, value) ->
 create_textarea = (field, value) ->
   $ "<textarea>",
     name: field.name
-    cols: 60
-    rows: 12,
+    cols: field.cols || 60
+    rows: field.rows || 12,
     value
 
 create_image_selection = (field, value) ->

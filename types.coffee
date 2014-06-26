@@ -19,28 +19,28 @@ TYPES =
     type:    "range"
     min:     0
     step:    0.1
-    measure: "Prozent"
+    measure: "%"
     desc:    "Prozent"
 
   pixel:
     type:    "range"
     min:     0
     step:    1
-    measure: "Pixel"
+    measure: "px"
     desc:    "Pixel"
 
   seconds:
     type:  "range"
     min:   0
     step:  1
-    measure:  "Sekunden"
+    measure:  "s"
     desc:  "Sekunden"
 
   minutes:
     type:    "range"
     min:     0
     step:    1
-    measure: "Minuten"
+    measure: "min"
     desc:    "Minuten"
 
   zip_de:
@@ -49,3 +49,14 @@ TYPES =
     max:   99999
     step:  1
     desc:  "PLZ"
+
+extend_field_type = (field) ->
+  filter = field.filter
+  desc = field.desc
+  if t = TYPES[field.type]
+    $.extend field, t
+    delete field.type if not t.type
+    field = extend_field_type field
+    field.filter = filter if filter
+    field.desc = desc if desc
+  field
