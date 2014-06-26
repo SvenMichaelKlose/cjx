@@ -17,6 +17,9 @@ create_range = ({name, min, max, step}, v) ->
     max:  max
     step: step
 
+create_password = ({name, value}, v) ->
+  create_text_input {type: "password", name: name}, v
+
 create_boolean = ({name, value}, v) ->
   e = create_text_input {type: "checkbox", name: name}, "true"
   e.attr "checked", "checked" if v is "true"
@@ -69,6 +72,7 @@ WIDGETS =
   minutes:   create_text_input
   color:     create_text_input
   email:     create_text_input
+  password:  create_password
   range:     create_range
   boolean:   create_boolean
   textarea:  create_textarea
