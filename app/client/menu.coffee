@@ -2,6 +2,11 @@
     Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
 ###
 
+menu_slide = (action) ->
+  ($ ".arena").slideUp 200, () ->
+                              action()
+                              ($ ".arena").slideDown 200
+
 tell_its_not_there_yet = () ->
   ($ ".arena").slideUp 200,
                        () ->

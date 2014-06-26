@@ -31,6 +31,13 @@ create_option = (txt, value) ->
 create_selection = (field, value) ->
   ($ "<select>").append (create_option txt, value for txt in field.opts)
 
+INPUTCONSTRUCTORS =
+  textline:  create_text_input
+  tel:       create_text_input
+  textarea:  create_textarea
+  image:     create_image_selection
+  selection: create_selection
+
 field_label = ({name, desc}) ->
   ($ "<label for=\"#{name}\">").text desc + ":"
 
