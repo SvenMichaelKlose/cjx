@@ -41,6 +41,8 @@ create_form_attribute_value = (parent, {name, value}) ->
   if not parent.attr name
     parent.attr name, value
     value
+  else
+    parent.attr name
 
 create_form_attribute = (parent, field) ->
   create_hooked_field parent, field, create_form_attribute_value parent, field
