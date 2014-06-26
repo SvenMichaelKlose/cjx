@@ -5,10 +5,13 @@
 field_label = (field) ->
   ($ "<label for=\"#{field.name}\">").text field.desc + ":"
 
+create_measure_label = (field) ->
+  (($ "<span>").text m) if m = (extend_field_type field).measure
+
 create_form_record = (xml, field, value) ->
   ($ "<div class='field'>").append (field_label field),
                                    (create_input field, value),
-                                   (($ "<span>").text m) if m = (extend_field_type field).measure,
+                                   (create_measure_label field)
 
 create_form_struct = (xml, field) ->
   div = $ "<div class='struct'>"
@@ -26,7 +29,7 @@ hook_field = (n, field, elm) ->
   h = (x) ->
         v = ($ x.target).val()
         if field.attr
-          n.attr (field_name field), v
+          n.attr field.name, v
         else
           n.text v
   elm.change h
@@ -36,12 +39,9 @@ create_hooked_field = (n, field, v) ->
   hook_field n, field, create_form_record n, field, v
 
 create_form_attribute_value = (parent, field) ->
-  name = field_name field
-  if not parent.attr name
-    parent.attr name, field.value
+  if not parent.attr field.name
+    parent.attr field.name, field.value
     field.value
-  else
-    parent.attr name
 
 create_form_attribute = (parent, field) ->
   create_hooked_field parent, field, create_form_attribute_value parent, field
@@ -51,7 +51,7 @@ create_form_element = (parent, field) ->
   if n = get_field_input parent, field
     v = n.text()
   else
-    parent.append n = ($ "<#{field_name field}>")
+    parent.append n = ($ "<#{field.name}>")
     n.text v
   if field.type is "struct"
     create_form_struct n, field

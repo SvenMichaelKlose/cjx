@@ -311,6 +311,7 @@ SCHEMAS =
     type: "textline"
     desc: "Beschriftung"
    ,
+    name: "ad"
     type: "ad"
    ,
     name: "is_active"
@@ -381,6 +382,7 @@ SCHEMAS =
       type: "media"
       desc: "Rückseite"
      ,
+      name: "video"
       type: "video"
     ]
   ]
@@ -402,6 +404,7 @@ SCHEMAS =
       type: "media"
       desc: "Rückseite"
      ,
+      name: "video"
       type: "video"
     ]
   ]
@@ -423,6 +426,7 @@ SCHEMAS =
       type: "media"
       desc: "Rückseite"
      ,
+      name: "pdf"
       type: "pdf"
     ]
   ]
@@ -444,6 +448,7 @@ SCHEMAS =
       type: "media"
       desc: "Rückseite"
      ,
+      name: "pdf"
       type: "pdf"
     ]
   ]
@@ -458,6 +463,7 @@ SCHEMAS =
     limit: 12
     desc:  "Vorderseiten"
     list: [
+      name: "media"
       type: "media"
     ]
   ]
@@ -480,6 +486,7 @@ SCHEMAS =
     desc: "Typ"
     attr: true
    ,
+    name: "location"
     type: "location"
     desc: "Kartenmitte"
    ,
@@ -508,6 +515,7 @@ SCHEMAS =
     type:  "list"
     desc:  "Blacklist"
     list: [
+      name: "url"
       type: "url"
     ]
    ,
@@ -515,16 +523,16 @@ SCHEMAS =
     type:  "list"
     desc:  "whitelist"
     list: [
+      name: "url"
       type: "url"
     ]
   ]
 
   wall: [
+    name:  "list"
     type:  "list"
     list: [
+      name: "url"
       type: "media"
     ]
   ]
-
-field_name = (x) ->
-  x.name or x.type
