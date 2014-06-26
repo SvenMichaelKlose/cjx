@@ -2,16 +2,14 @@
     Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
 ###
 
-generate_element_or_attribute = (parent, field) ->
-  name = field.name or field.type
-  if field.attr
-    parent.attr name, field.value
+generate_element_or_attribute = (parent, {name, attr ,type, value, data }) ->
+  if attr
+    parent.attr name, value
     null
   else
-      n = ($ "<#{name}>").text field.value
-      if field.type is "struct"
-         struct_to_xml n, field.data
-      n
+    n = ($ "<#{name}>").text value
+    struct_to_xml n, data if type is "struct"
+    n
 
 struct_to_xml = (parent, fields) ->
   parent.append (generate_element_or_attribute parent, field for field in fields)

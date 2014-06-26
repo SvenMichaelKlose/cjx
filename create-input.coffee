@@ -25,15 +25,13 @@ create_image_selection = (field, value) ->
   $ "<img>"
     src: field.src
 
-create_option = (txt, field, value) ->
+create_option = (txt, value) ->
   o = ($ "<option>").text txt
-  o.attr "value", txt
-  if txt is value
-    o.attr "selected", "selected"
-  o
+  o.attr value: txt
+  o.attr "selected", "selected" if txt is value
 
 create_selection = (field, value) ->
-  ($ "<select>").append (create_option txt, field, value for txt in field.opts)
+  ($ "<select>").append (create_option txt, value for txt in field.opts)
 
 INPUTCONSTRUCTORS =
   textline:  create_text_input
