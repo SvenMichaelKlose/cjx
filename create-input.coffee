@@ -2,33 +2,31 @@
     Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
 ###
 
-create_text_input = (field, value) ->
+create_text_input = ({type, name, value}, v) ->
   e = $ "<input>"
-        type:   field.type
-        name:   field.name
-        value:  if field.type is "checkbox"
-                   "true"
-                else
-                   value
-  if field.type is "checkbox" && field.value
+        type:   type
+        name:   name
+        value:  if type is "checkbox" then "true" else v
+  if type is "checkbox" && value
     e.attr "checked", "checked"
   e
 
-create_textarea = (field, value) ->
+create_textarea = ({name, cols, rows}, value) ->
   $ "<textarea>",
-    name: field.name
-    cols: field.cols || 60
-    rows: field.rows || 12,
+    name: name
+    cols: cols || 60
+    rows: rows || 12,
     value
 
-create_image_selection = (field, value) ->
+create_image_selection = ({src}, value) ->
   $ "<img>"
-    src: field.src
+    src: src
 
 create_option = (txt, value) ->
   o = ($ "<option>").text txt
   o.attr value: txt
   o.attr "selected", "selected" if txt is value
+  o
 
 create_selection = (field, value) ->
   ($ "<select>").append (create_option txt, value for txt in field.opts)
