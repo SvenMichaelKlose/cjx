@@ -24,6 +24,7 @@ SCHEMAS =
     type:   "email"
     desc:   "E–Mail"
    ,
+    name:   "password"
     type:   "password"
     desc:   "Password"
    ,
