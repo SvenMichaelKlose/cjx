@@ -10,4 +10,4 @@ create_widget = (constructor, field, value) ->
     e
 
 create_input = (field, value) ->
-  create_widget INPUTCONSTRUCTORS[field.type], (extend_field_type field), value
+  create_widget WIDGETS[field.type], (extend_field_type field), value

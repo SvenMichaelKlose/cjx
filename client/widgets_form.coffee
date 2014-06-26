@@ -31,17 +31,10 @@ create_option = (txt, value) ->
 create_selection = (field, value) ->
   ($ "<select>").append (create_option txt, value for txt in field.opts)
 
-INPUTCONSTRUCTORS =
-  textline:  create_text_input
-  tel:       create_text_input
-  textarea:  create_textarea
-  image:     create_image_selection
-  selection: create_selection
-
 field_label = ({name, desc}) ->
   ($ "<label for=\"#{name}\">").text desc + ":"
 
-create_measure_label = (field) ->
+measure = (field) ->
   (($ "<span>").text m) if m = (extend_field_type field).measure
 
 create_form_record = (field, value) ->
@@ -53,3 +46,14 @@ create_form_struct = ({desc, data}) ->
   div = $ "<div class='struct'>"
   div.append (($ "<h2>").text desc),
              create_form xml, data
+
+WIDGETS =
+  textline:  create_text_input
+  tel:       create_text_input
+  textarea:  create_textarea
+  image:     create_image_selection
+  selection: create_selection
+  label:     field_label
+  measure:   measure
+  record:    create_form_record
+  struct:    create_form_struct
