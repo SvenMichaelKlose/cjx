@@ -2,14 +2,12 @@
     Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
 ###
 
-record_list = (xml, schema) ->
-  create_form i schema for i in xml.children()
+record_list = (items, schema) ->
+  create_form i, schema for i in items
+
+CLIENTS = [generate_xml_from_schema "client"]
 
 open_clients = () ->
   menu_slide () ->
-               xml = if (ensure-element $ ".current_xml > clients") then $ "clients" else $ "<clients>"
-               button = (($ "<button>").text "Magic").click magic
-               ($ "form").append button,
-                                 record_list xml, SCHEMAS.app
-               unless (ensure-element $ ".current_xml > clients")
-                 ($ ".current_xml").empty().append xml
+               ($ "form").append (($ "<button>").text "Magic").click magic
+               ($ "form").append i for i in record_list CLIENTS, SCHEMAS.client

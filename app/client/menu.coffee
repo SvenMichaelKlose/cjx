@@ -17,7 +17,7 @@ tell_its_not_there_yet = () ->
 
 MENUITEMS = [
   ["Home",            tell_its_not_there_yet]
-  ["App–Verwaltung",  tell_its_not_there_yet]
+  ["App–Verwaltung",  open_clients]
   ["Navigation",      tell_its_not_there_yet]
   ["Einstellungen",   open_preferences]
 ]
