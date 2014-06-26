@@ -8,18 +8,17 @@ field_label = ({name, desc}) ->
 create_measure_label = (field) ->
   (($ "<span>").text m) if m = (extend_field_type field).measure
 
-create_form_record = (xml, field, value) ->
+create_form_record = (field, value) ->
   ($ "<div class='field'>").append (field_label field),
                                    (create_input field, value),
                                    (create_measure_label field)
 
-create_form_struct = (xml, {desc, data}) ->
+create_form_struct = ({desc, data}) ->
   div = $ "<div class='struct'>"
   div.append (($ "<h2>").text desc),
              create_form xml, data
 
-ensure_elements = (x) ->
-  if x.length then x
+ensure_elements = (x) -> if x.length then x
 
 get_field_input = (parent, x) ->
   (ensure_elements parent.children (x.name or x.type)) or if parent.attr name then parent
@@ -45,7 +44,7 @@ create_form_attribute_value = (parent, {name, value}) ->
     parent.attr name
 
 create_form_attribute = (parent, field) ->
-  create_hooked_field parent, field, create_form_attribute_value parent, field
+  create_hooked_field field, create_form_attribute_value parent, field
 
 create_form_element = (parent, field) ->
   v = field.value
