@@ -9,7 +9,6 @@ magic = (x) ->
 open_preferences = () ->
   menu_slide () ->
                xml = (ensure_element $ ".current_xml > app") or $ "<app>"
-               ($ "form").empty()
                button = (($ "<button>").text "Magic").click magic
                ($ "form").append button,
                                  create_form xml, SCHEMAS.app
