@@ -32,25 +32,37 @@ hook_field = (n, field, elm) ->
   elm.change h
   elm.blur h
 
-create_form_field = (parent, field) ->
-  name = field.name or field.type
+create_hooked_field = (n, field, v) ->
+  hook_field n, field, create_form_record n, field, v
+
+create_form_attribute_value = (parent, field) ->
+  name = field_name field
+  if not parent.attr name
+    parent.attr name, field.value
+    field.value
+  else
+    parent.attr name
+
+create_form_attribute = (parent, field) ->
+  create_hooked_field parent, field, create_form_attribute_value parent, field
+
+create_form_element = (parent, field) ->
   v = field.value
-  if field.attr
-    n = parent
-    if not n.attr name
-      n.attr name, field.value
-    else
-      v = n.attr name
+  if n = get_field_input parent, field
+    v = n.text()
   else
-    if n = get_field_input parent, field
-      v = n.text()
-    else
-      parent.append n = ($ "<#{name}>")
-      n.text v
+    parent.append n = ($ "<#{field_name field}>")
+    n.text v
   if field.type is "struct"
-     create_form_struct n, field
+    create_form_struct n, field
   else
-     hook_field n, field, create_form_record n, field, v
+    create_hooked_field n, field, v
+
+create_form_field = (parent, field) ->
+  if field.attr
+    create_form_attribute parent, field
+  else
+    create_form_element parent, field
 
 create_form = (xml, fields) ->
   create_form_field xml, x for x in fields
