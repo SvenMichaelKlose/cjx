@@ -9,15 +9,17 @@ create_text_input = ({type, name}, v) ->
     value:  v
 
 create_range = ({name, min, max, step}, v) ->
-  e = create_text_input {type: "text", name: name}, v
+  e = $ "<input>"
+        name:   name
+        value:  v
   e.spinner
     min:  min
     max:  max
     step: step
 
 create_boolean = ({name, value}, v) ->
-  e = create_text_input "checkbox", name, "true"
-  e.attr "checked", "checked" if v
+  e = create_text_input {type: "checkbox", name: name}, "true"
+  e.attr "checked", "checked" if v is "true"
   e
 
 create_textarea = ({name, cols, rows}, value) ->
@@ -47,8 +49,9 @@ measure_label = (field) ->
   (($ "<span>").text m) if m = (extend_field_type field).measure
 
 create_form_record = (field, value) ->
+  f = extend_field_type $.extend true, {}, field
   ($ "<div class='field'>").append (field_label field),
-                                   (create_widget field.type, (extend_field_type field), value),
+                                   (create_widget f.type, f, value),
                                    (measure_label field)
 
 create_form_struct = ({desc, data}, xml) ->
