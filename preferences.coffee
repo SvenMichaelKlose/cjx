@@ -13,7 +13,7 @@ open_preferences = () ->
                          button = (($ "<button>").text "Magic").click (x) ->
                                                                         alert ($ ".current_xml")[0].innerHTML
                                                                         x.preventDefault()
-                         ($ "form").append button, create_form xml, RECORD_INFOS.app
+                         ($ "form").append button, create_form xml, SCHEMAS.app
                          unless ($ ".current_xml > app").length > 0
                            ($ ".current_xml").empty().append xml
                          ($ ".arena").slideDown 200

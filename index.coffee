@@ -4,3 +4,5 @@
 
 make_menu_bar()
 ($ ".arena").hide()
+
+alert (generate_xml_from_schema "app")[0].innerHTML

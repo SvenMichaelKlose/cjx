@@ -2,7 +2,7 @@
     Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
 ###
 
-RECORD_INFOS =
+SCHEMAS =
   client: [
     name:   "user"
     type:   "textline"
