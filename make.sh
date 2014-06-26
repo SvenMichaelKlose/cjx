@@ -1,6 +1,6 @@
 #!/bin/sh
 
-coffee -c -b -o js \
+cd client ; coffee -c -b -o ../js \
     levenshtein.coffee \
     types.coffee \
     schemas.coffee \
