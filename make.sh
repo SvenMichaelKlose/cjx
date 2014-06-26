@@ -1,3 +1,3 @@
 #!/bin/sh
 
-coffee -c -o ../js client/*.coffee app/client/*.coffee
+coffee -c -b -o js client/*.coffee app/client/*.coffee

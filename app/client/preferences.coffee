@@ -8,10 +8,10 @@ magic = (x) ->
 
 open_preferences = () ->
   menu_slide () ->
-               xml = if (ensure-element $ ".current_xml > app") then $ "app" else $ "<app>"
+               xml = (ensure_element $ ".current_xml > app") or $ "<app>"
                ($ "form").empty()
                button = (($ "<button>").text "Magic").click magic
                ($ "form").append button,
                                  create_form xml, SCHEMAS.app
-               unless (ensure-element $ ".current_xml > app")
+               unless (ensure_element $ ".current_xml > app")
                  ($ ".current_xml").empty().append xml

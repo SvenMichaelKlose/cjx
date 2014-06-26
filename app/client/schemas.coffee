@@ -55,12 +55,12 @@ SCHEMAS =
     value: "Feelgood–Apotheke"
     desc:  "Name der Applikation"
    ,
-    name:    "client"
-    type:    "xref"
-    records: "clients"
-    field:   "name"
-    desc:    "Kunde"
-   ,
+#    name:    "client"
+#    type:    "xref"
+#    records: "clients"
+#    field:   "name"
+#    desc:    "Kunde"
+#   ,
     name:  "type"
     type:  "selection"
     opts:  ["Tisch", "Stele"]

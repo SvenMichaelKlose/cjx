@@ -3,10 +3,10 @@
 ###
 
 get_field_input = (parent, x) ->
-  (ensure_elements parent.children (x.name or x.type)) or if parent.attr name then parent
+  (ensure_element parent.children x.name) or if parent.attr name then parent
 
 create_hooked_field = (n, field, v) ->
-  hook_field n, field, create_widget "record", n, field, v
+  hook_field n, field, create_widget "record", field, v
 
 create_form_attribute_value = (parent, {name, value}) ->
   if not parent.attr name
@@ -16,7 +16,7 @@ create_form_attribute_value = (parent, {name, value}) ->
     parent.attr name
 
 create_form_attribute = (parent, field) ->
-  create_hooked_field field, create_form_attribute_value parent, field
+  create_hooked_field parent, field, create_form_attribute_value parent, field
 
 create_form_element = (parent, field) ->
   v = field.value
@@ -26,7 +26,7 @@ create_form_element = (parent, field) ->
     parent.append n = ($ "<#{field.name}>")
     n.text v
   if field.type is "struct"
-    create_widget "struct", n, field
+    create_widget "struct", field, n
   else
     create_hooked_field n, field, v
 

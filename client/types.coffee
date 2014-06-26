@@ -3,18 +3,6 @@
 ###
 
 TYPES =
-  textline:
-    type:   "text"
-
-  boolean:
-    type:   "checkbox"
-
-  range:
-    filter: (field, x) -> x.spinner min:  field.min,
-                                    max:  field.max,
-                                    step: field.step
-    desc:  "Wertebereich"
-
   percent:
     type:    "range"
     min:     0
@@ -51,9 +39,9 @@ TYPES =
     desc:  "PLZ"
 
 extend_field_type = (field) ->
+  old_type = field.type
   if t = TYPES[field.type]
     $.extend field, t
-    delete field.type if not t.type
-    extend_field_type field
+    extend_field_type field if field.type isnt old_type
   else
     field
