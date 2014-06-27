@@ -3,18 +3,22 @@
     name:   "user"
     type:   "textline"
     desc:   "Login–Name"
+    value:  "holidae"
    ,
     name:   "title"
     type:   "textline"
     desc:   "Anrede"
+    value:  "Dr."
    ,
     name:   "surname"
     type:   "textline"
     desc:   "Vorname"
+    value:  "Frank"
    ,
     name:   "name"
     type:   "textline"
     desc:   "Name"
+    value:  "Holidae"
    ,
     name:   "email"
     type:   "email"

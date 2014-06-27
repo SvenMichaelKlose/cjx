@@ -2,4 +2,4 @@
 
 @open_preferences = () ->
   menu_slide () -> ($ "form").append magic_button(),
-                                     create_form ($ ".current_xml app"), SCHEMAS.app
+                                     create_form ($ "app"), SCHEMAS.app
