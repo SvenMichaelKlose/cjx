@@ -8,7 +8,7 @@ magic = (x) ->
 
 open_form = (schema_name, renderer) ->
   menu_slide () ->
-               xml = (ensure_element $ ".current_xml > #{schema_name}") or ($ "<#{schema_name}>").appendTo $ ".current_xml"
+               unless xml = (ensure_element $ ".current_xml > #{schema_name}")
+                 xml = ($ "<#{schema_name}>").appendTo $ ".current_xml"
                button = (($ "<button>").text "Magic").click magic
-               ($ "form").append button,
-                                 renderer xml, SCHEMAS[schema_name]
+               ($ "form").append button, renderer xml, SCHEMAS[schema_name]
