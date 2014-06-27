@@ -22,23 +22,35 @@ function check_permission ($id_client)
     exit;
 }
 
-function make_path ($id_client, $schema_name)
+function make_xml_path ($id_client, $schema_name)
 {
     return $XML_ROOT_DIR . "/" . $id_client . "/" . $schema_name . ".xml";
+}
+
+function make_file_path ($id_client, $name)
+{
+    return $FILE_ROOT_DIR . "/" . $id_client . "/" . $name;
 }
 
 function save_xml_file ()
 {
     check_permission ($id_client);
-    $path = make_path ($schema_name);
-    file_put_contents ($path, update_xml (file_get_contents ($path), $data));
+    file_put_contents (make_xml_path ($id_client, $schema_name), $data);
     exit;
 }
 
 function load_xml_file ()
 {
     check_permission ($id_client);
-    echo file_get_contents (make_path ($schema_name), $data);
+    echo file_get_contents (make_xml_path ($id_client, $schema_name), $data);
     exit;
 }
+
+function upload_file ($where)
+{
+    check_permission ($id_client);
+    file_put_contents (make_file_path ($id_client, $schema_name), $data);
+    exit;
+}
+
 ?>
