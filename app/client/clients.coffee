@@ -3,11 +3,9 @@
 ###
 
 record_list = (items, schema) ->
-  create_form i, schema for i in items
+  array_nodelist (create_form i, schema for i in items)
 
 ($ ".current_xml").append CLIENTS = [generate_xml_from_schema "client"]
 
 open_clients = () ->
-  menu_slide () ->
-               ($ "form").append (($ "<button>").text "Magic").click magic
-               ($ "form").append i for i in record_list CLIENTS, SCHEMAS.client
+  open_form "client", () -> record_list CLIENTS, SCHEMAS.client

@@ -6,11 +6,7 @@ magic = (x) ->
   alert ($ ".current_xml")[0].innerHTML
   x.preventDefault()
 
+($ ".current_xml").append APPS = [generate_xml_from_schema "app"]
+
 open_preferences = () ->
-  menu_slide () ->
-               xml = (ensure_element $ ".current_xml > app") or $ "<app>"
-               button = (($ "<button>").text "Magic").click magic
-               ($ "form").append button,
-                                 create_form xml, SCHEMAS.app
-               unless (ensure_element $ ".current_xml > app")
-                 ($ ".current_xml").empty().append xml
+  open_form "app", create_form
