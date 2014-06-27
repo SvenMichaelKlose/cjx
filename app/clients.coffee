@@ -21,5 +21,5 @@ client_list = (x) ->
                old_widgets = $.extend {}, WIDGETS
                $.extend WIDGETS, LIST_WIDGETS
                ($ ".arena form").append (button "add", "Kunden erstellen"),
-                                        client_list()
+                                        (tbody "", client_list())
                @WIDGETS = old_widgets
