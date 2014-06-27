@@ -1,7 +1,3 @@
-###
-    Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
-###
-
 TYPES =
   percent:
     type:    "range"
@@ -38,7 +34,7 @@ TYPES =
     step:  1
     desc:  "PLZ"
 
-extend_field_type = (field) ->
+@extend_field_type = (field) ->
   old_type = field.type
   desc = field.desc
   if t = TYPES[field.type]

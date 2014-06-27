@@ -1,8 +1,4 @@
-###
-    Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
-###
-
-overlay = (dst, src) ->
+@overlay = (dst, src) ->
   for i in src
     if dst[i]
       if dst[i].type is "struct"

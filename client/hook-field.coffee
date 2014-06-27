@@ -1,8 +1,4 @@
-###
-    Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
-###
-
-hook_field = (n, {type, attr, name}, elm) ->
+@hook_field = (n, {type, attr, name}, elm) ->
   h = (x) ->
         t = $ x.target
         v = if type is "boolean"

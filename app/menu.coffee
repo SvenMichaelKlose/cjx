@@ -1,8 +1,4 @@
-###
-    Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
-###
-
-menu_slide = (action) ->
+@menu_slide = (action) ->
   ($ ".arena").slideUp 200, () ->
                               ($ ".arena").empty()
                               ($ ".arena").append $ "<form>"
@@ -22,5 +18,5 @@ MENUITEMS = [
   ["Einstellungen",   open_preferences]
 ]
 
-make_menu_bar = () ->
+@make_menu_bar = () ->
   ($ ".menu").append (($ "<button>").text n).click f for [n, f] in MENUITEMS

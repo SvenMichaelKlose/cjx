@@ -1,3 +1,3 @@
 #!/bin/sh
 
-coffee -c -b -o js client/*.coffee app/client/*.coffee
+for i in client/*.coffee app/*.coffee; do echo "Compiling $i..."; coffee -c -o js $i; done

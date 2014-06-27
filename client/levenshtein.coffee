@@ -1,7 +1,3 @@
-###                                                                                                            
-    Copyright (c) 2014 Sven Michael Klose <pixel@copei.de>
-###
-
 make_levenshtein = (row, column) ->
   width =  row.length
   height = column.length
@@ -25,5 +21,5 @@ make_levenshtein = (row, column) ->
                          m[i][jc] + 1
   m
 
-levenshtein = (row, column) ->
+@levenshtein = (row, column) ->
   (make_levenshtein row, column)[row.length][column.length]
