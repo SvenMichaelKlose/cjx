@@ -26,11 +26,11 @@ create_boolean = ({name, value}, v) ->
   e
 
 create_textarea = ({name, cols, rows}, value) ->
-  $ "<textarea>",
-    name: name
-    cols: cols || 60
-    rows: rows || 12,
-    value
+  e = $ "<textarea>",
+        name: name
+        cols: cols || 60
+        rows: rows || 12,
+  e.text value
 
 create_image_selection = ({src}, value) ->
   $ "<img>"
