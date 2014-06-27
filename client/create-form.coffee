@@ -15,12 +15,11 @@ attribute = (parent, field) ->
   hooked_field parent, field, attribute_value parent, field
 
 element = (parent, field) ->
-  v = field.value
   if n = get_field_input parent, field
     v = n.text()
   else
     parent.append n = ($ "<#{field.name}>")
-    n.text v
+    n.text v = field.value
   if field.type is "struct"
     widget "struct", field, n
   else
