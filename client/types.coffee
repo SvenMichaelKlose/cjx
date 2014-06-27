@@ -40,8 +40,9 @@ TYPES =
 
 extend_field_type = (field) ->
   old_type = field.type
+  desc = field.desc
   if t = TYPES[field.type]
     $.extend field, t
     extend_field_type field if field.type isnt old_type
-  else
-    field
+    field.desc = desc if desc
+  field
