@@ -9,13 +9,17 @@
                                  create_form ($ "clients client"), SCHEMAS.client
 
 client_listrecord = (x) ->
-  (tr "listrecord").append (create_form ($ x), SCHEMAS.client),
-                           (button "remove", "entfernen")
+  (tr "listrecord").append ($ "<input>", type: "checkbox"),
+                           (create_form ($ x), SCHEMAS.client),
+                           (td "", (button "remove", "entfernen"))
+
+client_list = (x) ->
+  table().append $.map ($ "clients client"), client_listrecord
 
 @open_clients = () ->
   menu_slide () ->
                old_widgets = $.extend {}, WIDGETS
                $.extend WIDGETS, LIST_WIDGETS
-               ($ ".arena").append (button "add", "Kunden erstellen"),
-                                   table().append $.map ($ "clients client"), client_listrecord
+               ($ ".arena form").append (button "add", "Kunden erstellen"),
+                                        client_list()
                @WIDGETS = old_widgets
