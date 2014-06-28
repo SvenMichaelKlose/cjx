@@ -32,6 +32,7 @@
     type:   "selection"
     opts:   ["User", "Admin", "Superadmin"]
     desc:   "Rolle"
+    value:  "User"
   ]
 
   group: [
