@@ -11,3 +11,4 @@
           n.text v
   elm.change h
   elm.blur h
+  elm.click h
