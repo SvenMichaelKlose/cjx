@@ -27,3 +27,4 @@ record = (field, v) ->
   selection: value
   record:    record
   struct:    struct
+  user:      value

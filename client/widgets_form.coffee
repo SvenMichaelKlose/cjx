@@ -77,3 +77,5 @@ struct = ({desc, data}, xml) ->
   measure:   measure
   record:    record
   struct:    struct
+  user:      text_input
+  xreflist:  -> null
