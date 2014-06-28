@@ -46,6 +46,7 @@ make_table = (options) ->
 @make_form = (options) ->
     old_widgets = $.extend {}, WIDGETS
     $.extend WIDGETS, LIST_WIDGETS
-    options.containment.empty().append (add_button options),
+    options.containment.empty().append (h1().text options.desc),
+                                       (add_button options),
                                        (make_table options)
     @WIDGETS = old_widgets

@@ -1,7 +1,7 @@
 @menu_slide = (action) ->
   ($ ".arena").slideUp 200, ->
                               ($ ".arena").empty()
-                              ($ ".arena").append $ "<form>"
+                              ($ ".arena").append form()
                               action()
                               ($ ".arena").slideDown 200
 

@@ -1,5 +1,5 @@
-($ ".current_xml").append CLIENTS = ($ "<clients>").append generate_xml_from_schema "client"
-($ ".current_xml").append GROUPS = ($ "<groups>").append generate_xml_from_schema "group"
+($ ".current_xml").append CLIENTS = ($ "<clients>")
+($ ".current_xml").append GROUPS = ($ "<groups>")
 
 @open_clients = ->
   menu_slide ->
@@ -8,10 +8,12 @@
     make_form (
       containment: ($ "form"),
       parent:      ($ "clients"),
-      schema:      "client"
+      schema:      "client",
+      desc:        "Kunden"
     )
     make_form (
       containment: ($ ".group"),
       parent:      ($ "groups"),
-      schema:      "group"
+      schema:      "group",
+      desc:        "Gruppen"
     )
