@@ -45,10 +45,10 @@ field_label = ({name, desc}) ->
   ($ "<label for=\"#{name}\">").text desc + ":"
 
 measure = (field) ->
-  (($ "<span>").text m) if m = (extend_field_type field).measure
+  (($ "<span>").text m) if m = (expand_type field).measure
 
 record = (field, value) ->
-  f = extend_field_type $.extend true, {}, field
+  f = expand_type $.extend true, {}, field
   (div().addClass "field").append (field_label field),
                                   (widget f.type, f, value),
                                   (measure field)

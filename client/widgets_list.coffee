@@ -5,7 +5,7 @@ image    = (field, v) -> null
 struct   = (field, xml) -> null
 
 record = (field, v) ->
-  f = extend_field_type $.extend true, {}, field
+  f = expand_type $.extend true, {}, field
   (td().addClass "listfield").append (widget f.type, f, v),
                                      (widget "measure", field)
 

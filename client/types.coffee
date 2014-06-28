@@ -34,11 +34,6 @@ TYPES =
     step:  1
     desc:  "PLZ"
 
-@extend_field_type = (field) ->
-  old_type = field.type
-  desc = field.desc
-  if t = TYPES[field.type]
-    $.extend field, t
-    extend_field_type field if field.type isnt old_type
-    field.desc = desc if desc
+@expand_type = (field) ->
+  expand_type $.extend field, t if t = TYPES[field.type]
   field
