@@ -22,6 +22,11 @@ body {
     margin-right: auto;
 }
 
+.rev {
+    color: white;
+    font-size: small;
+}
+
 label {
     width: 17em;
     display: block;
