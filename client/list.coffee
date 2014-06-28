@@ -1,23 +1,23 @@
-@open_record = (record, schema) ->
+@open_record = (options, record) ->
   menu_slide ->
    ($ "form").append magic_button(),
-                     create_form record, SCHEMAS[schema]
+                     create_form record, SCHEMAS[options.schema]
 
-create_xml_record = (records, schema) ->
-  ($ records).first().parent().prepend generate_xml_from_schema schema
+create_record = (options) ->
+  options.parent.prepend generate_xml_from_schema options.schema
 
-add_button = (records, schema) ->
+add_button = (options) ->
   (button().text "Neu").click (x) ->
-    create_xml_record records, schema
-    open_record ($ records).first(), schema
+    create_record options
+    open_record options, ($ options.records).first()
     x.preventDefault()
 
-edit_button = (record, schema) ->
+edit_button = (options, record) ->
   (button().text "bearbeiten").click (x) ->
-    open_record record, schema
+    open_record options, record
     x.preventDefault()
 
-remove_button = (record, schema) ->
+remove_button = (record) ->
   (button().text "entfernen").click (x) ->
     e = ($ x.target).closest ".record"
     e.addClass "selected"
@@ -27,25 +27,25 @@ remove_button = (record, schema) ->
     e.removeClass "selected"
     x.preventDefault()
 
-record = (x, schema) ->
+record = (options, x) ->
   x = $ x
-  (tr().addClass "record").append (create_form x, SCHEMAS[schema]),
-                                  (edit_button x, schema),
-                                  (remove_button x, schema)
+  (tr().addClass "record").append (create_form x, SCHEMAS[options.schema]),
+                                  (edit_button options, x)
+                                  (remove_button x)
 
-list_headers = (schema) ->
-  (th().text desc) for {desc} in SCHEMAS[schema]
+list = (options) ->
+  $.map ($ options.records), (x) -> record options, x
 
-list = (records, schema) ->
-  $.map ($ records), (x) -> record x, schema
+list_headers = (options) ->
+  (th().text desc) for {desc} in SCHEMAS[options.schema]
 
-make_table = (records, schema) ->
-  table().append (thead tr list_headers schema),
-                 (tbody list records, schema)
+make_table = (options) ->
+  table().append (thead tr list_headers options),
+                 (tbody list options)
 
-@make_form = (records, schema) ->
+@make_form = (options) ->
     old_widgets = $.extend {}, WIDGETS
     $.extend WIDGETS, LIST_WIDGETS
-    ($ ".arena form").empty().append (add_button records, schema),
-                                     make_table records, schema
+    options.containment.empty().append (add_button options),
+                                       (make_table options)
     @WIDGETS = old_widgets
