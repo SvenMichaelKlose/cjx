@@ -22,7 +22,6 @@ remove_button = (record, schema) ->
     e = ($ x.target).closest ".record"
     e.addClass "selected"
     if confirm "Diesen Eintrag wirklich entfernen?"
-      records = record.parent
       record.remove()
       e.remove()
     e.removeClass "selected"
