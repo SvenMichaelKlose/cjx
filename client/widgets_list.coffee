@@ -1,6 +1,6 @@
 value    = (field, v) -> v
 boolean  = (field, v) -> if v is "true" then "ja" else "nein"
-password = (field, v) -> "–"
+password = (field, v) -> null
 image    = (field, v) -> null
 struct   = (field, xml) -> null
 
