@@ -33,19 +33,24 @@ remove_button = (client) ->
 
 client_listrecord = (x) ->
   x = $ x
-  (tr "record").append ($ "<input>", type: "checkbox"),
-                       (create_form x, SCHEMAS.client),
+  (tr "record").append (create_form x, SCHEMAS.client),
                        (edit_button x),
-                       remove_button x
+                       (remove_button x)
 
 client_list = (x) ->
-  table().append $.map ($ "clients client"), client_listrecord
+  $.map ($ "clients client"), client_listrecord
+
+client_list_headers = ->
+  ($ "<th>").text desc for {desc} in SCHEMAS.client
 
 make_clients_form = ->
     old_widgets = $.extend {}, WIDGETS
     $.extend WIDGETS, LIST_WIDGETS
-    ($ ".arena form").empty().append (add_button),
-                                     (tbody "", client_list())
+    ($ ".arena form").empty().append (add_button)
+    table = $ "<table>"
+    table.append (thead "", tr "", (client_list_headers)),
+                 (tbody "", client_list)
+    ($ ".arena form").append table
     @WIDGETS = old_widgets
 
 @open_clients = -> menu_slide make_clients_form
