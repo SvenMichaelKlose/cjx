@@ -10,10 +10,15 @@ make_client = -> generate_xml_from_schema "client"
    ($ "form").append magic_button(),
                      create_form client, SCHEMAS.client
 
+clear_highlighting = ->
+  ($ "form .record").removeClass "new selectd"
+
 add_button = () ->
   (($ "<button>").text "Kunden erstellen").click (x) ->
-    ($ "clients").append make_client()
+    ($ "clients").prepend make_client()
     make_clients_form()
+    clear_highlighting()
+    f = ($ "form .record").first().addClass "new"
     x.preventDefault()
 
 edit_button = (client) ->
@@ -24,6 +29,7 @@ edit_button = (client) ->
 remove_button = (client) ->
   (($ "<button>").text "entfernen").click (x) ->
     e = ($ x.target).closest ".record"
+    clear_highlighting()
     e.addClass "selected"
     if confirm "Diesen Eintrag wirklich entfernen?"
       client.remove()
