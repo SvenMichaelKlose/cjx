@@ -9,7 +9,7 @@ create_record = (options) ->
 add_button = (options) ->
   (button().text "Neu").click (x) ->
     create_record options
-    open_record options, ($ options.records).first()
+    open_record options, options.parent.children().first()
     x.preventDefault()
 
 edit_button = (options, record) ->
@@ -34,7 +34,7 @@ record = (options, x) ->
                                   (remove_button x)
 
 list = (options) ->
-  $.map ($ options.records), (x) -> record options, x
+  $.map options.parent.children(), (x) -> record options, x
 
 list_headers = (options) ->
   (th().text desc) for {desc} in SCHEMAS[options.schema]

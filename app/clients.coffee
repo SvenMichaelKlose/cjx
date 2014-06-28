@@ -5,6 +5,5 @@
     make_form (
       containment: ($ "form"),
       parent:      ($ "clients"),
-      records:     "clients client",
       schema:      "client"
     )
