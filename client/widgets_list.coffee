@@ -6,8 +6,8 @@ struct   = (field, xml) -> null
 
 record = (field, v) ->
   f = extend_field_type $.extend true, {}, field
-  (td "listfield").append (widget f.type, f, v),
-                          (widget "measure", field)
+  (td().addClass "listfield").append (widget f.type, f, v),
+                                     (widget "measure", field)
 
 @LIST_WIDGETS =
   textline:  value

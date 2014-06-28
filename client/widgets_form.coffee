@@ -47,17 +47,15 @@ field_label = ({name, desc}) ->
 measure = (field) ->
   (($ "<span>").text m) if m = (extend_field_type field).measure
 
-div = (x) -> ($ "<div class='#{x}'>")
-
 record = (field, value) ->
   f = extend_field_type $.extend true, {}, field
-  (div "field").append (field_label field),
-                       (widget f.type, f, value),
-                       (measure field)
+  (div().addClass "field").append (field_label field),
+                                  (widget f.type, f, value),
+                                  (measure field)
 
 struct = ({desc, data}, xml) ->
-  (div "struct").append (($ "<h2>").text desc),
-                        create_form xml, data
+  (div().addClass "struct").append (($ "<h2>").text desc),
+                                   (create_form xml, data)
 
 @WIDGETS =
   textline:  text_input
