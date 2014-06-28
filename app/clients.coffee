@@ -3,8 +3,8 @@
 
 @open_clients = ->
   menu_slide ->
-    ($ ".group").remove()
-    ($ ".arena").append form().addClass "group"
+    ($ ".groupform").remove()
+    ($ ".arena").append form().addClass "groupform"
     make_form (
       containment: ($ "form"),
       parent:      ($ "clients"),
@@ -12,7 +12,7 @@
       desc:        "Kunden"
     )
     make_form (
-      containment: ($ ".group"),
+      containment: ($ ".groupform"),
       parent:      ($ "groups"),
       schema:      "group",
       desc:        "Gruppen"

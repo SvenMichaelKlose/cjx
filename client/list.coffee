@@ -1,7 +1,7 @@
 @open_record = (options, record) ->
   menu_slide ->
-   ($ "form").append magic_button(),
-                     create_form record, SCHEMAS[options.schema]
+    ($ "form").append magic_button(),
+                      create_form record, SCHEMAS[options.schema]
 
 create_record = (options) ->
   options.parent.prepend generate_xml_from_schema options.schema
