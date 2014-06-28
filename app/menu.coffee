@@ -1,14 +1,13 @@
 @menu_slide = (action) ->
   ($ ".arena").slideUp 200, ->
                               ($ ".arena").empty()
-                              ($ ".arena").append form()
                               action()
                               ($ ".arena").slideDown 200
 
 tell_its_not_there_yet = ->
   ($ ".arena").slideUp 200,
                        ->
-                         ($ "form").text "Sorry. Noch nix da."
+                         ($ ".arena").text "Sorry. Noch nix da."
                          ($ ".arena").slideDown()
 
 MENUITEMS = [

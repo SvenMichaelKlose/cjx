@@ -2,5 +2,6 @@
 
 @open_preferences = ->
   menu_slide ->
-    ($ "form").append magic_button(),
-                      create_form ($ "app"), SCHEMAS.app
+    ($ ".arena").append form().addClass "prefform"
+    ($ ".prefform").append magic_button(),
+                           create_form ($ "app"), SCHEMAS.app

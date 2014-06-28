@@ -4,9 +4,10 @@
 @open_clients = ->
   menu_slide ->
     ($ ".groupform").remove()
+    ($ ".arena").append form().addClass "clientform"
     ($ ".arena").append form().addClass "groupform"
     make_form (
-      containment: ($ "form"),
+      containment: ($ ".clientform"),
       parent:      ($ "clients"),
       schema:      "client",
       desc:        "Kunden"
