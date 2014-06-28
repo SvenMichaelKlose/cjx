@@ -23,16 +23,20 @@ edit_button = (client) ->
 
 remove_button = (client) ->
   (($ "<button>").text "entfernen").click (x) ->
-    client.remove()
-    make_clients_form()
+    e = ($ x.target).closest ".record"
+    e.addClass "selected"
+    if confirm "Diesen Eintrag wirklich entfernen?"
+      client.remove()
+      make_clients_form()
+    e.removeClass "selected"
     x.preventDefault()
 
 client_listrecord = (x) ->
   x = $ x
-  (tr "listrecord").append ($ "<input>", type: "checkbox"),
-                           (create_form x, SCHEMAS.client),
-                           (edit_button x),
-                           remove_button x
+  (tr "record").append ($ "<input>", type: "checkbox"),
+                       (create_form x, SCHEMAS.client),
+                       (edit_button x),
+                       remove_button x
 
 client_list = (x) ->
   table().append $.map ($ "clients client"), client_listrecord

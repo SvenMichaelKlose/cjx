@@ -67,3 +67,9 @@ label {
 .struct .field {
     margin-left: 1em;
 }
+
+/* Interaction */
+
+.selected {
+    background: #ffd308;
+}
