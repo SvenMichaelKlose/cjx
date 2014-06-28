@@ -8,12 +8,17 @@ make_client = -> generate_xml_from_schema "client"
 @open_client = (client) ->
   menu_slide ->
    ($ "form").append magic_button(),
-                     create_form ($ "clients client"), SCHEMAS.client
+                     create_form client, SCHEMAS.client
 
 add_button = () ->
   (($ "<button>").text "Kunden erstellen").click (x) ->
     ($ "clients").append make_client()
     make_clients_form()
+    x.preventDefault()
+
+edit_button = (client) ->
+  (($ "<button>").text "bearbeiten").click (x) ->
+    open_client client
     x.preventDefault()
 
 remove_button = (client) ->
@@ -26,6 +31,7 @@ client_listrecord = (x) ->
   x = $ x
   (tr "listrecord").append ($ "<input>", type: "checkbox"),
                            (create_form x, SCHEMAS.client),
+                           (edit_button x),
                            remove_button x
 
 client_list = (x) ->
