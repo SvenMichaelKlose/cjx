@@ -24,8 +24,7 @@ remove_button = (record, schema) ->
     if confirm "Diesen Eintrag wirklich entfernen?"
       records = record.parent
       record.remove()
-      ($ "form table").remove()
-      ($ "form").append list records, schema
+      e.remove()
     e.removeClass "selected"
     x.preventDefault()
 
