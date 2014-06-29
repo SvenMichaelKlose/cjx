@@ -5,11 +5,8 @@ hooked_field = (n, field, v) ->
   hook_field n, field, widget "record", field, v
 
 attribute_value = (parent, {name, value}) ->
-  if not parent.attr name
-    parent.attr name, value
-    value
-  else
-    parent.attr name
+  parent.attr name, (parent.attr name) or value
+  value
 
 attribute = (parent, field) ->
   hooked_field parent, field, attribute_value parent, field
