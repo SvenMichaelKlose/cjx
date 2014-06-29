@@ -34,9 +34,8 @@ image_selection = ({src}, value) ->
 
 option = (txt, value) ->
   o = ($ "<option>").text txt
-  o.attr value: txt
   o.attr "selected", "selected" if txt is value
-  o
+  o.attr value: txt
 
 selection = (field, value) ->
   ($ "<select>").append (option txt, value for txt in field.opts)
@@ -47,15 +46,18 @@ field_label = ({name, desc}) ->
 measure = (field) ->
   (($ "<span>").text m) if m = (expand_type field).measure
 
-record = (field, value) ->
-  f = expand_type $.extend true, {}, field
-  (div().addClass "field").append (field_label field),
-                                  (widget f.type, f, value),
-                                  (measure field)
-
-struct = ({desc, data}, xml) ->
+struct = ({desc, data}, value, xml) ->
   (div().addClass "struct").append (($ "<h2>").text desc),
                                    (create_form xml, data)
+
+record = (field, value, xml) ->
+  if field.type is "struct"
+     widget field.type, field, value, xml
+  else
+    f = expand_type $.extend true, {}, field
+    (div().addClass "field").append (field_label field),
+                                    (hook_field xml, field, widget f.type, f, value, xml),
+                                    (measure field)
 
 @WIDGETS =
   textline:  text_input
