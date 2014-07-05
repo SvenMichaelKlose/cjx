@@ -5,8 +5,6 @@ $PATH_IMPLODE_START = 1;
 $XML_ROOT_DIR = "/wwwroot/copei.de/www/pi/xml";
 $ROLE = "superadmin";
 
-#header ("Content-Type: text/xml; charset=utf-8");
-
 function remove_multiple_slashes ($x)
 {
     return preg_replace ('/\\/+/', '/', $x);
@@ -62,14 +60,23 @@ function make_file_path ()
 function save_xml_file ()
 {
     check_permission ();
-    file_put_contents (make_xml_path ($id_client, $schema_name), $data);
+    file_put_contents (make_xml_path (), $_POST['x']);
     exit;
 }
 
 function load_xml_file ()
 {
     check_permission ();
-    echo file_get_contents (make_xml_path ($id_client, $schema_name), $data);
+    $path = make_xml_path ();
+
+    if (!file_exists ($path)) {
+        header ("HTTP/1.0 404 Not Found");
+        echo "File not found.";
+        exit;
+    }
+
+    header ("Content-Type: text/xml; charset=utf-8");
+    echo file_get_contents (make_xml_path ());
     exit;
 }
 
@@ -94,6 +101,15 @@ $ID_CLIENT = $location[$PATH_IMPLODE_START + 1];
 $SCHEMA = $location[$PATH_IMPLODE_START + 2];
 #$path = implode_path ($location, $PATH_IMPLODE_START + 2, sizeof ($location));
 
-echo make_xml_path ();
+if (!$ID_CLIENT)
+    echo "Who's there?";
+
+if (!$SCHEMA)
+    echo "Whatchew want?";
+
+if ($_POST)
+    save_xml_file ();
+else
+    load_xml_file ();
 
 ?>
