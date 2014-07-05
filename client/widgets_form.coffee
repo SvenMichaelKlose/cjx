@@ -41,43 +41,64 @@ selection = (field, value) ->
   ($ "<select>").append (option txt, value for txt in field.opts)
 
 field_label = ({name, desc}) ->
-  ($ "<label for=\"#{name}\">").text desc + ":"
+  (label().attr "for",name).text desc + ":"
 
 measure = (field) ->
   (($ "<span>").text m) if m = (expand_type field).measure
 
+struct_div = -> (div().addClass "struct")
+
 struct = ({desc, data}, value, xml) ->
-  (div().addClass "struct").append (($ "<h2>").text desc),
-                                   (create_form xml, data)
+  struct_div().append (($ "<h2>").text desc),
+                      (create_form xml, data)
+
+record_div = -> (div().addClass "field")
 
 record = (field, value, xml) ->
   if field.type is "struct"
-     widget field.type, field, value, xml
+     widget "struct", field, value, xml
   else
     f = expand_type $.extend true, {}, field
-    (div().addClass "field").append (field_label field),
-                                    (hook_field xml, field, widget f.type, f, value, xml),
-                                    (measure field)
+    r = record_div()
+    record_div().append (field_label field),
+                        (hook_field xml, field, widget f.type, f, value, xml),
+                        (measure field)
+
+xreflist_empty = (field, value, xml) ->
+  "Leer."
+
+xref_selector = (field, x) ->
+  "[" + field.id_field + "='" + x.text() + "']"
+
+get_xrefs = (field, xml) ->
+  xml.children().map (x) -> RECORDS[field.records].find xref_selector field, x
+
+xreflist = (field, value, xml) ->
+  if xml.children().length
+    (get_xrefs field, xml).map (x) -> widget field.type, field.data, null, x
+  else
+    widget "xreflist_empty", field, null, xml
 
 @WIDGETS =
-  textline:  text_input
-  tel:       text_input
-  zip_de:    text_input
-  percent:   text_input
-  pixel:     text_input
-  seconds:   text_input
-  minutes:   text_input
-  color:     text_input
-  email:     text_input
-  password:  password
-  range:     range
-  boolean:   boolean
-  textarea:  textarea
-  image:     image_selection
-  selection: selection
-  label:     field_label
-  measure:   measure
-  record:    record
-  struct:    struct
-  user:      text_input
-  xreflist:  -> null
+  textline:   text_input
+  tel:        text_input
+  zip_de:     text_input
+  percent:    text_input
+  pixel:      text_input
+  seconds:    text_input
+  minutes:    text_input
+  color:      text_input
+  email:      text_input
+  password:   password
+  range:      range
+  boolean:    boolean
+  textarea:   textarea
+  image:      image_selection
+  selection:  selection
+  label:      field_label
+  measure:    measure
+  record:     record
+  struct:     struct
+  user:       text_input
+  xreflist:   xreflist
+  xreflist_empty: (x) -> null

@@ -47,8 +47,9 @@
     name:    "clients"
     type:    "xreflist"
     records: "clients"
+    id_field: "name"
     unique:  "yes"
-    desc:    "Apps"
+    desc:   "Kunden"
   ]
 
   app: [

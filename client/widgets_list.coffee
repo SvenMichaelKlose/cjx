@@ -5,9 +5,15 @@ image    = (field, v) -> null
 struct   = (field, xml) -> null
 
 record = (field, v) ->
-  f = expand_type $.extend true, {}, field
-  (td().addClass "listfield").append (widget f.type, f, v),
-                                     (widget "measure", field)
+  switch field.type
+    when "struct"
+      return
+    when "xreflist"
+      return
+    else
+      f = expand_type $.extend true, {}, field
+      (td().addClass "listfield").append (widget f.type, f, v),
+                                         (widget "measure", field)
 
 @LIST_WIDGETS =
   textline:  value
