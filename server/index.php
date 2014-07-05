@@ -1,12 +1,11 @@
 <?php
 // Author: Sven Michael Klose <pixel@copei.de>
 
-$ROLE = "superadmin";
-$XML_ROOT_DIR = "/wwwroot/copei.de/www/pi/xml";
-
-header ("Content-Type: text/xml; charset=utf-8");
-
 $PATH_IMPLODE_START = 1;
+$XML_ROOT_DIR = "/wwwroot/copei.de/www/pi/xml";
+$ROLE = "superadmin";
+
+#header ("Content-Type: text/xml; charset=utf-8");
 
 function remove_multiple_slashes ($x)
 {
@@ -25,18 +24,6 @@ function implode_path ($location, $start, $end)
 	    $path .= "/" . $location[$i];
     return $path;
 }
-
-$parsed  = parse_url (remove_multiple_slashes ($_SERVER['REQUEST_URI']));
-if (isset ($parsed["query"])) {
-    $values  = explode ('&', html_entity_decode ($parsed["query"]));
-    foreach ($values as $i) {
-        $x = explode('=', $i);
-        $_GET[$x[0]] = $x[1];
-    }
-}
-
-$location = explode_path ($parsed["path"]);
-$path = implode_path ($location, $PATH_IMPLODE_START, sizeof ($location));
 
 function fetch_permissions ()
 {
@@ -82,5 +69,19 @@ function upload_file ($where)
     file_put_contents (make_file_path ($id_client, $schema_name), $data);
     exit;
 }
+
+$parsed  = parse_url (remove_multiple_slashes ($_SERVER['REQUEST_URI']));
+if (isset ($parsed["query"])) {
+    $values  = explode ('&', html_entity_decode ($parsed["query"]));
+    foreach ($values as $i) {
+        $x = explode('=', $i);
+        $_GET[$x[0]] = $x[1];
+    }
+}
+
+$location = explode_path ($parsed["path"]);
+$ID_CLIENT = $location[$PATH_IMPLODE_START + 1];
+$path = implode_path ($location, $PATH_IMPLODE_START + 2, sizeof ($location));
+echo "Client: " . $ID_CLIENT . "<br>Path: " . $path;
 
 ?>
