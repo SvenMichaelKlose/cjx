@@ -30,7 +30,7 @@ function fetch_permissions ()
     $permissions = xml_fetch ($XML_ROOT_DIR . "/permissions.xml");
 }
 
-function check_permission ($id_client)
+function check_permission ()
 {
 /*
     if ($ROLE == "superadmin" || $ID_CLIENT == $id_client)
@@ -39,33 +39,43 @@ function check_permission ($id_client)
 */
 }
 
-function make_xml_path ($id_client, $schema_name)
+function make_xml_path ()
 {
-    return $XML_ROOT_DIR . "/" . $id_client . "/" . $schema_name . ".xml";
+    global $ID_CLIENT, $XML_ROOT_DIR, $SCHEMA;
+
+    $directory = "$XML_ROOT_DIR/$ID_CLIENT";
+    if (!file_exists ($directory)) {
+        echo "Your attempt has been reported.";
+        exit;
+    }
+
+    return "$directory/$SCHEMA.xml";
 }
 
-function make_file_path ($id_client, $name)
+function make_file_path ()
 {
-    return $FILE_ROOT_DIR . "/" . $id_client . "/" . $name;
+    global $ID_CLIENT, $XML_ROOT_DIR, $SCHEMA;
+
+    return "$FILE_ROOT_DIR/$ID_CLIENT/$SCHEMA";
 }
 
 function save_xml_file ()
 {
-    check_permission ($id_client);
+    check_permission ();
     file_put_contents (make_xml_path ($id_client, $schema_name), $data);
     exit;
 }
 
 function load_xml_file ()
 {
-    check_permission ($id_client);
+    check_permission ();
     echo file_get_contents (make_xml_path ($id_client, $schema_name), $data);
     exit;
 }
 
 function upload_file ($where)
 {
-    check_permission ($id_client);
+    check_permission ();
     file_put_contents (make_file_path ($id_client, $schema_name), $data);
     exit;
 }
@@ -81,7 +91,9 @@ if (isset ($parsed["query"])) {
 
 $location = explode_path ($parsed["path"]);
 $ID_CLIENT = $location[$PATH_IMPLODE_START + 1];
-$path = implode_path ($location, $PATH_IMPLODE_START + 2, sizeof ($location));
-echo "Client: " . $ID_CLIENT . "<br>Path: " . $path;
+$SCHEMA = $location[$PATH_IMPLODE_START + 2];
+#$path = implode_path ($location, $PATH_IMPLODE_START + 2, sizeof ($location));
+
+echo make_xml_path ();
 
 ?>
