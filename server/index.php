@@ -2,13 +2,41 @@
 // Author: Sven Michael Klose <pixel@copei.de>
 
 $ROLE = "superadmin";
-$XML_ROOT_DIR = "/wwwroot/copei.de/www/pi/xml"
+$XML_ROOT_DIR = "/wwwroot/copei.de/www/pi/xml";
 
 header ("Content-Type: text/xml; charset=utf-8");
-$xml = new SimpleXMLElement ($xmlstr);
-echo $xml->asXML ();
 
-login_or_die ();
+$PATH_IMPLODE_START = 1;
+
+function remove_multiple_slashes ($x)
+{
+    return preg_replace ('/\\/+/', '/', $x);
+}
+
+function explode_path ($path)
+{
+    return explode ("/", $path);
+}
+
+function implode_path ($location, $start, $end)
+{
+    $path = '';
+    for ($i = $start; $i < $end; $i++)
+	    $path .= "/" . $location[$i];
+    return $path;
+}
+
+$parsed  = parse_url (remove_multiple_slashes ($_SERVER['REQUEST_URI']));
+if (isset ($parsed["query"])) {
+    $values  = explode ('&', html_entity_decode ($parsed["query"]));
+    foreach ($values as $i) {
+        $x = explode('=', $i);
+        $_GET[$x[0]] = $x[1];
+    }
+}
+
+$location = explode_path ($parsed["path"]);
+$path = implode_path ($location, $PATH_IMPLODE_START, sizeof ($location));
 
 function fetch_permissions ()
 {
@@ -17,9 +45,11 @@ function fetch_permissions ()
 
 function check_permission ($id_client)
 {
+/*
     if ($ROLE == "superadmin" || $ID_CLIENT == $id_client)
         return;
     exit;
+*/
 }
 
 function make_xml_path ($id_client, $schema_name)
