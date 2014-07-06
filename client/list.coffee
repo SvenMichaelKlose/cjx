@@ -8,24 +8,23 @@ create_record = (options) ->
 
 add_button = (options) ->
   (button().text "Neu").click (x) ->
-    create_record options
-    open_record options, options.parent.children().first()
     x.preventDefault()
+    open_record options, create_record options
 
 edit_button = (options, record) ->
   (button().text "bearbeiten").click (x) ->
-    open_record options, record
     x.preventDefault()
+    open_record options, record
 
 remove_button = (record) ->
   (button().text "entfernen").click (x) ->
+    x.preventDefault()
     e = ($ x.target).closest ".record"
     e.addClass "selected"
     if confirm "Diesen Eintrag wirklich entfernen?"
       record.remove()
       e.remove()
     e.removeClass "selected"
-    x.preventDefault()
 
 record = (options, x) ->
   x = $ x
