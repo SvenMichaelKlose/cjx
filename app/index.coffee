@@ -1,6 +1,7 @@
 ID_CLIENT = "pixel"
 
 $ ->
+  ($ ".menu").empty()
   ($ ".arena").hide()
   ($ ".arena").append $ "<form>"
   ($ "body").append ($ "<div class='rev'>").text "Revision " + REVISION
