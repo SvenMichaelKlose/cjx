@@ -1,4 +1,4 @@
-ID_CLIENT = "pixel"
+@ID_CLIENT = "pixel"
 
 $ ->
   ($ ".menu").empty()

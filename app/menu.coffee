@@ -19,3 +19,4 @@ MENUITEMS = [
 
 @make_menu_bar = ->
   ($ ".menu").append (($ "<button>").text n).click f for [n, f] in MENUITEMS
+  ($ ".menu").append (($ "<button>").text "Änderungen übernehmen").click post_records
