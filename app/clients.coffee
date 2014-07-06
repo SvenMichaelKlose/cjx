@@ -1,5 +1,10 @@
-($ ".current_xml").append CLIENTS = ($ "<clients>")
-($ ".current_xml").append GROUPS = ($ "<groups>")
+RECORDS = {}
+
+init_records = (name) ->
+  ($ ".current_xml").append RECORDS[name] = ($ "<#{name}>")
+
+init_records "clients"
+init_records "groups"
 
 @open_clients = ->
   menu_slide ->
