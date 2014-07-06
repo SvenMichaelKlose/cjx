@@ -14,13 +14,13 @@ init_records "groups"
     ($ ".arena").append form().addClass "groupform"
     make_form (
       containment: ($ ".clientform"),
-      parent:      ($ "clients"),
+      parent:      RECORDS["clients"],
       schema:      "client",
       desc:        "Kunden"
     )
     make_form (
       containment: ($ ".groupform"),
-      parent:      ($ "groups"),
+      parent:      RECORDS["groups"],
       schema:      "group",
       desc:        "Gruppen"
     )
