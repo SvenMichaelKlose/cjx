@@ -1,6 +1,3 @@
-init_records "clients"
-init_records "groups"
-
 @open_clients = ->
   menu_slide ->
     ($ ".clientform").remove()

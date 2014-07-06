@@ -1,4 +1,4 @@
-($ ".current_xml").append APPS = [generate_xml_from_schema "app"]
+#($ ".current_xml").append APPS = [generate_xml_from_schema "app"]
 
 @open_preferences = ->
   menu_slide ->
