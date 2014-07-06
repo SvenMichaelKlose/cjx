@@ -4,7 +4,9 @@
     ($ ".defaultform").append create_form record, SCHEMAS[options.schema]
 
 create_record = (options) ->
-  options.parent.prepend generate_xml_from_schema options.schema
+  record = generate_xml_from_schema options.schema
+  options.parent.prepend record
+  record
 
 add_button = (options) ->
   (button().text "Neu").click (x) ->
