@@ -8,6 +8,7 @@ init_records "groups"
 
 @open_clients = ->
   menu_slide ->
+    ($ ".clientform").remove()
     ($ ".groupform").remove()
     ($ ".arena").append form().addClass "clientform"
     ($ ".arena").append form().addClass "groupform"
