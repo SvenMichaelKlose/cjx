@@ -1,8 +1,3 @@
-RECORDS = {}
-
-init_records = (name) ->
-  ($ ".current_xml").append RECORDS[name] = ($ "<#{name}>")
-
 init_records "clients"
 init_records "groups"
 

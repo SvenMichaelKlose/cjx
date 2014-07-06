@@ -1,3 +1,5 @@
+ID_CLIENT = "pixel"
+
 $ ->
   ($ ".arena").hide()
   ($ ".arena").append $ "<form>"
