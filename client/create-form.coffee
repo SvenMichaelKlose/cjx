@@ -7,9 +7,7 @@ form_field = (parent, field) ->
     widget "record", field, v, parent
   else
     n = get_field_input parent, field
-    if not n
-      alert "Missing node '#{field.name}'!"
-      debugger
+    debugger if not n
     v = n.text()
     widget "record", field, v, n
 
