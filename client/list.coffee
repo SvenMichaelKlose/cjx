@@ -44,8 +44,8 @@ list_headers = (options) ->
   (th().text desc) for {desc} in SCHEMAS[options.schema]
 
 make_table = (options) ->
-  head = thead().append ($ "<tr>").append ($ "<th>"),
-                                          list_headers options
+  head = thead().append tr().append th(),
+                                    list_headers options
   table().append head,
                  (tbody list options)
 
