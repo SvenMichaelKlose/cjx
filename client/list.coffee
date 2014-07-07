@@ -30,8 +30,11 @@ remove_button = (record) ->
 
 record = (options, x) ->
   x = $ x
-  (tr().addClass "record").append (create_form x, SCHEMAS[options.schema]),
-                                  (edit_button options, x)
+  cb = ($ "<input>")
+  cb.attr type: "checkbox", name: x.children().first().text()
+  (tr().addClass "record").append cb,
+                                  (create_form x, SCHEMAS[options.schema]),
+                                  (edit_button options, x),
                                   (remove_button x)
 
 list = (options) ->
@@ -41,7 +44,9 @@ list_headers = (options) ->
   (th().text desc) for {desc} in SCHEMAS[options.schema]
 
 make_table = (options) ->
-  table().append (thead tr list_headers options),
+  head = thead().append ($ "<tr>").append ($ "<th>"),
+                                          list_headers options
+  table().append head,
                  (tbody list options)
 
 @make_form = (options) ->
