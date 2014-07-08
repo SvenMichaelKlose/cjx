@@ -6,7 +6,8 @@
 
 MENUITEMS = [
   ["App–Verwaltung",  open_clients]
-  ["Einstellungen",   open_preferences]
+#  ["Einstellungen",   open_preferences]
+  ["Ablage",          open_clipboard]
 ]
 
 @make_menu_bar = ->
