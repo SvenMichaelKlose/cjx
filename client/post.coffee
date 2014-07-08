@@ -18,8 +18,8 @@ set_xml = (xml, name, data) ->
 
 @get_file = (xml, name) ->
   xhr = $.ajax
-    type:     "GET",
-    async:    false,
+    type:     "GET"
+    async:    false
     url:      (server_path name)
     dataType: "html"
     success:  (data, status) ->

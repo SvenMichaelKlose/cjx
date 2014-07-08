@@ -22,10 +22,10 @@ boolean = ({name, value}, v) ->
   e
 
 textarea = ({name, cols, rows}, value) ->
-  e = $ "<textarea>",
+  e = $ "<textarea>"
         name: name
         cols: cols || 60
-        rows: rows || 12,
+        rows: rows || 12
   e.text value
 
 image_selection = ({src}, value) ->

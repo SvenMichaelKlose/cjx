@@ -1,8 +1,8 @@
 @menu_slide = (action) ->
   ($ ".arena").slideUp 200, ->
-                              ($ ".arena").empty()
-                              action()
-                              ($ ".arena").slideDown 200
+    ($ ".arena").empty()
+    action()
+    ($ ".arena").slideDown 200
 
 MENUITEMS = [
   ["App–Verwaltung",  open_clients]

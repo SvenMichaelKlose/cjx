@@ -1,5 +1,7 @@
 identity = (x) -> x
 
 @widget = (name, field, value, xml) ->
-  alert "No widget for type '" + name + "' in '" + field.name + "'." unless WIDGETS[name]
+  unless WIDGETS[name]
+    alert "No widget for type '" + name + "' in '" + field.name + "'."
+    debugger
   (field.filter or identity) WIDGETS[name] field, value, xml
