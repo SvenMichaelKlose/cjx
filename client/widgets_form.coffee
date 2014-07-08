@@ -63,7 +63,7 @@ record = (field, value, xml) ->
                         (hook_field xml, field, widget f.type, f, value, xml),
                         (measure field)
   else
-     widget "struct", field, value, xml
+     widget field.type, field, value, xml
 
 xreflist_empty = (field, value, xml) ->
   "Leer."
