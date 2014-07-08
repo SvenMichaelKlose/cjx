@@ -58,7 +58,7 @@ record_div = -> (div().addClass "field")
 
 record = (field, value, xml) ->
   if is_record_type field.type
-    f = expand_type $.extend true, {}, field
+    f = expand_type field
     record_div().append (field_label field),
                         (hook_field xml, field, widget f.type, f, value, xml),
                         (measure field)

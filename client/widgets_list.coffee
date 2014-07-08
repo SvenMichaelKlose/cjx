@@ -6,7 +6,7 @@ struct   = (field, xml) -> null
 
 record = (field, v) ->
   if is_record_type field.type
-    f = expand_type $.extend true, {}, field
+    f = expand_type field
     (td().addClass "listfield").append (widget f.type, f, v),
                                        (widget "measure", field)
 
