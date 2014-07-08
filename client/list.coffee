@@ -40,7 +40,7 @@ record = (options, x) ->
                                   (remove_button x)
 
 list = (options) ->
-  $.map options.parent.children(), (x) -> record options, x
+  record options, x for x in options.parent.children()
 
 list_headers = (options) ->
   (th().text desc) for {desc} in SCHEMAS[options.schema]

@@ -1,16 +1,18 @@
-@open_clipboard = ->
-  menu_slide ->
-    ($ ".arena form").remove()
-    make_new_form
-      parent: RECORDS["clipboard"]
-      schema: "clipboard"
-      desc:   "Ablage"
+clipboard_items = -> ($ "clipboard clients").children()
+
+menubutton_text = ->
+  "Ablage (" + (if i = clipboard_items().length then i else "leer") + ")"
+
+@update_clipboard_button = ->
+  ($ ".menubutton_clipboard").text menubutton_text()
+
+clipboard_clients = -> RECORDS["clipboard"].find "clients"
 
 client_by_name = (name) ->
   (RECORDS["clients"].find "user:contains('#{name}')").parent()
 
 clipboard_client_by_name = (name) ->
-  RECORDS["clipboard"].children "[name='#{name}']"
+  clipboard_clients().children "[name='#{name}']"
 
 client_xref = (name) ->
   if ensure_element client_by_name name
@@ -19,4 +21,19 @@ client_xref = (name) ->
 @add_to_clipboard = (names) ->
   for name in names
     if not (clipboard_client_by_name name).length
-      RECORDS["clipboard"].append client_xref name
+      clipboard_clients().append client_xref name
+  update_clipboard_button()
+
+@open_clipboard = ->
+  menu_slide ->
+    ($ ".arena form").remove()
+    ($ ".arena").append containment = make_containment()
+    containment.append create_form RECORDS["clipboard"], SCHEMAS["clipboard"]
+#    make_new_form
+#      parent: RECORDS["clipboard"]
+#      schema: "clipboard"
+#      desc:   "Ablage"
+
+@init_clipboard = ->
+  ($ ".current_xml").append RECORDS["clipboard"] = generate_xml_from_schema "clipboard"
+  update_clipboard_button()

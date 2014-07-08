@@ -60,22 +60,30 @@ record = (field, value, xml) ->
   else
     f = expand_type $.extend true, {}, field
     r = record_div()
-    record_div().append (field_label field),
-                        (hook_field xml, field, widget f.type, f, value, xml),
-                        (measure field)
+    w = widget f.type, f, value, xml
+    record_div().append if f.type is "xreflist"
+                          w
+                        else [
+                          (field_label field),
+                          (hook_field xml, field, w),
+                          (measure field)
+                        ]
 
 xreflist_empty = (field, value, xml) ->
   "Leer."
 
-xref_selector = (field, x) ->
-  "[" + field.id_field + "='" + x.text() + "']"
+xref_selector = (field, xml) ->
+  "[" + field.id_field + "='" + xml.text() + "']"
+
+get_xref = (field, xml) ->
+  RECORDS[field.records].find xref_selector field, xml
 
 get_xrefs = (field, xml) ->
-  xml.children().map (x) -> RECORDS[field.records].find xref_selector field, x
+  get_xref field, $ x for x in xml.children()
 
 xreflist = (field, value, xml) ->
   if xml.children().length
-    (get_xrefs field, xml).map (x) -> widget field.type, field.data, null, x
+    widget field.type, field.data, null, x for x in get_xrefs field, xml
   else
     widget "xreflist_empty", field, null, xml
 
