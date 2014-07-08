@@ -7,7 +7,7 @@ make_client_form = ->
     can_edit:   true
   form.append (($ "<button>").text "Auswahl in Ablage übernehmen"). click (x) ->
     x.preventDefault()
-    alert (get_selected_records form).length + " ausgewählt."
+    add_to_clipboard get_selected_record_names form
 
 make_group_form = ->
   make_new_form

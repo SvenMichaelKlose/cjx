@@ -1,6 +1,9 @@
 @get_selected_records = (containment) ->
   containment.find ".record_selector:checked"
 
+@get_selected_record_names = (containment) ->
+  (($ x).attr "name" for x in get_selected_records containment)
+
 @list_selecting_button = (containment) ->
   button = ($ "<button>")
   containment.append button
