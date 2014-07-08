@@ -1,14 +1,3 @@
-CONTAINMENT_COUNTER = 0
-
-make_containment = ->
-  ($ "<form>").addClass "containment#{++CONTAINMENT_COUNTER}"
-
-make_new_form = (options) ->
-  ($ ".arena").append options["containment"] = form = make_containment()
-  make_form options
-  list_selecting_button form
-  form
-
 make_client_form = ->
   form = make_new_form
     parent: RECORDS["clients"]
