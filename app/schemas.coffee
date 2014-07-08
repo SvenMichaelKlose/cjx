@@ -52,6 +52,15 @@
     desc:   "Kunden"
   ]
 
+  clipboard: [
+    name:     "clients"
+    type:     "xreflist"
+    records:  "clients"
+    id_field: "name"
+    unique:   "yes"
+    desc:     "Kunden"
+  ]
+
   app: [
     name:  "name"
     type:  "textline"
