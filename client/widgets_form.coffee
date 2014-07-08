@@ -84,25 +84,25 @@ xreflist = (field, value, xml) ->
     widget "xreflist_empty", field, null, xml
 
 @WIDGETS =
-  textline:   text_input
-  tel:        text_input
-  zip_de:     text_input
-  percent:    text_input
-  pixel:      text_input
-  seconds:    text_input
-  minutes:    text_input
-  color:      text_input
-  email:      text_input
-  password:   password
-  range:      range
-  boolean:    boolean
-  textarea:   textarea
-  image:      image_selection
-  selection:  selection
-  label:      field_label
-  measure:    measure
-  record:     record
-  struct:     struct
-  user:       text_input
-  xreflist:   xreflist
-  xreflist_empty: (x) -> div().text "Leer."
+  textline:       text_input
+  tel:            text_input
+  zip_de:         text_input
+  percent:        text_input
+  pixel:          text_input
+  seconds:        text_input
+  minutes:        text_input
+  color:          text_input
+  email:          text_input
+  password:       password
+  range:          range
+  boolean:        boolean
+  textarea:       textarea
+  image:          image_selection
+  selection:      selection
+  label:          field_label
+  measure:        measure
+  record:         record
+  struct:         struct
+  user:           text_input
+  xreflist:       xreflist
+  xreflist_empty: xreflist_empty
