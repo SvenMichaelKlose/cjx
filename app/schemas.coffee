@@ -56,7 +56,7 @@
     name:     "clients"
     type:     "xreflist"
     records:  "clients"
-    id_field: "name"
+    id_field: "user"
     unique:   "yes"
     desc:     "Kunden"
   ]

@@ -69,10 +69,10 @@ xreflist_empty = (field, value, xml) ->
   "Leer."
 
 xref_selector = (field, xml) ->
-  "[" + field.id_field + "='" + xml.text() + "']"
+  "#{field.id_field}:contains('#{xml.attr "name"}')"
 
 get_xref = (field, xml) ->
-  RECORDS[field.records].find xref_selector field, xml
+  (RECORDS[field.records].find xref_selector field, xml).parent()
 
 get_xrefs = (field, xml) ->
   get_xref field, $ x for x in xml.children()
