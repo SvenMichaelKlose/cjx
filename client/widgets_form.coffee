@@ -54,20 +54,16 @@ struct = ({desc, data}, value, xml) ->
 
 record_div = -> (div().addClass "field")
 
+@is_record_type = (x) -> ($.inArray x, ["struct", "xreflist"]) is -1
+
 record = (field, value, xml) ->
-  if field.type is "struct"
-     widget "struct", field, value, xml
-  else
+  if is_record_type field.type
     f = expand_type $.extend true, {}, field
-    r = record_div()
-    w = widget f.type, f, value, xml
-    record_div().append if f.type is "xreflist"
-                          w
-                        else [
-                          (field_label field),
-                          (hook_field xml, field, w),
-                          (measure field)
-                        ]
+    record_div().append (field_label field),
+                        (hook_field xml, field, widget f.type, f, value, xml),
+                        (measure field)
+  else
+     widget "struct", field, value, xml
 
 xreflist_empty = (field, value, xml) ->
   "Leer."
