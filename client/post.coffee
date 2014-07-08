@@ -25,5 +25,5 @@ set_xml = (xml, name, data) ->
     success:  (data, status) ->
                 set_xml xml, name, ($ data).first()
 
-@get_records = ->
-  get_file xml, name for name, xml of RECORDS
+@get_records = (names) ->
+  get_file RECORDS[name], name for name in names

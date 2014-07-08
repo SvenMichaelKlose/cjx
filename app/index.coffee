@@ -9,7 +9,8 @@ init_document = ->
 $ ->
   init_records "clients"
   init_records "groups"
-  get_records()
+  init_records "clipboard"
+  get_records ["clients", "groups"]
   init_document()
   make_menu_bar()
   open_clients()
