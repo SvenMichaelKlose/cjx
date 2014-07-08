@@ -1,8 +1,11 @@
+@get_selected_records = (containment) ->
+  containment.find ".record_selector:checked"
+
 @list_selecting_button = (containment) ->
   button = ($ "<button>")
   containment.append button
   set = (to) ->
-    (containment.find "input[type=checkbox]").prop "checked", to
+    (containment.find ".record_selector").prop "checked", to
   select_on_click = ->
     (button.text "Alle auswählen").click (x) ->
       x.preventDefault()

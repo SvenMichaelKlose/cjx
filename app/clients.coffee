@@ -16,7 +16,7 @@ make_client_form = ->
     desc:   "Kunden"
   form.append (($ "<button>").text "Auswahl in Ablage übernehmen"). click (x) ->
     x.preventDefault()
-    alert "Nix passiert."
+    alert (get_selected_records form).length + " ausgewählt."
 
 make_group_form = ->
   make_new_form

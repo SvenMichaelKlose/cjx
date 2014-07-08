@@ -30,8 +30,10 @@ remove_button = (record) ->
 
 record = (options, x) ->
   x = $ x
-  cb = ($ "<input>")
-  cb.attr type: "checkbox", name: x.children().first().text()
+  cb = $ "<input>"
+         class: "record_selector"
+         type:  "checkbox"
+         name:  x.children().first().text()
   (tr().addClass "record").append cb,
                                   (create_form x, SCHEMAS[options.schema]),
                                   (edit_button options, x),
