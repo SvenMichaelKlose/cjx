@@ -4,4 +4,4 @@ identity = (x) -> x
   unless WIDGETS[name]
     alert "No widget for type '" + name + "' in '" + field.name + "'."
     debugger
-  (field.filter or identity) WIDGETS[name] field, value, xml
+  ((field and field.filter) or identity) WIDGETS[name] field, value, xml

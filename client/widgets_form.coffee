@@ -101,4 +101,4 @@ xreflist = (field, value, xml) ->
   struct:     struct
   user:       text_input
   xreflist:   xreflist
-  xreflist_empty: (x) -> null
+  xreflist_empty: (x) -> div().text "Leer."

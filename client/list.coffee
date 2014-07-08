@@ -46,10 +46,13 @@ list_headers = (options) ->
   (th().text desc) for {desc} in SCHEMAS[options.schema]
 
 make_table = (options) ->
-  head = thead().append tr().append th(),
-                                    list_headers options
-  table().append head,
-                 (tbody list options)
+  if options.parent.children().length is 0
+    widget "xreflist_empty"
+  else
+    head = thead().append tr().append th(),
+                                      list_headers options
+    table().append head,
+                   (tbody list options)
 
 @make_form = (options) ->
   old_widgets = $.extend {}, WIDGETS
