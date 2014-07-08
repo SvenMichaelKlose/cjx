@@ -36,7 +36,7 @@ record = (options, x) ->
          name:  x.children().first().text()
   (tr().addClass "record").append cb,
                                   (create_form x, SCHEMAS[options.schema]),
-                                  (edit_button options, x),
+                                  (edit_button options, x) if options.can_edit,
                                   (remove_button x)
 
 list = (options) ->
@@ -54,7 +54,7 @@ make_table = (options) ->
 @make_form = (options) ->
   old_widgets = $.extend {}, WIDGETS
   $.extend WIDGETS, LIST_WIDGETS
-  options.containment.empty().append (h1().text options.desc),
-                                     (add_button options),
-                                     (make_table options)
+  options.containment.append (h1().text options.desc),
+                             (add_button options) if options.can_create,
+                             (make_table options)
   @WIDGETS = old_widgets
