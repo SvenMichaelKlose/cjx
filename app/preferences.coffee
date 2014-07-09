@@ -3,4 +3,4 @@
 @open_preferences = ->
   menu_slide ->
     ($ ".arena").append form().addClass "prefform"
-    ($ ".prefform").append render_record ($ "app"), SCHEMAS.app
+    ($ ".prefform").append render_record {}, ($ "app"), SCHEMAS.app

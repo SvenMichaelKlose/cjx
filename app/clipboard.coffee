@@ -28,9 +28,9 @@ client_xref = (name) ->
     ($ ".arena form").remove()
     ($ ".arena").append containment = make_containment()
     with_views [VIEWS_RECORD, VIEWS_RECORD_DISPLAY, VIEWS_LIST], ->
-      r = render_record RECORDS["clipboard"],
-                        SCHEMAS["clipboard"],
-                        containment: containment
+      r = render_record {containment: containment},
+                        RECORDS["clipboard"],
+                        SCHEMAS["clipboard"]
       containment.append r
 
 @init_clipboard = ->

@@ -1,10 +1,10 @@
-record_selector = (field, value, xml, options) ->
+record_selector = (options, xml, field, value) ->
   $ "<input>"
     class: "record_selector"
     type:  "checkbox"
     name:  xml.children().first().text()
 
-list_selector = (field, value, xml, options) ->
+list_selector = (options, xml, field, value) ->
   b = button()
   set = (to) ->
     (options.containment.find ".record_selector").prop "checked", to
@@ -25,26 +25,26 @@ open_record = (options, record) ->
   menu_slide ->
     ($ ".arena").append form().addClass "defaultform"
     with_views [VIEWS_RECORD, VIEWS_RECORD_EDIT, VIEWS_LIST], ->
-      ($ ".defaultform").append render_record record, SCHEMAS[options.schema]
+      ($ ".defaultform").append render_record options, record, SCHEMAS[options.schema]
 
 create_record = (options) ->
   record = generate_xml_from_schema options.schema
   options.parent.prepend record
   record
 
-add_button = (field, value, xml, options) ->
+add_button = (options, xml, field, value) ->
   (button().text "Neu").click (x) ->
     x.preventDefault()
     open_record options, create_record options
 
-edit_button = (field, value, xml, options) ->
+edit_button = (options, xml, field, value) ->
   if not options.schema
     debugger
   (button().text "bearbeiten").click (x) ->
     x.preventDefault()
     open_record options, xml
 
-remove_button = (field, value, xml, options) ->
+remove_button = (options, xml, field, value) ->
   (button().text "entfernen").click (x) ->
     x.preventDefault()
     e = ($ x.target).closest ".record"

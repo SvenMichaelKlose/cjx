@@ -1,34 +1,34 @@
-text_input = ({type, name}, v) ->
+text_input = (options, xml, {type, name}, value) ->
   $ "<input>"
     type:   type
     name:   name
-    value:  v
+    value:  value
 
-range = ({name, min, max, step}, v) ->
+range = (options, xml, {name, min, max, step}, value) ->
   e = $ "<input>"
         name:   name
-        value:  v
+        value:  value
   e.spinner
     min:  min
     max:  max
     step: step
 
-password = ({name, value}, v) ->
-  text_input {type: "password", name: name}, v
+password = (options, xml, {name}, value) ->
+  text_input options, xml, {type: "password", name: name}, value
 
-boolean = ({name, value}, v) ->
-  e = text_input {type: "checkbox", name: name}, "true"
-  e.attr "checked", "checked" if v is "true"
+boolean = (options, xml, {name}, value) ->
+  e = text_input options, xml, {type: "checkbox", name: name}, "true"
+  e.attr "checked", "checked" if value is "true"
   e
 
-textarea = ({name, cols, rows}, value) ->
+textarea = (options, xml, {name, cols, rows}, value) ->
   e = $ "<textarea>"
         name: name
         cols: cols || 60
         rows: rows || 12
   e.text value
 
-image_selection = ({src}, value) ->
+image_selection = (options, xml, {src}, value) ->
   $ "<img>"
     src: src
 
@@ -37,7 +37,7 @@ option = (txt, value) ->
   o.attr "selected", "selected" if txt is value
   o.attr value: txt
 
-selection = (field, value) ->
+selection = (options, xml, field, value) ->
   ($ "<select>").append (option txt, value for txt in field.opts)
 
 @VIEWS_RECORD_EDIT =

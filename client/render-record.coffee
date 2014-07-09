@@ -1,14 +1,13 @@
 xml_node_of_field = (parent, field) ->
   (ensure_element parent.children field.name) or if parent.attr name then parent
 
-render_record_field = (options, parent, field) ->
+render_record_field = (options, xml, field) ->
   if field.attr
-    parent.attr name, v = parent.attr name or value
-    render "record", field, v, parent, options
+    value = xml.attr name
   else
-    (xml = xml_node_of_field parent, field) or debugger
-    v = xml.text()
-    render "record", field, v, xml, options
+    (xml = xml_node_of_field xml, field) or debugger
+    value = xml.text()
+  render "record", options, xml, field, value
 
-@render_record = (xml, fields, options) ->
+@render_record = (options, xml, fields) ->
   render_record_field options, xml, field for field in fields

@@ -6,10 +6,10 @@ get_selected_records = (containment) ->
 
 record = (options, xml) ->
   xml = $ xml
-  (tr().addClass "record").append (render "record_selector", null, null, xml, options),
-                                  (render_record xml, SCHEMAS[options.schema], options),
-                                  (render "button_edit", null, null, xml, options),
-                                  (render "button_remove", null, null, xml, options)
+  (tr().addClass "record").append (render "record_selector", options, xml),
+                                  (render_record options, xml, SCHEMAS[options.schema]),
+                                  (render "button_edit", options, xml),
+                                  (render "button_remove", options, xml)
 
 list = (options, records) ->
   record options, x for x in records
@@ -19,7 +19,7 @@ list_headers = (options) ->
 
 record_table = (options, records) ->
   if records.length is 0
-    render "xreflist_empty"
+    render "xreflist_empty", options
   else
     head = thead().append tr().append th(), list_headers options
     table().append head, (tbody().addClass "record_list").append list options, records
@@ -27,6 +27,6 @@ record_table = (options, records) ->
 @render_table = (options, records) ->
   with_views [VIEWS_RECORD, VIEWS_RECORD_DISPLAY, VIEWS_TABLE, VIEWS_TABLE_EDIT], ->
     options.containment.append (h1().text options.desc),
-                               (render "list_selector", null, null, null, options if records.length > 1),
-                               (render "button_add", null, null, null, options)
+                               (render "list_selector", options, records),
+                               (render "button_add", options, records),
                                (record_table options, records)

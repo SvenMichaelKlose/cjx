@@ -1,7 +1,7 @@
-value    = (field, v) -> v
-boolean  = (field, v) -> if v is "true" then "ja" else "nein"
-password = (field, v) -> null
-image    = (field, v) -> null
+value    = (options, xml, field, value) -> value
+boolean  = (options, xml, field, value) -> if value is "true" then "ja" else "nein"
+password = (options, xml, field, value) -> null
+image    = (options, xml, field, value) -> null
 
 @VIEWS_RECORD_DISPLAY =
   textline:  value
