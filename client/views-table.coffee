@@ -1,7 +1,6 @@
 record = (options, xml, field, value) ->
   if is_record_type field.type
-    f = expand_type field
-    td().append (render f.type, options, xml, f, value),
+    td().append (render_field options, xml, field, value),
                 (render "measure", options, xml, field, value)
 
 @VIEWS_TABLE =

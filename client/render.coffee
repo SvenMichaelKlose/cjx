@@ -9,6 +9,10 @@ VIEWS = {}
     debugger
   VIEWS[name] options, xml, field, value
 
+@render_field = (options, xml, field, value) ->
+  f = expand_type field
+  render f.type, options, xml, f, value
+
 @with_views = (views, fun) ->
   old_views = $.extend {}, VIEWS
   $.extend VIEWS, x for x in views

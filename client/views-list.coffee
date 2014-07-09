@@ -10,9 +10,8 @@ record_div = -> (div().addClass "field")
 
 record = (options, xml, field, value) ->
   if is_record_type field.type
-    f = expand_type field
     record_div().append (render "label", options, xml, field, value),
-                        (hook_field xml, field, render f.type, options, xml, f, value),
+                        (hook_field xml, field, render_field options, xml, field, value),
                         (render "measure", options, xml, field, value)
   else
     render field.type, options, xml, field, value
