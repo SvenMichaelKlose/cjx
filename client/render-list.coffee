@@ -24,7 +24,7 @@ record_table = (options, records) ->
     head = thead().append tr().append th(), list_headers options
     table().append head, (tbody().addClass "record_list").append list options, records
 
-@render_table = (options, records) ->
+@render_list = (options, records) ->
   with_views [VIEWS_RECORD, VIEWS_RECORD_DISPLAY, VIEWS_TABLE, VIEWS_TABLE_EDIT], ->
     options.containment.append (h1().text options.desc),
                                (render "list_selector", options, records),

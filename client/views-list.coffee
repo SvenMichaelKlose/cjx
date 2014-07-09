@@ -35,7 +35,7 @@ xreflist = (options, xml, field) ->
   opt.records = field.records
   opt.schema = field.schema
   opt.desc = field.desc
-  render_table opt, get_xrefs xml, field
+  render_list opt, get_xrefs xml, field
 
 @VIEWS_LIST =
   field:          field
