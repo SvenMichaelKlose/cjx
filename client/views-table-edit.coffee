@@ -24,7 +24,7 @@ list_selector = (options, xml, field, value) ->
 open_record = (options, record) ->
   menu_slide ->
     ($ ".arena").append form().addClass "defaultform"
-    with_views [VIEWS_RECORD, VIEWS_RECORD_EDIT, VIEWS_LIST], ->
+    with_views [VIEWS_RECORD, VIEWS_RECORD_EDIT], ->
       ($ ".defaultform").append render_record options, record, SCHEMAS[options.schema]
 
 create_record = (options) ->

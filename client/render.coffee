@@ -19,3 +19,7 @@ VIEWS = {}
   r = fun()
   VIEWS = old_views
   r
+
+@init_views = (views) ->
+  VIEWS = {}
+  $.extend VIEWS, x for x in views

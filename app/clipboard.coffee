@@ -26,11 +26,10 @@ client_xref = (name) ->
   menu_slide ->
     ($ ".arena form").remove()
     ($ ".arena").append containment = make_containment()
-    with_views [VIEWS_RECORD, VIEWS_RECORD_DISPLAY, VIEWS_LIST], ->
-      r = render_record {containment: containment},
-                        RECORDS["clipboard"],
-                        SCHEMAS["clipboard"]
-      containment.append r
+    r = render_record {containment: containment},
+                      RECORDS["clipboard"],
+                      SCHEMAS["clipboard"]
+    containment.append r
 
 @init_clipboard = ->
   ($ ".db").append RECORDS["clipboard"] = generate_xml_from_schema "clipboard"
