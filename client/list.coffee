@@ -1,7 +1,7 @@
 @open_record = (options, record) ->
   menu_slide ->
     ($ ".arena").append form().addClass "defaultform"
-    ($ ".defaultform").append create_form record, SCHEMAS[options.schema]
+    ($ ".defaultform").append render_record record, SCHEMAS[options.schema]
 
 create_record = (options) ->
   record = generate_xml_from_schema options.schema
@@ -35,7 +35,7 @@ record = (options, x) ->
          type:  "checkbox"
          name:  x.children().first().text()
   (tr().addClass "record").append cb,
-                                  (create_form x, SCHEMAS[options.schema], options),
+                                  (render_record x, SCHEMAS[options.schema], options),
                                   (edit_button options, x) if options.can_edit,
                                   (remove_button x)
 
@@ -54,10 +54,11 @@ record_table = (options, records) ->
     table().append head,
                    (tbody list options, records)
 
-@make_form = (options, records) ->
+@render_list = (options, records) ->
   old_widgets = $.extend {}, WIDGETS
   $.extend WIDGETS, LIST_WIDGETS
   options.containment.append (h1().text options.desc),
                              (add_button options) if options.can_create,
-                             (record_table options, records)
+                             (record_table options, records),
+                             (list_selecting_button options.containment)
   @WIDGETS = old_widgets

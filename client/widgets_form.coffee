@@ -50,7 +50,7 @@ struct_div = -> (div().addClass "struct")
 
 struct = ({desc, data}, value, xml) ->
   struct_div().append (($ "<h2>").text desc),
-                      (create_form xml, data)
+                      (render_record xml, data)
 
 record_div = -> (div().addClass "field")
 
@@ -63,7 +63,7 @@ record = (field, value, xml, options) ->
                         (hook_field xml, field, widget f.type, f, value, xml, options),
                         (measure field)
   else
-     widget field.type, field, value, xml, options
+    widget field.type, field, value, xml, options
 
 xreflist_empty = (field, value, xml) ->
   "Leer."
@@ -82,7 +82,8 @@ xreflist = (field, value, xml, options) ->
     opt = $.extend {}, options
     opt.records = field.records
     opt.schema = field.schema
-    make_form opt, get_xrefs field, xml
+    [(render_list opt, get_xrefs field, xml),
+     (list_selecting_button options.containment)]
   else
     widget "xreflist_empty", field, null, xml, options
 

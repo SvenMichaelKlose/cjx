@@ -11,5 +11,5 @@ form_field = (options, parent, field) ->
     v = n.text()
     widget "record", field, v, n, options
 
-@create_form = (xml, fields, options) ->
+@render_record = (xml, fields, options) ->
   form_field options, xml, field for field in fields

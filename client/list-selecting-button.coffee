@@ -5,19 +5,18 @@
   (($ x).attr "name" for x in get_selected_records containment)
 
 @list_selecting_button = (containment) ->
-  button = ($ "<button>")
-  containment.append button
+  b = button()
   set = (to) ->
     (containment.find ".record_selector").prop "checked", to
   select_on_click = ->
-    (button.text "Alle auswählen").click (x) ->
+    (b.text "Alle auswählen").click (x) ->
       x.preventDefault()
       unselect_on_click()
       set true
   unselect_on_click = ->
-    (button.text "Alle abwählen").click (x) ->
+    (b.text "Alle abwählen").click (x) ->
       x.preventDefault()
       select_on_click()
       set false
   select_on_click()
-  button
+  b
