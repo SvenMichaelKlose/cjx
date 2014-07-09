@@ -6,10 +6,9 @@ render_record_field = (options, parent, field) ->
     parent.attr name, v = parent.attr name or value
     render "record", field, v, parent, options
   else
-    n = xml_node_of_field parent, field
-    debugger if not n
-    v = n.text()
-    render "record", field, v, n, options
+    (xml = xml_node_of_field parent, field) or debugger
+    v = xml.text()
+    render "record", field, v, xml, options
 
 @render_record = (xml, fields, options) ->
   render_record_field options, xml, field for field in fields

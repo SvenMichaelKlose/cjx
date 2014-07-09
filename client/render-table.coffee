@@ -4,64 +4,12 @@ get_selected_records = (containment) ->
 @get_selected_record_names = (containment) ->
   (($ x).attr "name" for x in get_selected_records containment)
 
-list_selecting_button = (containment) ->
-  b = button()
-  set = (to) ->
-    (containment.find ".record_selector").prop "checked", to
-  select_on_click = ->
-    (b.text "Alle auswählen").click (x) ->
-      x.preventDefault()
-      unselect_on_click()
-      set true
-  unselect_on_click = ->
-    (b.text "Alle abwählen").click (x) ->
-      x.preventDefault()
-      select_on_click()
-      set false
-  select_on_click()
-  b
-
-open_record = (options, record) ->
-  menu_slide ->
-    ($ ".arena").append form().addClass "defaultform"
-    with_views [VIEWS_RECORD, VIEWS_RECORD_EDIT, VIEWS_LIST], ->
-      ($ ".defaultform").append render_record record, SCHEMAS[options.schema]
-
-create_record = (options) ->
-  record = generate_xml_from_schema options.schema
-  options.parent.prepend record
-  record
-
-add_button = (options) ->
-  (button().text "Neu").click (x) ->
-    x.preventDefault()
-    open_record options, create_record options
-
-edit_button = (options, record) ->
-  (button().text "bearbeiten").click (x) ->
-    x.preventDefault()
-    open_record options, record
-
-remove_button = (record) ->
-  (button().text "entfernen").click (x) ->
-    x.preventDefault()
-    e = ($ x.target).closest ".record"
-    e.addClass "selected"
-    if confirm "Diesen Eintrag wirklich entfernen?"
-      record.remove()
-      e.remove()
-    e.removeClass "selected"
-
 record = (options, x) ->
   x = $ x
-  cb = $ "<input>"
-         class: "record_selector"
-         type:  "checkbox"
-         name:  x.children().first().text()
-  (tr().addClass "record").append (cb if options.can_select),
+  (tr().addClass "record").append (render "record_selector", null, null, x, options),
                                   (render_record x, SCHEMAS[options.schema], options),
-                                  (edit_button options, x) if options.can_edit,
-                                  (remove_button x)
+                                  (render "button_edit", null, null, x, options),
+                                  (render "button_remove", null, null, x, options)
 
 list = (options, records) ->
   record options, x for x in records
@@ -77,8 +25,8 @@ record_table = (options, records) ->
     table().append head, (tbody list options, records)
 
 @render_table = (options, records) ->
-  with_views [VIEWS_RECORD, VIEWS_RECORD_DISPLAY, VIEWS_TABLE], ->
+  with_views [VIEWS_RECORD, VIEWS_RECORD_DISPLAY, VIEWS_TABLE, VIEWS_TABLE_EDIT], ->
     options.containment.append (h1().text options.desc),
-                               (list_selecting_button options.containment if options.can_select and records.length > 1),
-                               (add_button options) if options.can_create,
+                               (render "list_selector", null, options.containment, null, options if records.length > 1),
+                               (render "button_add", null, null, null, options)
                                (record_table options, records)
