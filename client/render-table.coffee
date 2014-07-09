@@ -1,7 +1,8 @@
 @open_record = (options, record) ->
   menu_slide ->
     ($ ".arena").append form().addClass "defaultform"
-    ($ ".defaultform").append render_record record, SCHEMAS[options.schema]
+    with_views [VIEWS_RECORD, VIEWS_RECORD_EDIT, VIEWS_LIST], ->
+      ($ ".defaultform").append render_record record, SCHEMAS[options.schema]
 
 create_record = (options) ->
   record = generate_xml_from_schema options.schema
@@ -47,18 +48,14 @@ list_headers = (options) ->
 
 record_table = (options, records) ->
   if records.length is 0
-    widget "xreflist_empty"
+    render "xreflist_empty"
   else
-    head = thead().append tr().append th(),
-                                      list_headers options
-    table().append head,
-                   (tbody list options, records)
+    head = thead().append tr().append th(), list_headers options
+    table().append head, (tbody list options, records)
 
-@render_list = (options, records) ->
-  old_widgets = $.extend {}, WIDGETS
-  $.extend WIDGETS, LIST_WIDGETS
-  options.containment.append (h1().text options.desc),
-                             (list_selecting_button options.containment if options.can_select and records.length > 1),
-                             (add_button options) if options.can_create,
-                             (record_table options, records)
-  @WIDGETS = old_widgets
+@render_table = (options, records) ->
+  with_views [VIEWS_RECORD, VIEWS_RECORD_DISPLAY, VIEWS_TABLE], ->
+    options.containment.append (h1().text options.desc),
+                               (list_selecting_button options.containment if options.can_select and records.length > 1),
+                               (add_button options) if options.can_create,
+                               (record_table options, records)
