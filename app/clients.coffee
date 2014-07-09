@@ -1,3 +1,8 @@
+make_new_form = (options) ->
+  ($ ".arena").append options["containment"] = form = make_containment()
+  render_list options, options.parent.children()
+  form
+
 make_client_form = ->
   form = make_new_form
     parent:     RECORDS["clients"]
