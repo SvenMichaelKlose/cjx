@@ -1,7 +1,5 @@
 make_new_form = (options) ->
-  ($ ".arena").append options["containment"] = form = make_containment()
-  render_list options, options.parent.children()
-  form
+  ($ ".arena").append make_containment().append render_list options, options.parent.children()
 
 make_client_form = ->
   form = make_new_form

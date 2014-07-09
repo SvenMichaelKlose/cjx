@@ -7,7 +7,7 @@ record_selector = (options, xml, field, value) ->
 list_selector = (options, xml, field, value) ->
   b = button()
   set = (to) ->
-    (options.containment.find ".record_selector").prop "checked", to
+    ((b.closest ".containment").find ".record_selector").prop "checked", to
   select_on_click = ->
     (b.text "Alle auswählen").click (x) ->
       x.preventDefault()

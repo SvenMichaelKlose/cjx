@@ -7,4 +7,11 @@ render_field = (options, xml, field) ->
   render "field", options, xml, field, value
 
 @render_record = (options, xml, fields) ->
-  render_field options, xml, field for field in fields
+  r = []
+  for field in fields
+    x = render_field options, xml, field
+    if $.isArray x
+      r = $.merge r, x
+    else
+      r.push x
+  r
