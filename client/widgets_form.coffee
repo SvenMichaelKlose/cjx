@@ -78,14 +78,13 @@ get_xrefs = (field, xml) ->
   get_xref field, $ x for x in xml.children()
 
 xreflist = (field, value, xml, options) ->
-  if xml.children().length
-    opt = $.extend {}, options
-    opt.records = field.records
-    opt.schema = field.schema
-    [(render_list opt, get_xrefs field, xml),
-     (list_selecting_button options.containment)]
-  else
-    widget "xreflist_empty", field, null, xml, options
+  if not xml.children().length
+    return widget "xreflist_empty", field, null, xml, options
+  opt = $.extend {}, options
+  opt.records = field.records
+  opt.schema = field.schema
+  [(render_list opt, get_xrefs field, xml),
+   (list_selecting_button options.containment)]
 
 @WIDGETS =
   textline:       text_input
