@@ -34,5 +34,5 @@ client_xref = (name) ->
       containment.append r
 
 @init_clipboard = ->
-  ($ ".current_xml").append RECORDS["clipboard"] = generate_xml_from_schema "clipboard"
+  ($ ".db").append RECORDS["clipboard"] = generate_xml_from_schema "clipboard"
   update_clipboard_button()
