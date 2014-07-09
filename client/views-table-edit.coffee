@@ -38,8 +38,6 @@ add_button = (options, xml, field, value) ->
     open_record options, create_record options
 
 edit_button = (options, xml, field, value) ->
-  if not options.schema
-    debugger
   (button().text "bearbeiten").click (x) ->
     x.preventDefault()
     open_record options, xml
@@ -50,7 +48,6 @@ remove_button = (options, xml, field, value) ->
     e = ($ x.target).closest ".record"
     e.addClass "selected"
     if confirm "Diesen Eintrag wirklich entfernen?"
-      debugger
       xml = (xml.data "referencing_xml") || xml
       xml.remove()
       e.remove()
