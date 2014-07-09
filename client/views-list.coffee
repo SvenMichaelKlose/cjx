@@ -8,7 +8,7 @@ record_div = -> (div().addClass "field")
 
 @is_record_type = (x) -> ($.inArray x, ["struct", "xreflist"]) is -1
 
-record = (options, xml, field, value) ->
+field = (options, xml, field, value) ->
   if is_record_type field.type
     record_div().append (render "label", options, xml, field, value),
                         (hook_field xml, field, render_field options, xml, field, value),
@@ -35,7 +35,7 @@ xreflist = (options, xml, field) ->
   render_table opt, get_xrefs xml, field
 
 @VIEWS_LIST =
-  record:         record
+  field:          field
   struct:         struct
   xreflist:       xreflist
   xreflist_empty: xreflist_empty
