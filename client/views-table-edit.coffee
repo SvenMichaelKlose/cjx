@@ -50,6 +50,8 @@ remove_button = (options, xml, field, value) ->
     e = ($ x.target).closest ".record"
     e.addClass "selected"
     if confirm "Diesen Eintrag wirklich entfernen?"
+      debugger
+      xml = (xml.data "referencing_xml") || xml
       xml.remove()
       e.remove()
     e.removeClass "selected"

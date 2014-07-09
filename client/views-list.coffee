@@ -25,7 +25,10 @@ get_xref = (xml, field) ->
   (RECORDS[field.records].find xref_selector xml, field).parent()
 
 get_xrefs = (xml, field) ->
-  (get_xref ($ x), field) for x in xml.children()
+  for xref in xml.children()
+    x = get_xref ($ xref), field
+    x.data "referencing_xml", xref
+    x
 
 xreflist = (options, xml, field) ->
   opt = $.extend {}, options
