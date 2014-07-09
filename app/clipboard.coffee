@@ -4,7 +4,7 @@ clipboard_items = -> clipboard_clients().children()
 menubutton_text = ->
   "Ablage (" + (clipboard_items().length || "leer") + ")"
 
-@update_clipboard_button = ->
+update_clipboard_button = ->
   ($ ".menubutton_clipboard").text menubutton_text()
 
 client_by_name = (name) ->
@@ -21,7 +21,6 @@ client_xref = (name) ->
   for name in names
     if not (clipboard_client_by_name name).length
       clipboard_clients().append client_xref name
-  update_clipboard_button()
 
 @open_clipboard = ->
   menu_slide ->
@@ -35,4 +34,5 @@ client_xref = (name) ->
 
 @init_clipboard = ->
   ($ ".db").append RECORDS["clipboard"] = generate_xml_from_schema "clipboard"
+  $(".db clipboard").bind "DOMSubtreeModified", update_clipboard_button
   update_clipboard_button()

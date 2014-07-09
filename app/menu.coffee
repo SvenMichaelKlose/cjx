@@ -16,4 +16,3 @@ make_menu_button = (cls, name, fun) ->
 @make_menu_bar = ->
   ($ ".menu").append make_menu_button c, n, f for [c, n, f] in MENUITEMS
   ($ ".menu").append (($ "<button>").text "Änderungen übernehmen").click post_records
-  update_clipboard_button()
