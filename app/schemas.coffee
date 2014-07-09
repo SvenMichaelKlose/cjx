@@ -56,6 +56,7 @@
     name:     "clients"
     type:     "xreflist"
     records:  "clients"
+    schema:   "client"
     id_field: "user"
     unique:   "yes"
     desc:     "Kunden"

@@ -5,6 +5,6 @@ CONTAINMENT_COUNTER = 0
 
 @make_new_form = (options) ->
   ($ ".arena").append options["containment"] = form = make_containment()
-  make_form options
+  make_form options, options.parent.children()
   list_selecting_button form
   form

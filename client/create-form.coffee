@@ -1,15 +1,15 @@
-get_field_input = (parent, x) ->
-  (ensure_element parent.children x.name) or if parent.attr name then parent
+get_field_input = (parent, field) ->
+  (ensure_element parent.children field.name) or if parent.attr name then parent
 
-form_field = (parent, field) ->
+form_field = (options, parent, field) ->
   if field.attr
     parent.attr name, v = parent.attr name or value
-    widget "record", field, v, parent
+    widget "record", field, v, parent, options
   else
     n = get_field_input parent, field
     debugger if not n
     v = n.text()
-    widget "record", field, v, n
+    widget "record", field, v, n, options
 
-@create_form = (xml, fields) ->
-  form_field xml, x for x in fields
+@create_form = (xml, fields, options) ->
+  form_field options, xml, field for field in fields

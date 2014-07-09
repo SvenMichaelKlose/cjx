@@ -56,14 +56,14 @@ record_div = -> (div().addClass "field")
 
 @is_record_type = (x) -> ($.inArray x, ["struct", "xreflist"]) is -1
 
-record = (field, value, xml) ->
+record = (field, value, xml, options) ->
   if is_record_type field.type
     f = expand_type field
     record_div().append (field_label field),
-                        (hook_field xml, field, widget f.type, f, value, xml),
+                        (hook_field xml, field, widget f.type, f, value, xml, options),
                         (measure field)
   else
-     widget field.type, field, value, xml
+     widget field.type, field, value, xml, options
 
 xreflist_empty = (field, value, xml) ->
   "Leer."
@@ -77,11 +77,14 @@ get_xref = (field, xml) ->
 get_xrefs = (field, xml) ->
   get_xref field, $ x for x in xml.children()
 
-xreflist = (field, value, xml) ->
+xreflist = (field, value, xml, options) ->
   if xml.children().length
-    widget field.type, field.data, null, x for x in get_xrefs field, xml
+    opt = $.extend {}, options
+    opt.records = field.records
+    opt.schema = field.schema
+    make_form opt, get_xrefs field, xml
   else
-    widget "xreflist_empty", field, null, xml
+    widget "xreflist_empty", field, null, xml, options
 
 @WIDGETS =
   textline:       text_input

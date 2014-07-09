@@ -28,11 +28,7 @@ client_xref = (name) ->
   menu_slide ->
     ($ ".arena form").remove()
     ($ ".arena").append containment = make_containment()
-    containment.append create_form RECORDS["clipboard"], SCHEMAS["clipboard"]
-#    make_new_form
-#      parent: RECORDS["clipboard"]
-#      schema: "clipboard"
-#      desc:   "Ablage"
+    containment.append create_form RECORDS["clipboard"], SCHEMAS["clipboard"], containment: containment
 
 @init_clipboard = ->
   ($ ".current_xml").append RECORDS["clipboard"] = generate_xml_from_schema "clipboard"

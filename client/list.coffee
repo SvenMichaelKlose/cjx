@@ -35,29 +35,29 @@ record = (options, x) ->
          type:  "checkbox"
          name:  x.children().first().text()
   (tr().addClass "record").append cb,
-                                  (create_form x, SCHEMAS[options.schema]),
+                                  (create_form x, SCHEMAS[options.schema], options),
                                   (edit_button options, x) if options.can_edit,
                                   (remove_button x)
 
-list = (options) ->
-  record options, x for x in options.parent.children()
+list = (options, records) ->
+  record options, x for x in records
 
 list_headers = (options) ->
   (th().text desc) for {desc} in SCHEMAS[options.schema]
 
-make_table = (options) ->
-  if options.parent.children().length is 0
+record_table = (options, records) ->
+  if records.length is 0
     widget "xreflist_empty"
   else
     head = thead().append tr().append th(),
                                       list_headers options
     table().append head,
-                   (tbody list options)
+                   (tbody list options, records)
 
-@make_form = (options) ->
+@make_form = (options, records) ->
   old_widgets = $.extend {}, WIDGETS
   $.extend WIDGETS, LIST_WIDGETS
   options.containment.append (h1().text options.desc),
                              (add_button options) if options.can_create,
-                             (make_table options)
+                             (record_table options, records)
   @WIDGETS = old_widgets
