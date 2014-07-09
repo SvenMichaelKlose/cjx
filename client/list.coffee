@@ -34,7 +34,7 @@ record = (options, x) ->
          class: "record_selector"
          type:  "checkbox"
          name:  x.children().first().text()
-  (tr().addClass "record").append cb,
+  (tr().addClass "record").append (cb if options.can_select),
                                   (render_record x, SCHEMAS[options.schema], options),
                                   (edit_button options, x) if options.can_edit,
                                   (remove_button x)
@@ -58,7 +58,7 @@ record_table = (options, records) ->
   old_widgets = $.extend {}, WIDGETS
   $.extend WIDGETS, LIST_WIDGETS
   options.containment.append (h1().text options.desc),
+                             (list_selecting_button options.containment if options.can_select and records.length > 1),
                              (add_button options) if options.can_create,
-                             (record_table options, records),
-                             (list_selecting_button options.containment)
+                             (record_table options, records)
   @WIDGETS = old_widgets

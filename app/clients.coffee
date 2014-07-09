@@ -5,6 +5,7 @@ make_client_form = ->
     desc:       "Kunden"
     can_create: true
     can_edit:   true
+    can_select:   true
   form.append (($ "<button>").text "Auswahl in Ablage übernehmen"). click (x) ->
     x.preventDefault()
     add_to_clipboard get_selected_record_names form
@@ -16,6 +17,7 @@ make_group_form = ->
     desc:       "Gruppen"
     can_create: true
     can_edit:   true
+    can_select:   true
 
 @open_clients = ->
   menu_slide ->
