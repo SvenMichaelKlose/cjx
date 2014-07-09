@@ -1,12 +1,11 @@
-clipboard_items = -> ($ "clipboard clients").children()
+clipboard_clients = -> $ "clipboard clients"
+clipboard_items = -> clipboard_clients().children()
 
 menubutton_text = ->
-  "Ablage (" + (if i = clipboard_items().length then i else "leer") + ")"
+  "Ablage (" + (clipboard_items().length || "leer") + ")"
 
 @update_clipboard_button = ->
   ($ ".menubutton_clipboard").text menubutton_text()
-
-clipboard_clients = -> RECORDS["clipboard"].find "clients"
 
 client_by_name = (name) ->
   (RECORDS["clients"].find "user:contains('#{name}')").parent()
