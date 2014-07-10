@@ -29,7 +29,7 @@ client_xref = (name) ->
     with_mixin
       xml:    RECORDS["clipboard"]
       schema: "clipboard"
-      -> containment.append render_record SCHEMAS["clipboard"]
+      -> containment.append render_record()
 
 @init_clipboard = ->
   ($ ".db").append RECORDS["clipboard"] = generate_xml_from_schema "clipboard"

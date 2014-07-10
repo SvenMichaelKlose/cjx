@@ -2,7 +2,7 @@ struct_div = -> (div().addClass "struct")
 
 struct = () ->
   struct_div().append (h2().text field.desc),
-                      (render_record field.data)
+                      with_mixin {schema: field.data}, render_record()
 
 record_div = -> (div().addClass "field")
 

@@ -3,7 +3,6 @@ make_new_form = () ->
     ($ ".arena").append make_containment().append render_list()
 
 make_client_form = ->
-  debugger
   with_mixin
     parent: RECORDS["clients"]
     schema: "client"

@@ -1,6 +1,6 @@
 record = () ->
   (tr().addClass "record").append record_selector(),
-                                  (render_record SCHEMAS[schema]),
+                                  render_record(),
                                   button_edit(),
                                   button_remove()
 

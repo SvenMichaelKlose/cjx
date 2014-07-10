@@ -6,9 +6,9 @@ render_field = () ->
     v = x.text()
   with_mixin {xml: x, value: v}, fieldview
 
-@render_record = (fields) ->
+@render_record = () ->
   r = []
-  for f in fields
+  for f in SCHEMAS[schema]
     with_mixin {field: f}, ->
       x = render_field()
       if $.isArray x

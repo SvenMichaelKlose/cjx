@@ -27,11 +27,12 @@ list_selector = () ->
   select_on_click()
   b
 
-open_record = (record, schema) ->
+open_record = (xml, schema) ->
   menu_slide ->
-    ($ ".arena").append form().addClass "defaultform"
-    with_mixin [{xml: record}, VIEWS_RECORD, VIEWS_RECORD_EDIT], ->
-      ($ ".defaultform").append render_record SCHEMAS[schema]
+    ($ ".arena").append f = form()
+    f.append with_mixin [{xml: xml, schema: schema},
+                         VIEWS_RECORD, VIEWS_RECORD_EDIT],
+                        render_record
 
 create_record = (parent, schema) ->
   record = generate_xml_from_schema schema
@@ -45,9 +46,10 @@ add_button = (options) ->
       open_record (create_record parent, schema), schema
 
 edit_button = () ->
-  (button().text "bearbeiten").click (x) ->
-    x.preventDefault()
-    open_record xml
+  do (xml, schema) ->
+    (button().text "bearbeiten").click (x) ->
+      x.preventDefault()
+      open_record xml, schema
 
 remove_button = () ->
   do (xml) ->
