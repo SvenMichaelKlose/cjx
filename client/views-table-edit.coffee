@@ -1,3 +1,9 @@
+get_selected_records = (containment) ->
+  containment.find ".record_selector:checked"
+
+@get_selected_record_names = (containment) ->
+  (($ x).attr "name" for x in get_selected_records containment)
+
 record_selector = (options, xml) ->
   $ "<input>"
     class: "record_selector"

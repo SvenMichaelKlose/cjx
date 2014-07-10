@@ -1,9 +1,3 @@
-get_selected_records = (containment) ->
-  containment.find ".record_selector:checked"
-
-@get_selected_record_names = (containment) ->
-  (($ x).attr "name" for x in get_selected_records containment)
-
 record = (options, xml) ->
   (tr().addClass "record").append (render "record_selector", options, xml),
                                   (render_record options, xml, SCHEMAS[options.schema]),
@@ -18,11 +12,10 @@ list_headers = (options) ->
 
 record_table = (options, records) ->
   if records.length is 0
-    render "xreflist_empty", options
-  else
-    head = thead().append tr().append th(), list_headers options
-    body = tbody().addClass "record_list"
-    table().append head, body.append list options, records
+    return render "xreflist_empty", options
+  head = thead().append tr().append th(), list_headers options
+  body = tbody().addClass "record_list"
+  table().append head, body.append list options, records
 
 @render_list = (options, records) ->
   with_views [VIEWS_TABLE, VIEWS_TABLE_EDIT], ->
