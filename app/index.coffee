@@ -13,5 +13,5 @@ $ ->
   init_records "groups"
   get_records ["clients", "groups"]
   init_clipboard()
-  init_views [VIEWS_RECORD, VIEWS_RECORD_DISPLAY, VIEWS_STRUCTURAL, VIEWS_XREF]
+  set_mixins [VIEWS_RECORD, VIEWS_RECORD_DISPLAY, VIEWS_STRUCTURAL, VIEWS_XREF]
   open_clients()

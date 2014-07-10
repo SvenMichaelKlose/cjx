@@ -4,7 +4,7 @@ get_selected_records = (containment) ->
 @get_selected_record_names = (containment) ->
   (($ x).attr "name" for x in get_selected_records containment)
 
-record_selector = (options, xml) ->
+record_selector = () ->
   $ "<input>"
     class: "record_selector"
     type:  "checkbox"
@@ -27,37 +27,39 @@ list_selector = () ->
   select_on_click()
   b
 
-open_record = (options, record) ->
+open_record = (record, schema) ->
   menu_slide ->
     ($ ".arena").append form().addClass "defaultform"
-    with_views [VIEWS_RECORD, VIEWS_RECORD_EDIT], ->
-      ($ ".defaultform").append render_record options, record, SCHEMAS[options.schema]
+    with_mixin [{xml: record}, VIEWS_RECORD, VIEWS_RECORD_EDIT], ->
+      ($ ".defaultform").append render_record SCHEMAS[schema]
 
-create_record = (options) ->
-  record = generate_xml_from_schema options.schema
-  options.parent.prepend record
+create_record = (parent, schema) ->
+  record = generate_xml_from_schema schema
+  parent.prepend record
   record
 
 add_button = (options) ->
-  (button().text "Neu").click (x) ->
-    x.preventDefault()
-    open_record options, create_record options
+  do (parent, schema) ->
+    (button().text "Neu").click (x) ->
+      x.preventDefault()
+      open_record (create_record parent, schema), schema
 
-edit_button = (options, xml) ->
+edit_button = () ->
   (button().text "bearbeiten").click (x) ->
     x.preventDefault()
-    open_record options, xml
+    open_record xml
 
-remove_button = (options, xml) ->
-  (button().text "entfernen").click (x) ->
-    x.preventDefault()
-    e = ($ x.target).closest ".record"
-    e.addClass "selected"
-    if confirm "Diesen Eintrag wirklich entfernen?"
-      xml = (xml.data "referencing_xml") || xml
-      xml.remove()
-      e.remove()
-    e.removeClass "selected"
+remove_button = () ->
+  do (xml) ->
+    (button().text "entfernen").click (x) ->
+      x.preventDefault()
+      e = ($ x.target).closest ".record"
+      e.addClass "selected"
+      if confirm "Diesen Eintrag wirklich entfernen?"
+        xml = (xml.data "referencing_xml") || xml
+        xml.remove()
+        e.remove()
+      e.removeClass "selected"
 
 @VIEWS_TABLE_EDIT =
   record_selector: record_selector

@@ -1,7 +1,9 @@
-value    = (options, xml, field, value) -> value
-boolean  = (options, xml, field, value) -> if value is "true" then "ja" else "nein"
-password = (options, xml, field, value) -> null
-image    = (options, xml, field, value) -> null
+root = this
+
+value    = () -> root.value
+boolean  = () -> if root.value is "true" then "ja" else "nein"
+password = () -> null
+image    = () -> null
 
 @VIEWS_RECORD_DISPLAY =
   textline:  value

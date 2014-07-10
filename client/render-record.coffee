@@ -1,17 +1,18 @@
-render_field = (options, xml, field) ->
+render_field = () ->
   if field.attr
-    value = xml.attr name
+    v = xml.attr name
   else
-    xml = xml.children field.name
-    value = xml.text()
-  render "field", options, xml, field, value
+    x = xml.children field.name
+    v = x.text()
+  with_mixin {xml: x, value: v}, fieldview
 
-@render_record = (options, xml, fields) ->
+@render_record = (fields) ->
   r = []
-  for field in fields
-    x = render_field options, xml, field
-    if $.isArray x
-      r = $.merge r, x
-    else
-      r.push x
+  for f in fields
+    with_mixin {field: f}, ->
+      x = render_field()
+      if $.isArray x
+        r = $.merge r, x
+      else
+        r.push x
   r

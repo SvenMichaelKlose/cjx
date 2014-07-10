@@ -1,25 +1,25 @@
-record = (options, xml) ->
-  (tr().addClass "record").append (render "record_selector", options, xml),
-                                  (render_record options, xml, SCHEMAS[options.schema]),
-                                  (render "button_edit", options, xml),
-                                  (render "button_remove", options, xml)
+record = () ->
+  (tr().addClass "record").append record_selector(),
+                                  (render_record SCHEMAS[schema]),
+                                  button_edit(),
+                                  button_remove()
 
-list = (options, records) ->
-  record options, ($ xml) for xml in records
+list = () ->
+  with_mixin {xml: ($ xml)}, record for xml in records
 
-list_headers = (options) ->
-  (th().text desc) for {desc} in SCHEMAS[options.schema]
+list_headers = () ->
+  (th().text desc) for {desc} in SCHEMAS[schema]
 
-record_table = (options, records) ->
+record_table = () ->
   if records.length is 0
-    return render "xreflist_empty", options
-  head = thead().append tr().append th(), list_headers options
+    return xreflist_empty()
+  head = thead().append tr().append th(), list_headers()
   body = tbody().addClass "record_list"
-  table().append head, body.append list options, records
+  table().append head, body.append list()
 
-@render_list = (options, records) ->
-  with_views [VIEWS_TABLE, VIEWS_TABLE_EDIT], ->
-    [(h1().text options.desc),
-     (render "list_selector", options, records),
-     (render "button_add", options, records),
-     (record_table options, records)]
+@render_list = () ->
+  with_mixin [VIEWS_TABLE, VIEWS_TABLE_EDIT], ->
+    [(h1().text desc),
+     list_selector(),
+     button_add(),
+     record_table()]

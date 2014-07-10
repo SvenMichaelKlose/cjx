@@ -1,10 +1,10 @@
-field = (options, xml, field, value) ->
+fieldview = () ->
   if is_record_type field.type
-    td().append (render_field options, xml, field, value),
-                (render "measure", options, xml, field, value)
+    td().append render_field(),
+                measure()
 
 @VIEWS_TABLE =
-  field:           field
+  fieldview:       fieldview
   struct:          -> null
   record_selector: -> null
   button_add:      -> null

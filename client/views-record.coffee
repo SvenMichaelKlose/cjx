@@ -1,9 +1,9 @@
-field_label = (options, xml, {name, desc}) ->
-  (label().attr "for",name).text desc + ":"
+field_label = () ->
+  (label().attr "for", field.name).text  field.desc + ":"
 
-measure = (options, xml, field) ->
+measure = () ->
   (($ "<span>").text m) if m = (expand_type field).measure
 
 @VIEWS_RECORD =
-  label:    field_label
-  measure:  measure
+  field_label: field_label
+  measure:     measure

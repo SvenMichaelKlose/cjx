@@ -12,12 +12,12 @@ get_xrefs = (xml, field) ->
     x.data "referencing_xml", xref
     x
 
-xreflist = (options, xml, field) ->
-  opt = $.extend {}, options
-  opt.records = field.records
-  opt.schema = field.schema
-  opt.desc = field.desc
-  render_list opt, get_xrefs xml, field
+xreflist = () ->
+  with_mixin
+    records: (get_xrefs xml, field)
+    schema:  field.schema
+    desc:    field.desc
+    render_list
 
 @VIEWS_XREF =
   xreflist_empty: xreflist_empty
