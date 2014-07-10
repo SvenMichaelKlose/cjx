@@ -1,10 +1,10 @@
-record_selector = (options, xml, field, value) ->
+record_selector = (options, xml) ->
   $ "<input>"
     class: "record_selector"
     type:  "checkbox"
     name:  xml.children().first().text()
 
-list_selector = (options, xml, field, value) ->
+list_selector = () ->
   b = button()
   set = (to) ->
     ((b.closest ".containment").find ".record_selector").prop "checked", to
@@ -32,17 +32,17 @@ create_record = (options) ->
   options.parent.prepend record
   record
 
-add_button = (options, xml, field, value) ->
+add_button = (options) ->
   (button().text "Neu").click (x) ->
     x.preventDefault()
     open_record options, create_record options
 
-edit_button = (options, xml, field, value) ->
+edit_button = (options, xml) ->
   (button().text "bearbeiten").click (x) ->
     x.preventDefault()
     open_record options, xml
 
-remove_button = (options, xml, field, value) ->
+remove_button = (options, xml) ->
   (button().text "entfernen").click (x) ->
     x.preventDefault()
     e = ($ x.target).closest ".record"
