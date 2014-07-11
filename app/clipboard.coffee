@@ -23,7 +23,7 @@ client_xref = (name) ->
       clipboard_clients().append client_xref name
 
 @open_clipboard = ->
-  ($ ".arena form").remove()
+  ($ ".arena").append h1().text "Ablage"
   ($ ".arena").append containment = make_containment()
   VIEWS_TABLE_SELECTION = $.extend {}, VIEWS_TABLE, VIEWS_TABLE_EDIT, {button_add: do_nothing, button_edit: do_nothing}
   c = do (xreflist) ->
