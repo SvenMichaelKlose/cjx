@@ -44,12 +44,13 @@
     type:  "user"
     desc:  "Gruppenadmin"
    ,
-    name:    "clients"
-    type:    "xreflist"
-    records: "clients"
+    name:     "clients"
+    type:     "xreflist"
+    records:  "clients"
+    schema:   "client"
     id_field: "name"
-    unique:  "yes"
-    desc:   "Kunden"
+    unique:   true
+    desc:     "Kunden"
   ]
 
   clipboard: [
