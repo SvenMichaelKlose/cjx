@@ -17,6 +17,9 @@ fieldview = ->
   else
     root[field.type]()
 
+list_empty = -> div().text "Leer."
+
 @VIEWS_STRUCTURAL =
   fieldview:   fieldview
   struct:      struct
+  list_empty:  list_empty

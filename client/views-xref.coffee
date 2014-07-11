@@ -1,5 +1,3 @@
-xreflist_empty = -> div().text "Leer."
-
 xreflist = ->
   with_mixin
     records: (get_referenced_records xml, field)
@@ -8,5 +6,4 @@ xreflist = ->
     list
 
 @VIEWS_XREF =
-  xreflist_empty: xreflist_empty
   xreflist:       xreflist

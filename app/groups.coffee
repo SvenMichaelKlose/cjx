@@ -11,11 +11,12 @@ group = (record, xreflist) -> [
        ignore:   for {name} in SCHEMAS[schema]
                    if name isnt "clients"
                      name
-       button_add: do_nothing
        xreflist: -> with_mixin [
            VIEWS_TABLE
            VIEWS_TABLE_EDIT
            heading:    do_nothing
+           button_add: do_nothing
+           list_empty: -> div().text "Dieser Gruppe sind noch keine Kunden zugeordnet."
         ], xreflist
      ], render_record
 ]
