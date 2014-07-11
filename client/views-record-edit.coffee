@@ -1,3 +1,5 @@
+root = this
+
 text_input = ->
   $ "<input>"
     type:   field.type
@@ -33,7 +35,7 @@ image_selection = ->
     src: value
 
 option = (txt, value) ->
-  o = option().text txt
+  o = root.option().text txt
   o.attr "selected", "selected" if txt is value
   o.attr value: txt
 

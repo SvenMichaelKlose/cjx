@@ -1,4 +1,4 @@
-menu_slide = (action) ->
+@menu_open = (action) ->
   ($ ".arena").slideUp 200, ->
     ($ ".arena").empty()
     action()
@@ -12,7 +12,7 @@ MENUITEMS = [
 ]
 
 make_menu_button = (cls, name, fun) ->
-  ((($ "<button>").text name).addClass "menubutton_" + cls).click -> menu_slide fun
+  ((($ "<button>").text name).addClass "menubutton_" + cls).click -> menu_open fun
 
 @init_menu = ->
   ($ ".menu").empty()
