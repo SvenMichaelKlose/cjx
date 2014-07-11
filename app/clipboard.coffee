@@ -1,5 +1,5 @@
 clipboard_clients = -> $ "clipboard clients"
-clipboard_items = -> clipboard_clients().children()
+@clipboard_items = -> clipboard_clients().children()
 
 menubutton_text = ->
   "Ablage (" + (clipboard_items().length || "leer") + ")"

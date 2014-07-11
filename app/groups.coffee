@@ -1,13 +1,21 @@
 root = this
 
+button_add_clients_from_clipboard = ->
+   button().text clipboard_items().length + " Kunden aus Ablage einfügen."
+
 group = (record, xreflist) -> [
    record(),
+   button_add_clients_from_clipboard(),
    with_mixin [
        record_selector: do_nothing
        ignore:   for {name} in SCHEMAS[schema]
                    if name isnt "clients"
                      name
-       xreflist: -> with_mixin [VIEWS_TABLE, VIEWS_TABLE_EDIT], xreflist
+       xreflist: -> with_mixin [
+           VIEWS_TABLE
+           VIEWS_TABLE_EDIT
+           button_add: do_nothing
+        ], xreflist
      ], render_record
 ]
 
