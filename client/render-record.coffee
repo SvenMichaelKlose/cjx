@@ -1,4 +1,4 @@
-render_field = () ->
+render_field = ->
   if field.attr
     v = xml.attr name
   else
@@ -6,5 +6,5 @@ render_field = () ->
     v = x.text()
   with_mixin {xml: x, value: v}, fieldview
 
-@render_record = () ->
+@render_record = ->
   ensure_element_array (with_mixin {field: f}, render_field for f in SCHEMAS[schema])

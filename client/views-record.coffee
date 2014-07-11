@@ -1,7 +1,7 @@
-field_label = () ->
+field_label = ->
   (label().attr "for", field.name).text  field.desc + ":"
 
-measure = () ->
+measure = ->
   span().text m if m = (expand_type field).measure
 
 @VIEWS_RECORD =

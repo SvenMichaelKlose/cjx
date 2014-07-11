@@ -1,9 +1,9 @@
 root = this
 
-value    = () -> root.value
-boolean  = () -> if root.value is "true" then "ja" else "nein"
-password = () -> null
-image    = () -> null
+value    = -> root.value
+boolean  = -> if root.value is "true" then "ja" else "nein"
+password = -> null
+image    = -> null
 
 @VIEWS_RECORD_DISPLAY =
   textline:  value

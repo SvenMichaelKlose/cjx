@@ -1,25 +1,25 @@
 root = this
 
-fieldview = () ->
+fieldview = ->
   if is_record_type field.type
     td().append render_field(),
                 measure()
 
-record = () ->
+record = ->
   (tr().addClass "record").append root.record_selector(),
                                   root.render_record(),
                                   root.button_edit(),
                                   root.button_remove()
 
-list_headers = () ->
+list_headers = ->
   (th().text desc) for {desc} in SCHEMAS[schema]
 
-record_table = () ->
+record_table = ->
   return xreflist_empty() if records.length is 0
   table().append (thead().append tr().append th(), list_headers()),
                  tbody().append render_list()
 
-list = () ->
+list = ->
   [(h1().text desc),
    root.list_selector(),
    root.button_add(),
@@ -31,13 +31,13 @@ get_selected_records = (containment) ->
 @get_selected_record_names = (containment) ->
   (($ x).attr "name" for x in get_selected_records containment)
 
-record_selector = () ->
+record_selector = ->
   $ "<input>"
     class: "record_selector"
     type:  "checkbox"
     name:  xml.children().first().text()
 
-list_selector = () ->
+list_selector = ->
   b = button()
   set = (to) ->
     ((b.closest ".containment").find ".record_selector").prop "checked", to
@@ -72,13 +72,13 @@ add_button = (options) ->
       x.preventDefault()
       open_record (create_record parent, schema), schema
 
-edit_button = () ->
+edit_button = ->
   do (xml, schema) ->
     (button().text "bearbeiten").click (x) ->
       x.preventDefault()
       open_record xml, schema
 
-remove_button = () ->
+remove_button = ->
   do (xml) ->
     (button().text "entfernen").click (x) ->
       x.preventDefault()

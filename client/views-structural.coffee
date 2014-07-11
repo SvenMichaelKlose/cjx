@@ -2,7 +2,7 @@ root = this
 
 struct_div = -> (div().addClass "struct")
 
-struct = () ->
+struct = ->
   struct_div().append (h2().text field.desc),
                       with_mixin {schema: field.data}, render_record()
 
@@ -10,7 +10,7 @@ struct = () ->
 
 field_div = -> (div().addClass "field")
 
-fieldview = () ->
+fieldview = ->
   if is_record_type field.type
     field_div().append field_label(),
                        (hook_field xml, field, render_field()),

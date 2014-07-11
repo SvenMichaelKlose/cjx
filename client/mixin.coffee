@@ -1,17 +1,17 @@
-MIXIN_KEYS = []
-MIXIN_STACK = []
+KNOWN_KEYS = []
+STACK = []
 
 root = this
 
-save_old = () ->
+save_old = ->
   mix = {}
-  mix[key] = root[key] for key in MIXIN_KEYS
-  MIXIN_STACK.unshift mix
+  mix[key] = root[key] for key in KNOWN_KEYS
+  STACK.unshift mix
 
-adjoin_keys = (set) ->
+add_known_keys = (set) ->
   for key, value of set
-    if $.inArray key, MIXIN_KEYS is -1
-      MIXIN_KEYS.push key
+    if $.inArray key, KNOWN_KEYS is -1
+      KNOWN_KEYS.push key
 
 apply = (set) ->
   root[key] = value for key, value of set
@@ -19,11 +19,11 @@ apply = (set) ->
 @set_mixins = (sets) -> apply set for set in sets
 
 push = (set) ->
-  adjoin_keys set
+  add_known_keys set
   save_old()
   apply set
 
-pop = -> apply MIXIN_STACK.shift()
+pop = -> apply STACK.shift()
 
 @with_mixin = (sets, fun) ->
   if $.isArray sets
