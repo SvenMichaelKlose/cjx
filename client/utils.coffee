@@ -6,9 +6,12 @@
   if not $.isArray x
     return x
   r = []
-  for i in x
-    if $.isArray i
-      r = $.merge r, i
-    else
-      r.push i
+  add_items = (x) ->
+    for i in x
+      if i
+        if $.isArray i
+          add_items i
+        else
+          r.push i
+  add_items x
   r
