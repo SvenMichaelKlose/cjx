@@ -21,7 +21,7 @@ record_table = ->
 
 list = ->
   [(h1().text desc),
-   root.list_selector(),
+   (root.list_selector() if records.length),
    root.button_add(),
    record_table()]
 
