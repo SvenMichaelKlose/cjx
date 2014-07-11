@@ -14,6 +14,8 @@ MENUITEMS = [
 make_menu_button = (cls, name, fun) ->
   ((($ "<button>").text name).addClass "menubutton_" + cls).click fun
 
-@make_menu_bar = ->
-  ($ ".menu").append make_menu_button c, n, f for [c, n, f] in MENUITEMS
-  ($ ".menu").append (($ "<button>").text "Änderungen übernehmen").click post_records
+@init_menu = ->
+  ($ ".menu").empty()
+  ($ ".menu").append (make_menu_button c, n, f for [c, n, f] in MENUITEMS),
+                     (($ "<button>").text "Änderungen übernehmen").click post_records
+  MENUITEMS[0][2]()
