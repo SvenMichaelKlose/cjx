@@ -16,10 +16,19 @@ range = ->
     step: field.step
 
 password = ->
-  with_mixin [{field: {type: "password", name: name}}], text_input
+  with_mixin [
+      field:
+        type: "password"
+        name: name
+    ], text_input
 
 boolean = ->
-  with_mixin [{field: {type: "checkbox", name: name}, value: "true"}], text_input
+  e = with_mixin [
+          field:
+            type: "checkbox"
+            name: name
+          value: "true"
+        ], text_input
   e.attr "checked", "checked" if value is "true"
   e
 

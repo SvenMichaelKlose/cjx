@@ -3,4 +3,9 @@
     parent: RECORDS["groups"]
     schema: "group"
     desc:   "Gruppen"
-    make_new_form
+    ->
+      with_mixin [
+          VIEWS_TABLE
+          VIEWS_TABLE_EDIT
+          records: parent.children()
+        ], -> ($ ".arena").append make_containment().append list()

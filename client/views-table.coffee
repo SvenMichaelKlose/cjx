@@ -57,9 +57,12 @@ list_selector = ->
 open_record = (xml, schema) ->
   menu_open ->
     ($ ".arena").append f = form()
-    f.append with_mixin [{xml: xml, schema: schema},
-                         VIEWS_RECORD, VIEWS_RECORD_EDIT],
-                        render_record
+    f.append with_mixin [
+        VIEWS_RECORD
+        VIEWS_RECORD_EDIT
+        xml:    xml
+        schema: schema
+      ], render_record
 
 create_record = (parent, schema) ->
   record = generate_xml_from_schema schema
