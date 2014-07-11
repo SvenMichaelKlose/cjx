@@ -23,16 +23,19 @@ client_xref = (name) ->
       clipboard_clients().append client_xref name
 
 @open_clipboard = ->
-  menu_slide ->
-    ($ ".arena form").remove()
-    ($ ".arena").append containment = make_containment()
-    VIEWS_TABLE_SELECTION = $.extend {}, VIEWS_TABLE, VIEWS_TABLE_EDIT, {button_add: do_nothing, button_edit: do_nothing}
-    debugger
-    c = do (xreflist) ->
-          xml:      RECORDS["clipboard"]
-          schema:   "clipboard"
-          xreflist: -> with_mixin VIEWS_TABLE_SELECTION, xreflist
-    containment.append with_mixin c, render_record
+  ($ ".arena form").remove()
+  ($ ".arena").append containment = make_containment()
+  VIEWS_TABLE_SELECTION = $.extend {}, VIEWS_TABLE, VIEWS_TABLE_EDIT, {button_add: do_nothing, button_edit: do_nothing}
+  c = do (xreflist) ->
+        xml:      RECORDS["clipboard"]
+        schema:   "clipboard"
+        xreflist: -> with_mixin VIEWS_TABLE_SELECTION, xreflist
+  containment.append with_mixin c, render_record
+
+@button_selected_to_clipboard = (containment) ->
+  (button().text "Auswahl in Ablage übernehmen").click (x) ->
+    x.preventDefault()
+    add_to_clipboard get_selected_record_names containment
 
 @init_clipboard = ->
   ($ ".db").append RECORDS["clipboard"] = generate_xml_from_schema "clipboard"

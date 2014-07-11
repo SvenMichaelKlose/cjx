@@ -5,5 +5,5 @@ make_element = (name, v) ->
 for n in ["label", "div", "span", "button",
           "h1", "h2", "h3",
           "table", "thead", "tfoot", "tbody", "tr", "th", "td",
-          "form"]
+          "form", "select"]
   @[n] = do (n) -> (v) -> make_element n, v
