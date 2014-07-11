@@ -11,10 +11,11 @@ group = (record, xreflist) -> [
        ignore:   for {name} in SCHEMAS[schema]
                    if name isnt "clients"
                      name
+       button_add: do_nothing
        xreflist: -> with_mixin [
            VIEWS_TABLE
            VIEWS_TABLE_EDIT
-           button_add: do_nothing
+           heading:    do_nothing
         ], xreflist
      ], render_record
 ]

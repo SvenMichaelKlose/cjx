@@ -24,8 +24,11 @@ record_table = ->
                                              list_headers()),
                  tbody().append render_list()
 
+heading = ->
+  (h1().text desc)
+
 list = ->
-  [(h1().text desc),
+  [root.heading(),
    (root.list_selector() if records.length),
    root.button_add(),
    record_table()]
@@ -101,6 +104,7 @@ remove_button = ->
 @VIEWS_TABLE =
   fieldview:       fieldview
   record:          record
+  heading:         heading
   list:            list
   struct:          do_nothing
   list_selector:   do_nothing
