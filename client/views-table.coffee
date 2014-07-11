@@ -4,6 +4,8 @@ fieldview = ->
   if is_record_type field.type
     td().append render_field(),
                 measure()
+  else
+    root[field.type]()
 
 record = ->
   (tr().addClass "record").append root.record_selector(),
