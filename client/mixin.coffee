@@ -23,16 +23,22 @@ push = (set) ->
   save_old()
   apply set
 
-pop = -> apply STACK.shift()
-
-@with_mixin = (sets, fun) ->
+push_set_or_sets = (sets) ->
   if $.isArray sets
     push set for set in sets
   else
     push sets
-  r = fun()
+
+pop = -> apply STACK.shift()
+
+pop_set_or_sets = (sets) ->
   if $.isArray sets
     pop() for set in sets
   else
     pop()
+
+@with_mixin = (sets, fun) ->
+  push_set_or_sets sets
+  r = fun()
+  pop_set_or_sets sets
   r
