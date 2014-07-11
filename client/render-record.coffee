@@ -7,12 +7,4 @@ render_field = () ->
   with_mixin {xml: x, value: v}, fieldview
 
 @render_record = () ->
-  r = []
-  for f in SCHEMAS[schema]
-    with_mixin {field: f}, ->
-      x = render_field()
-      if $.isArray x
-        r = $.merge r, x
-      else
-        r.push x
-  r
+  ensure_element_array (with_mixin {field: f}, render_field for f in SCHEMAS[schema])
