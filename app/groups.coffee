@@ -1,11 +1,17 @@
+group = (record) ->
+  record()
+
 @open_groups = ->
-  with_mixin
-    parent: RECORDS["groups"]
-    schema: "group"
-    desc:   "Gruppen"
-    ->
+  with_mixin [
+      schema: "group"
+      parent: RECORDS["groups"]
+      desc:   "Gruppen"
+      VIEWS_TABLE
+      VIEWS_TABLE_EDIT
+    ], ->
       with_mixin [
-          VIEWS_TABLE
-          VIEWS_TABLE_EDIT
+          ignore: ["clients"]
+          record:  (do (record) -> -> group record)
           records: parent.children()
-        ], -> ($ ".arena").append make_containment().append list()
+        ], ->
+          ($ ".arena").append make_containment().append list()

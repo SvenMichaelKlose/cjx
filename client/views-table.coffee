@@ -12,11 +12,14 @@ record = ->
                                   root.button_remove()
 
 list_headers = ->
-  (th().text desc) for {desc} in SCHEMAS[schema]
+  for {desc, name} in SCHEMAS[schema]
+    if not record_is_ignored name
+      (th().text desc)
 
 record_table = ->
-  return xreflist_empty() if records.length is 0
-  table().append (thead().append tr().append th(), list_headers()),
+  return xreflist_empty() if not records.length
+  table().append (thead().append tr().append (th() if root.record_selector isnt do_nothing),
+                                             list_headers()),
                  tbody().append render_list()
 
 list = ->
@@ -97,12 +100,12 @@ remove_button = ->
   fieldview:       fieldview
   record:          record
   list:            list
-  struct:          -> null
-  list_selector:   -> null
-  record_selector: -> null
-  button_add:      -> null
-  button_edit:     -> null
-  button_remove:   -> null
+  struct:          do_nothing
+  list_selector:   do_nothing
+  record_selector: do_nothing
+  button_add:      do_nothing
+  button_edit:     do_nothing
+  button_remove:   do_nothing
 
 @VIEWS_TABLE_EDIT =
   record_selector: record_selector

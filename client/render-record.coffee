@@ -1,3 +1,8 @@
+@ignore = []
+
+@record_is_ignored = (name) ->
+  ($.inArray name, ignore) isnt -1
+
 render_field = ->
   if field.attr
     v = xml.attr name
@@ -7,4 +12,6 @@ render_field = ->
   with_mixin {xml: x, value: v}, fieldview
 
 @render_record = ->
-  ensure_element_array (with_mixin {field: f}, render_field for f in SCHEMAS[schema])
+  for f in SCHEMAS[schema]
+    if not record_is_ignored f.name
+      ensure_element_array with_mixin {field: f}, render_field

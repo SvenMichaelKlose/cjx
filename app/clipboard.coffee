@@ -30,7 +30,7 @@ client_xref = (name) ->
         xml:      RECORDS["clipboard"]
         schema:   "clipboard"
         xreflist: -> with_mixin VIEWS_TABLE_SELECTION, xreflist
-  containment.append with_mixin c, render_record
+  containment.append ensure_element_array with_mixin c, render_record
 
 @button_selected_to_clipboard = (containment) ->
   (button().text "Auswahl in Ablage übernehmen").click (x) ->
