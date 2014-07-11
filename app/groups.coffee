@@ -1,7 +1,8 @@
 root = this
 
 button_add_clients_from_clipboard = ->
-   button().text clipboard_items().length + " Kunden aus Ablage einfügen."
+   num = clipboard_items().length
+   button().text num + " Kunde#{if num is 1 then "" else "n"} aus Ablage einfügen."
 
 schema_names_except = (x) ->
   for {name} in SCHEMAS[schema]
@@ -38,5 +39,6 @@ group = (record, xreflist) -> [
           ignore:  ["clients"]
           records: parent.children()
         ], ->
-          ($ ".arena").append make_containment().append list(),
-                                                        ensure_element_array group record, xreflist
+          ($ ".arena").append containment = make_containment()
+          containment.append_nested list(),
+                                    group record, xreflist

@@ -14,4 +14,4 @@ render_field = ->
 @render_record = ->
   for f in SCHEMAS[schema]
     if not record_is_ignored f.name
-      ensure_element_array with_mixin {field: f}, render_field
+      with_mixin {field: f}, render_field

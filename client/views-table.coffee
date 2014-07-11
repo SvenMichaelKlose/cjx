@@ -65,7 +65,7 @@ list_selector = ->
 open_record = (xml, schema) ->
   menu_open ->
     ($ ".arena").append f = form()
-    f.append with_mixin [
+    f.append_nested with_mixin [
         VIEWS_RECORD
         VIEWS_RECORD_EDIT
         xml:    xml
