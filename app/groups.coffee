@@ -9,7 +9,7 @@ schema_names_except = (x) ->
     if name isnt x
       name
 
-group = (record, xreflist) -> [
+group_clients = (record, xreflist) -> [
    button_add_clients_from_clipboard(),
    with_mixin [
        xml: parent.children()
@@ -41,4 +41,4 @@ group = (record, xreflist) -> [
         ], ->
           ($ ".arena").append containment = make_containment()
           containment.append_nested list(),
-                                    group record, xreflist
+                                    group_clients record, xreflist
