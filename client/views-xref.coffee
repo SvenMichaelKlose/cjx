@@ -5,7 +5,7 @@ xreflist = () ->
     records: (get_referenced_records xml, field)
     schema:  field.schema
     desc:    field.desc
-    render_list
+    list
 
 @VIEWS_XREF =
   xreflist_empty: xreflist_empty

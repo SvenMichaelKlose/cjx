@@ -26,10 +26,13 @@ client_xref = (name) ->
   menu_slide ->
     ($ ".arena form").remove()
     ($ ".arena").append containment = make_containment()
-    with_mixin
-      xml:    RECORDS["clipboard"]
-      schema: "clipboard"
-      -> containment.append render_record()
+    VIEWS_TABLE_SELECTION = $.extend {}, VIEWS_TABLE, VIEWS_TABLE_EDIT, {button_add: do_nothing, button_edit: do_nothing}
+    debugger
+    c = do (xreflist) ->
+          xml:      RECORDS["clipboard"]
+          schema:   "clipboard"
+          xreflist: -> with_mixin VIEWS_TABLE_SELECTION, xreflist
+    containment.append with_mixin c, render_record
 
 @init_clipboard = ->
   ($ ".db").append RECORDS["clipboard"] = generate_xml_from_schema "clipboard"
