@@ -5,7 +5,8 @@
     ($ ".arena").slideDown 200
 
 MENUITEMS = [
-  ["clients", "App–Verwaltung", open_clients]
+  ["clients", "Kunden", open_clients]
+  ["groups", "Gruppen", open_groups]
 #  ["menu_preferences", "Einstellungen",   open_preferences]
   ["clipboard", "update_clipboard_button()", open_clipboard]
 ]
