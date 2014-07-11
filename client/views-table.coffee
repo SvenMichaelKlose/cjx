@@ -2,16 +2,17 @@ root = this
 
 fieldview = ->
   if is_record_type field.type
-    td().append render_field(),
-                measure()
+    (td().addClass field.name).append_nested render_field(),
+                                             measure()
   else
     root[field.type]()
 
 record = ->
-  (tr().addClass "record").append root.record_selector(),
-                                  root.render_record(),
-                                  root.button_edit(),
-                                  root.button_remove()
+  row = (tr().addClass "record " + schema)
+  row.append_nested root.record_selector(),
+                    root.render_record(),
+                    root.button_edit(),
+                    root.button_remove()
 
 list_headers = ->
   for {desc, name} in SCHEMAS[schema]
