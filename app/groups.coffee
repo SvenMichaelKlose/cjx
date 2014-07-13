@@ -17,7 +17,7 @@ button_add_clients_from_clipboard = ->
            open_groups()
 
 schema_names_except = (x) ->
-  for {name} in SCHEMAS[schema]
+  for {name} in schema
     if name isnt x
       name
 
@@ -39,7 +39,7 @@ group_clients = (record, xreflist) -> [
 
 @open_groups = ->
   with_mixin [
-      schema: "group"
+      schema: SCHEMAS["group"]
       parent: RECORDS["groups"]
       desc:   "Gruppen"
       VIEWS_TABLE

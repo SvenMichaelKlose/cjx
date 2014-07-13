@@ -1,5 +1,12 @@
-#($ ".db").append APPS = [generate_xml_from_schema "app"]
+form  = ->
+  debugger
+  with_mixin [
+      VIEWS_STRUCTURAL
+      VIEWS_RECORD_EDIT
+      xml:    RECORDS["app"]
+      schema: SCHEMAS["app"]
+      desc:   "Einstellungen"
+    ], render_record
 
 @open_preferences = ->
-  ($ ".arena").append form().addClass "prefform"
-  ($ ".prefform").append render_record {}, ($ "app"), SCHEMAS.app
+  $(".arena").append make_containment().append_nested form

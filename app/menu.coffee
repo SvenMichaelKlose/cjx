@@ -5,10 +5,10 @@
     ($ ".arena").slideDown 200
 
 MENUITEMS = [
-  ["clients", "Kunden", open_clients]
-  ["groups", "Gruppen", open_groups]
-#  ["menu_preferences", "Einstellungen",   open_preferences]
-  ["clipboard", "update_clipboard_button()", open_clipboard]
+  ["clients",     "Kunden", open_clients]
+  ["groups",      "Gruppen", open_groups]
+  ["preferences", "Einstellungen",   open_preferences]
+  ["clipboard",   "update_clipboard_button()", open_clipboard]
 ]
 
 make_menu_button = (cls, name, fun) ->

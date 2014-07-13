@@ -8,6 +8,6 @@
 @open_clients = ->
   with_mixin [
       parent: RECORDS["clients"]
-      schema: "client"
+      schema: SCHEMAS["client"]
       desc:   "Kunden"
     ], -> (form = make_new_form()).append button_selected_to_clipboard form

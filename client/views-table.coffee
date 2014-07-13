@@ -15,7 +15,7 @@ record = ->
                     root.button_remove()
 
 list_headers = ->
-  for {desc, name} in SCHEMAS[schema]
+  for {desc, name} in schema
     if not record_is_ignored name
       (th().text desc)
 

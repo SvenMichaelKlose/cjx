@@ -12,6 +12,6 @@ render_field = ->
   with_mixin {xml: x, value: v}, fieldview
 
 @render_record = ->
-  for f in SCHEMAS[schema]
+  for f in schema
     if not record_is_ignored f.name
       with_mixin {field: f}, render_field
