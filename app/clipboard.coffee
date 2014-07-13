@@ -13,7 +13,7 @@ client_by_name = (name) ->
 clipboard_client_by_name = (name) ->
   clipboard_clients().children "[name='#{name}']"
 
-client_xref = (name) ->
+@client_xref = (name) ->
   if ensure_element client_by_name name
     $ "<client>", name: name
 
@@ -30,9 +30,10 @@ client_xref = (name) ->
   ($ ".arena").append containment = make_containment()
   VIEWS_TABLE_SELECTION = $.extend {}, VIEWS_TABLE, VIEWS_TABLE_EDIT, {button_add: do_nothing, button_edit: do_nothing}
   c = do (xreflist) ->
-        xml:      RECORDS["clipboard"]
-        schema:   "clipboard"
-        xreflist: -> with_mixin VIEWS_TABLE_SELECTION, xreflist
+    xml:      RECORDS["clipboard"]
+    schema:   "clipboard"
+    xreflist: -> with_mixin VIEWS_TABLE_SELECTION, xreflist
+  debugger
   containment.append_nested with_mixin c, render_record
 
 @button_selected_to_clipboard = (containment) ->
