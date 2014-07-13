@@ -48,7 +48,7 @@
     type:     "xreflist"
     records:  "clients"
     schema:   "client"
-    id_field: "name"
+    id_field: "user"
     unique:   true
     desc:     "Kunden"
   ]
@@ -59,7 +59,7 @@
     records:  "clients"
     schema:   "client"
     id_field: "user"
-    unique:   "yes"
+    unique:   true
     desc:     "Kunden"
   ]
 
