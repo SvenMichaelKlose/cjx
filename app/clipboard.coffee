@@ -31,7 +31,7 @@ clipboard_client_by_name = (name) ->
   VIEWS_TABLE_SELECTION = $.extend {}, VIEWS_TABLE, VIEWS_TABLE_EDIT, {button_add: do_nothing, button_edit: do_nothing}
   c = do (xreflist) ->
     xml:      RECORDS["clipboard"]
-    schema:   "clipboard"
+    schema:   SCHEMAS["clipboard"]
     xreflist: -> with_mixin VIEWS_TABLE_SELECTION, xreflist
   debugger
   containment.append_nested with_mixin c, render_record
