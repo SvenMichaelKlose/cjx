@@ -20,10 +20,10 @@ list_headers = ->
       (th().text desc)
 
 record_table = ->
-  return list_empty() if not records.length
-  table().append (thead().append tr().append (th() if root.record_selector isnt do_nothing),
-                                             list_headers()),
-                 tbody().append render_list()
+  [(list_empty() if not records.length),
+   table().append (thead().append tr().append (th() if root.record_selector isnt do_nothing),
+                                              list_headers()),
+                  tbody().append render_list()]
 
 heading = ->
   (h1().text desc)
