@@ -10,7 +10,9 @@ button_add_clients_from_clipboard = ->
            x.preventDefault()
            clients = parent.find "clients"
            for i in ($ "clipboard clients").children()
-             clients.append ($ i).clone()
+             i = $ i
+             if not (clients.find "[name=#{i.attr "name"}]").length
+               clients.append client_xref i.attr "name"
            ($ ".arena").empty()
            open_groups()
 
