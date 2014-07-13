@@ -1,8 +1,18 @@
 root = this
 
+button_txt_add_clients_from_clipboard = ->
+  num = clipboard_items().length
+  num + " Kunde#{if num is 1 then "" else "n"} aus Ablage einfügen."
+
 button_add_clients_from_clipboard = ->
-   num = clipboard_items().length
-   button().text num + " Kunde#{if num is 1 then "" else "n"} aus Ablage einfügen."
+  b = button().text button_txt_add_clients_from_clipboard()
+  b.click do (parent) -> (x) ->
+           x.preventDefault()
+           clients = parent.find "clients"
+           for i in ($ "clipboard clients").children()
+             clients.append ($ i).clone()
+           ($ ".arena").empty()
+           open_groups()
 
 schema_names_except = (x) ->
   for {name} in SCHEMAS[schema]
@@ -22,9 +32,7 @@ group_clients = (record, xreflist) -> [
            button_add: do_nothing
            list_empty: -> div().text "Dieser Gruppe sind noch keine Kunden zugeordnet."
         ], xreflist
-     ], ->
-       debugger
-       render_record()
+     ], render_record
 ]
 
 @open_groups = ->

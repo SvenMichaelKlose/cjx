@@ -1,4 +1,4 @@
-clipboard_clients = -> $ "clipboard clients"
+clipboard_clients = -> $ ".db clipboard clients"
 @clipboard_items = -> clipboard_clients().children()
 
 menubutton_text = ->
@@ -17,10 +17,13 @@ client_xref = (name) ->
   if ensure_element client_by_name name
     $ "<client>", name: name
 
-@add_to_clipboard = (names) ->
+@add_client_xrefs = (to, names) ->
   for name in names
     if not (clipboard_client_by_name name).length
-      clipboard_clients().append client_xref name
+      to.append client_xref name
+
+@add_to_clipboard = (names) ->
+  add_client_xrefs clipboard_clients(), names
 
 @open_clipboard = ->
   ($ ".arena").append h1().text "Ablage"
