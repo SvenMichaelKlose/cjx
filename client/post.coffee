@@ -1,7 +1,7 @@
 server_path = (name) -> "/pi/" + ID_CLIENT + "/" + name
 
-outerHTML = (x, name) ->
-  "<#{name}>#{if x then x.html() else ""}</#{name}>"
+outerHTML = (x) ->
+  (div().append x.clone()).html()
 
 @post_file = (xml, name) ->
   xhr = $.post (server_path name), x: outerHTML RECORDS[name], name
