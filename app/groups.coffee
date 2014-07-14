@@ -24,14 +24,14 @@ schema_names_except = (x) ->
 group_clients = (record, xreflist) -> [
   button_add_clients_from_clipboard(),
   with_mixin [
-      xml: parent.children()
-      record_selector: do_nothing
+      xml:      parent.children()
       ignore:   schema_names_except "clients"
       xreflist: -> with_mixin [
           VIEWS_TABLE
           VIEWS_TABLE_EDIT
-          heading:    do_nothing
-          button_add: do_nothing
+          record_selector: do_nothing
+          heading:         do_nothing
+          button_add:      do_nothing
           list_empty: -> div().text "Dieser Gruppe sind noch keine Kunden zugeordnet."
        ], xreflist
     ], render_record
