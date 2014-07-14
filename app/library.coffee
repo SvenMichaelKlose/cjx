@@ -18,7 +18,6 @@ button_add = ->
     x.preventDefault()
     a = $.ajax "/pi/admin/upload.php", p
     a.done (data) ->
-      debugger
       f = $ "<file>"
             src: (($ data).find "file").attr "src"
       ($ ".db library").append f
@@ -27,11 +26,12 @@ button_add = ->
       open_library()
   f
 
-file = (x) ->
-  div().append img().attr {src: (x.attr "src"), width: "20%"}
+file = ->
+  (div().addClass "record").append button_remove(),
+                                   img().attr {src: (xml.attr "src"), width: "20%"}
 
 filelist = ->
-  file ($ x) for x in records
+  with_mixin {xml: ($ x)}, file for x in records
 
 @open_library = ->
   with_mixin [
@@ -51,4 +51,3 @@ update_library_button = ->
 @init_library = ->
   $(".db library").bind "DOMSubtreeModified", update_library_button
   update_library_button()
-
