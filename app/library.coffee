@@ -4,7 +4,7 @@ button_add = ->
         enctype: "multipart/form-data"
   i = $ "<input>"
         type: "file"
-        name: "image[]"
+        name: "file"
         size: "10"
   s = button().text "Hochladen…"
   f.append (h2().text "Upload"),
@@ -18,16 +18,28 @@ button_add = ->
     x.preventDefault()
     a = $.ajax "/pi/admin/upload.php", p
     a.done (data) ->
-      alert "complete " + data
+      debugger
+      f = $ "<file>"
+            src: (($ data).find "file").attr "src"
+      ($ ".db library").append f
+      ($ ".arena").empty()
+      open_library()
   f
+
+file = (x) ->
+  div().append img().attr {src: (x.attr "src"), width: "20%"}
+
+filelist = ->
+  file ($ x) for x in records
 
 @open_library = ->
   with_mixin [
       VIEWS_TABLE
       VIEWS_TABLE_EDIT
       records: RECORDS["library"].children()
-      parent: RECORDS["library"]
-      schema: SCHEMAS["library"]
-      desc:   "Bibliothek"
+      parent:  RECORDS["library"]
+      schema:  SCHEMAS["library"]
+      desc:    "Bibliothek"
       button_add: button_add
-    ], -> ($ ".arena").append (make_containment().append_nested list()),
+    ], ->
+      ($ ".arena").append (make_containment().append_nested button_add(), filelist()),

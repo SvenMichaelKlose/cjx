@@ -86,6 +86,12 @@
     desc: "Code"
   ]
 
+  file: [
+    name: "src"
+    type: "url"
+    desc: "Datei"
+  ]
+
   library: [
     name:   "images"
     type:   "list"

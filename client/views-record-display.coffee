@@ -15,6 +15,7 @@ image    = do_nothing
   minutes:   value
   color:     value
   email:     value
+  url:       value
   password:  password
   range:     value
   boolean:   boolean
