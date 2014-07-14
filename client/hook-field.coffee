@@ -1,4 +1,4 @@
-@hook_field = (n, {type, attr, name}, elm) ->
+@hook_field = (xml, {type, attr, name}, elm) ->
   if elm
     h = (x) ->
           t = $ x.target
@@ -7,9 +7,9 @@
               else
                 t.val()
           if attr
-            n.attr name, v
+            xml.attr name, v
           else
-            n.text v
+            xml.text v
     elm.change h
     elm.blur h
     elm.click h

@@ -4,7 +4,6 @@ field_div = -> (div().addClass "field")
 struct_div = -> (div().addClass "struct")
 
 struct = ->
-  debugger
   struct_div().append (h2().text field.desc),
                       with_mixin {schema: field.data}, render_record
 
