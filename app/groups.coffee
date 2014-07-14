@@ -39,16 +39,14 @@ group_clients = (record, xreflist) -> [
 
 @open_groups = ->
   with_mixin [
-      schema: SCHEMAS["group"]
-      parent: RECORDS["groups"]
-      desc:   "Gruppen"
       VIEWS_TABLE
       VIEWS_TABLE_EDIT
+      schema:  SCHEMAS["group"]
+      records: RECORDS["groups"].children()
+      parent:  RECORDS["groups"]
+      desc:    "Gruppen"
+      ignore:  ["clients"]
     ], ->
-      with_mixin [
-          ignore:  ["clients"]
-          records: parent.children()
-        ], ->
-          ($ ".arena").append containment = make_containment()
-          containment.append_nested list(),
-                                    group_clients record, xreflist
+      ($ ".arena").append containment = make_containment()
+      containment.append_nested list(),
+                                group_clients record, xreflist
