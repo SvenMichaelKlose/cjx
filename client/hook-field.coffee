@@ -1,5 +1,5 @@
 @hook_field = (xml, {type, attr, name}, elm) ->
-  if elm
+  if elm instanceof jQuery
     h = (x) ->
           t = $ x.target
           v = if type is "boolean"
