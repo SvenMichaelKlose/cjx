@@ -73,16 +73,16 @@ open_record = (xml, schema) ->
         schema: schema
       ], render_record
 
-create_record = (parent, schema) ->
-  record = generate_xml_from_schema schema
+create_record = (parent, schema, schema_name) ->
+  record = generate_xml_from_schema schema_name
   parent.prepend record
   record
 
-add_button = (options) ->
-  do (parent, schema) ->
+add_button = () ->
+  do (parent, schema, schema_name) ->
     (button().text "Neu").click (x) ->
       x.preventDefault()
-      open_record (create_record parent, schema), schema
+      open_record (create_record parent, schema, schema_name), schema
 
 edit_button = ->
   do (xml, schema) ->

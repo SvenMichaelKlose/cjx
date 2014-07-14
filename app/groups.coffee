@@ -42,6 +42,7 @@ group_clients = (record, xreflist) -> [
       VIEWS_TABLE
       VIEWS_TABLE_EDIT
       schema:  SCHEMAS["group"]
+      schema_name: "group"
       records: RECORDS["groups"].children()
       parent:  RECORDS["groups"]
       desc:    "Gruppen"
