@@ -6,7 +6,7 @@
 render_field = ->
   if field.attr
     x = xml
-    v = xml.attr name
+    v = xml.attr field.name
   else
     x = xml.children field.name
     v = x.text()
