@@ -1,3 +1,9 @@
+@SCHEMAS["navigation"] = [
+  name: "navigation"
+  type: "schemalist"
+  desc: "Navigation"
+]
+
 @SCHEMAS["app"] = [
   name:  "name"
   type:  "textline"
@@ -254,7 +260,5 @@
     ]
   ]
  ,
-  name: "navigation"
-  type: "schemalist"
-  desc: "Navigation"
+  SCHEMAS["navigation"][0]
 ]

@@ -8,7 +8,17 @@ option = (txt, value) ->
 selection = ->
   select().append (option m.name, name for name, m of MODULES)
 
+@button_add = -> [
+  s = selection()
+  (b = button().text "hinzufügen").click -> alert s.val()
+]
+
 @open_navigation = ->
-  ($ ".arena").append s = selection()
-  ($ ".arena").append b = button().text "hinzufügen"
-  b.click -> alert s.val()
+  with_mixin [
+      schema:  SCHEMAS["navigation"]
+      xml:     RECORDS["app"].find "navigation"
+      desc:    "Navigation"
+    ], ->
+      ($ ".arena").append containment = make_containment()
+      containment.append_nested button_add(),
+                                render_record(),

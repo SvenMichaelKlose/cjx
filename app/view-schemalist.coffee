@@ -1,0 +1,2 @@
+@schemalist = ->
+  div().text "SCHEMALIST"
