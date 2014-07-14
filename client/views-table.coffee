@@ -90,7 +90,7 @@ edit_button = ->
       x.preventDefault()
       open_record xml, schema
 
-remove_button = ->
+@button_remove = ->
   do (xml) ->
     (button().text "entfernen").click (x) ->
       x.preventDefault()
@@ -112,11 +112,11 @@ remove_button = ->
   record_selector: do_nothing
   button_add:      do_nothing
   button_edit:     do_nothing
-  button_remove:   do_nothing
+#  button_remove:   do_nothing
 
 @VIEWS_TABLE_EDIT =
   record_selector: record_selector
   list_selector:   list_selector
   button_add:      add_button
   button_edit:     edit_button
-  button_remove:   remove_button
+#  button_remove:   button_remove
