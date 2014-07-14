@@ -6,6 +6,7 @@ form  = ->
       xml:    RECORDS["app"]
       schema: SCHEMAS["app"]
       desc:   "Einstellungen"
+      ignore: ["navigation"]
     ], render_record
 
 @open_preferences = ->

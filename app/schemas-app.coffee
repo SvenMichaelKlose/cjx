@@ -253,4 +253,8 @@
       desc: "Fußnote"
     ]
   ]
+ ,
+  name: "navigation"
+  type: "schemalist"
+  desc: "Navigation"
 ]
