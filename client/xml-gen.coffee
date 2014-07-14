@@ -1,6 +1,6 @@
 element_or_attribute = (parent, {name, attr ,type, value, data }) ->
   if attr
-    parent.attr name, value
+    parent.attr name, value or ""
     null
   else
     parent.append n = ($ "<#{name}>").text value
