@@ -1,24 +1,30 @@
 root = @
 
 option = (txt, value) ->
-  o = root.option().text txt
-  o.attr "selected", "selected" if txt is value
-  o.attr value: txt
+  (root.option().text txt).attr value: value
 
 selection = ->
   select().append (option m.name, name for name, m of MODULES)
 
-@button_add = -> [
+add = (xml, val) ->
+  xml.append generate_xml_from_schema val
+  ($ ".arena").empty()
+  open_navigation()
+
+button_add = -> [
   s = selection()
-  (b = button().text "hinzufügen").click -> alert s.val()
+  (b = button().text "hinzufügen").click do (xml) -> (x) ->
+    x.preventDefault()
+    add xml, s.val()
 ]
 
 @open_navigation = ->
   with_mixin [
       schema:  SCHEMAS["navigation"]
+      records: (RECORDS["app"].find "navigation").children()
       xml:     RECORDS["app"].find "navigation"
       desc:    "Navigation"
     ], ->
       ($ ".arena").append containment = make_containment()
       containment.append_nested button_add(),
-                                render_record(),
+                                schemalist(),

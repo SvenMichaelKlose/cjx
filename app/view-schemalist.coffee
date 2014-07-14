@@ -1,2 +1,2 @@
 @schemalist = ->
-  div().text "SCHEMALIST"
+  div().text x.localName for x in records
