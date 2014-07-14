@@ -5,11 +5,12 @@
 
 render_field = ->
   if field.attr
+    x = xml
     v = xml.attr name
   else
     x = xml.children field.name
     v = x.text()
-  with_mixin {xml: x, value: v}, fieldview
+  with_mixin {parent: xml, xml: x, value: v}, fieldview
 
 @render_record = ->
   for f in schema
