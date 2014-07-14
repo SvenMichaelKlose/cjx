@@ -5,7 +5,8 @@ outerHTML = (x, name) ->
 
 @post_file = (xml, name) ->
   xhr = $.post (server_path name), x: outerHTML RECORDS[name], name
-  xhr.done (data, status) -> null   # Mark record as being transmitted.
+  xhr.done (data, status) ->
+    null   # Mark record as being transmitted.
   xhr.fail (data, status) ->
     alert "Couldn't post #{name}: #{status}"
     debugger
