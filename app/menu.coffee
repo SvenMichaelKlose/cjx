@@ -9,6 +9,7 @@ MENUITEMS = [
   ["groups",      open_groups,      "Gruppen" ]
   ["preferences", open_preferences, "Einstellungen" ]
   ["navigation",  open_navigation,  "Navigation", ]
+  ["library",     open_library,     "Bibliothek" ]
   ["clipboard",   open_clipboard,   "update_clipboard_button()" ]
 ]
 

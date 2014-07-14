@@ -85,3 +85,10 @@
     type: "password"
     desc: "Code"
   ]
+
+  library: [
+    name:   "images"
+    type:   "list"
+    schema: "file"
+    desc:   "Bilder"
+  ]
