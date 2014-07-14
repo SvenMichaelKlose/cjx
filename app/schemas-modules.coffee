@@ -77,14 +77,14 @@
  ,
   name:  "whitelist"
   type:  "list"
-  desc:  "whitelist"
+  desc:  "Whitelist"
   list: [
     name: "url"
     type: "url"
   ]
 ]
 
-@SCHEMAS["flippic"] = [
+@SCHEMAS["flipbook"] = [
   name: "background"
   type: "file"
   desc: "Hintergrundbild"
@@ -101,8 +101,8 @@
     type: "media"
     desc: "Rückseite"
    ,
-    name: "video"
-    type: "video"
+    name: "pdf"
+    type: "pdf"
   ]
 ]
 
