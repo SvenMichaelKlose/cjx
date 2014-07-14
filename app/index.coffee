@@ -10,3 +10,4 @@ $ ->
   set_mixins [VIEWS_RECORD, VIEWS_RECORD_DISPLAY, VIEWS_STRUCTURAL, VIEWS_XREF]
   init_menu()
   init_clipboard()
+  init_library()

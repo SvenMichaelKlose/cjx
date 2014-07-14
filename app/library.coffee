@@ -22,6 +22,7 @@ button_add = ->
       f = $ "<file>"
             src: (($ data).find "file").attr "src"
       ($ ".db library").append f
+      post_file ($ ".db library"), "library"
       ($ ".arena").empty()
       open_library()
   f
@@ -43,3 +44,11 @@ filelist = ->
       button_add: button_add
     ], ->
       ($ ".arena").append (make_containment().append_nested button_add(), filelist()),
+
+update_library_button = ->
+  ($ ".menubutton_library").text "Bibliothek (#{($ ".db library > *").length})"
+
+@init_library = ->
+  $(".db library").bind "DOMSubtreeModified", update_library_button
+  update_library_button()
+
