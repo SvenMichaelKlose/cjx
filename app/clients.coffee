@@ -1,13 +1,10 @@
-@make_new_form = ->
+@open_clients = ->
   with_mixin [
       VIEWS_TABLE
       VIEWS_TABLE_EDIT
-      records: parent.children()
-    ], -> ($ ".arena").append make_containment().append_nested list()
-
-@open_clients = ->
-  with_mixin [
+      records: RECORDS["clients"].children()
       parent: RECORDS["clients"]
       schema: SCHEMAS["client"]
       desc:   "Kunden"
-    ], -> (form = make_new_form()).append button_selected_to_clipboard form
+    ], -> ($ ".arena").append (make_containment().append_nested list()),
+                              button_selected_to_clipboard form()
