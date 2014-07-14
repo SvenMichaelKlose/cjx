@@ -1,8 +1,15 @@
+LAST_ACTION = null
+
 @menu_open = (action) ->
+  LAST_ACTION = action
   ($ ".arena").slideUp 200, ->
     ($ ".arena").empty()
     action()
     ($ ".arena").slideDown 200
+
+@menu_reopen = ->
+  ($ ".arena").empty()
+  LAST_ACTION()
 
 MENUITEMS = [
   ["clients",     open_clients,     "Kunden" ]
