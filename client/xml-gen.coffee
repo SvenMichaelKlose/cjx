@@ -15,3 +15,8 @@ struct_to_xml = (parent, fields) ->
   parent = ($ "<#{schema_name}>")
   struct_to_xml parent, SCHEMAS[schema_name]
   parent
+
+@generate_xml_from_field = (field) ->
+  parent = ($ "<#{field.name}>")
+  struct_to_xml parent, field
+  parent

@@ -43,16 +43,20 @@
   type: "list"
   desc: "Medien"
   schema: [
-    name: "front"
-    type: "media"
-    desc: "Vorderseite"
-   ,
-    name: "back"
-    type: "media"
-    desc: "Rückseite"
-   ,
-    name: "video"
-    type: "video"
+    name: "item"
+    type: "struct"
+    schema: [
+      name: "front"
+      type: "media"
+      desc: "Vorderseite"
+     ,
+      name: "back"
+      type: "media"
+      desc: "Rückseite"
+     ,
+      name: "video"
+      type: "video"
+    ]
   ]
 ]
 

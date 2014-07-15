@@ -11,15 +11,17 @@ open_record = (xml, schema) ->
       ], render_record
 
 create_record = (parent, schema, schema_name) ->
-  record = generate_xml_from_schema schema_name
-  parent.prepend record
-  record
+  parent.prepend if schema_name?
+                   generate_xml_from_schema schema_name
+                 else
+                   generate_xml_from_field schema
 
 add_button = () ->
   do (parent, schema, schema_name) ->
     (button().text "Neu").click (x) ->
       x.preventDefault()
-      open_record (create_record parent, schema, schema_name), schema
+      create_record parent, schema, schema_name
+      menu_reopen()
 
 edit_button = ->
   do (xml, schema) ->
