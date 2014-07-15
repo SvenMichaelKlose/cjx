@@ -26,6 +26,5 @@ button_add = -> [
       xml:     RECORDS["app"].find "navigation"
       desc:    "Navigation"
     ], ->
-      ($ ".arena").append containment = make_containment()
-      containment.append_nested button_add(),
-                                schemalist(),
+      make_containment().append_nested button_add(),
+                                       schemalist(),

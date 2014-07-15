@@ -48,6 +48,5 @@ group_clients = (record, xreflist) -> [
       desc:    "Gruppen"
       ignore:  ["clients"]
     ], ->
-      ($ ".arena").append containment = make_containment()
-      containment.append_nested list(),
-                                group_clients record, xreflist
+      make_containment().append_nested list(),
+                                       group_clients record, xreflist

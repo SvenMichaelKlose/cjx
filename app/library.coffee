@@ -43,7 +43,7 @@ filelist = ->
       desc:    "Bibliothek"
       button_add: button_add
     ], ->
-      ($ ".arena").append (make_containment().append_nested button_add(), filelist()),
+      (make_containment().append_nested button_add(), filelist())
 
 update_library_button = ->
   ($ ".menubutton_library").text "Bibliothek (#{($ ".db library > *").length})"

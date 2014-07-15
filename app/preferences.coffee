@@ -1,4 +1,4 @@
-form  = ->
+@open_preferences = ->
   debugger
   with_mixin [
       VIEWS_STRUCTURAL
@@ -7,7 +7,5 @@ form  = ->
       schema: SCHEMAS["app"]
       desc:   "Einstellungen"
       ignore: ["navigation"]
-    ], render_record
-
-@open_preferences = ->
-  $(".arena").append make_containment().append_nested form
+    ], ->
+      make_containment().append_nested render_record()

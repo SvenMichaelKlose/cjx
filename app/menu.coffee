@@ -4,12 +4,13 @@ LAST_ACTION = null
   LAST_ACTION = action
   ($ ".arena").slideUp 200, ->
     ($ ".arena").empty()
-    action()
+    e = action()
+    ($ ".arena").append_nested e
     ($ ".arena").slideDown 200
 
 @menu_reopen = ->
   ($ ".arena").empty()
-  LAST_ACTION()
+  ($ ".arena").append_nested LAST_ACTION()
 
 MENUITEMS = [
   ["clients",     open_clients,     "Kunden" ]
@@ -27,4 +28,4 @@ make_menu_button = (cls, fun, name) ->
   ($ ".menu").empty()
   ($ ".menu").append (make_menu_button c, n, f for [c, n, f] in MENUITEMS),
                      (($ "<button>").text "Änderungen übernehmen").click post_records
-  MENUITEMS[0][1]()
+  menu_open MENUITEMS[0][1]

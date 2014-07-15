@@ -25,7 +25,7 @@ clipboard_client_by_name = (name) ->
 @add_to_clipboard = (names) ->
   add_client_xrefs clipboard_clients(), names
   
-clipboard_form = ->
+@open_clipboard = ->
   with_mixin [
     VIEWS_TABLE
     VIEWS_TABLE_EDIT
@@ -33,11 +33,10 @@ clipboard_form = ->
     button_edit: do_nothing
     xml:      RECORDS["clipboard"]
     schema:   SCHEMAS["clipboard"]
-  ], render_record
-
-@open_clipboard = ->
-  ($ ".arena").append h1().text "Ablage"
-  ($ ".arena").append make_containment().append_nested clipboard_form()
+  ], -> [
+    ($ ".arena").append h1().text "Ablage"
+    ($ ".arena").append make_containment().append_nested render_record()
+  ]
 
 @button_selected_to_clipboard = (containment) ->
   (button().text "Auswahl in Ablage übernehmen").click (x) ->
