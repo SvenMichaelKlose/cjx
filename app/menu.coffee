@@ -2,11 +2,8 @@ LAST_ACTION = null
 
 @menu_open = (action) ->
   LAST_ACTION = action
-  ($ ".arena").slideUp 200, ->
-    ($ ".arena").empty()
-    e = action()
-    ($ ".arena").append_nested e
-    ($ ".arena").slideDown 200
+  ($ ".arena").empty()
+  ($ ".arena").append_nested action()
 
 @menu_reopen = ->
   ($ ".arena").empty()
