@@ -25,7 +25,6 @@ button_add = -> [
       records: (RECORDS["app"].find "navigation").children()
       xml:     RECORDS["app"].find "navigation"
       desc:    "Navigation"
-      list:    null
     ], -> [
       button_add()
       schemalist()

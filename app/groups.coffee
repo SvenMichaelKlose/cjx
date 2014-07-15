@@ -7,14 +7,14 @@ button_txt_add_clients_from_clipboard = ->
 button_add_clients_from_clipboard = ->
   b = button().text button_txt_add_clients_from_clipboard()
   b.click do (parent) -> (x) ->
-           x.preventDefault()
-           clients = parent.find "clients"
-           for i in ($ "clipboard clients").children()
-             i = $ i
-             if not (clients.find "[name=#{i.attr "name"}]").length
-               clients.append client_xref i.attr "name"
-           ($ ".arena").empty()
-           open_groups()
+            x.preventDefault()
+            clients = parent.find "clients"
+            for i in ($ "clipboard clients").children()
+              i = $ i
+              if not (clients.find "[name=#{i.attr "name"}]").length
+                clients.append client_xref i.attr "name"
+            ($ ".arena").empty()
+            open_groups()
 
 schema_names_except = (x) ->
   for {name} in schema
@@ -45,6 +45,6 @@ group_clients = (record, xreflist) -> [
       desc:    "Gruppen"
       ignore:  ["clients"]
     ], -> [
-      list()
+      tableview()
       group_clients record, xreflist
     ]

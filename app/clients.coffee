@@ -7,6 +7,6 @@
       schema_name: "client"
       desc:    "Kunden"
     ], -> [
-      list()
-      button_selected_to_clipboard form()
+      tableview(),
+      button_selected_to_clipboard()
     ]

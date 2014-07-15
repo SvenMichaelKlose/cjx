@@ -33,13 +33,22 @@ record_table = (old_record, old_fieldview) ->
     table().append (thead().append tr().append_nested list_headers()),
                    tbody().append render_list()
 
-list = -> [
+@tableview = -> [
   heading?()
   list_selector?() if records.length
   button_add?()
   list_empty() if not records.length
   record_table root.record, root.fieldview
 ]
+
+list = ->
+  with_mixin [
+      records:     xml.children()
+      parent:      xml
+      schema:      SCHEMAS[field.schema]
+      schema_name: field.schema
+      desc:        field.desc
+    ], tableview
 
 @VIEWS_TABLE =
   list: list

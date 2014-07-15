@@ -13,7 +13,6 @@ record = -> [
 heading = -> h1().text desc
 
 @VIEWS_RECORD =
-  list:        -> div().text "Missing list template."
   field_label: field_label
   measure:     measure
   heading:     heading
