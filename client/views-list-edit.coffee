@@ -38,8 +38,7 @@ edit_button = ->
       if confirm "Diesen Eintrag wirklich entfernen?"
         xml = (xml.data "referencing_xml") || xml
         xml.remove()
-        e.remove()
-      e.removeClass "selected"
+        menu_reopen()
 
 @VIEWS_LIST_EDIT =
   button_add:      add_button
