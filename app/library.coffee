@@ -40,7 +40,6 @@ filelist = ->
       parent:  RECORDS["library"]
       schema:  SCHEMAS["library"]
       desc:    "Bibliothek"
-      button_add: button_add
     ], -> [
       button_add()
       filelist()

@@ -50,7 +50,7 @@ group = (x) ->
                           group_clients xreflist, x
 
 @open_groups = -> [
-  h1().text "Gruppen"
+  h2().text "Gruppen"
   with_mixin
     schema_name: "group"
     parent:      RECORDS["groups"]
