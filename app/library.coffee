@@ -28,7 +28,7 @@ button_add = ->
 
 file = ->
   (div().addClass "record").append button_remove(),
-                                   img().attr {src: (xml.attr "src"), width: "20%"}
+                                   img().attr {src: (xml.attr "src"), width: "10%"}
 
 filelist = ->
   with_mixin {xml: ($ x)}, file for x in records
