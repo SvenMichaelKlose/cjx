@@ -45,8 +45,7 @@ list = ->
   with_mixin [
       records:     xml.children()
       parent:      xml
-      schema:      SCHEMAS[field.schema]
-      schema_name: field.schema
+      schema:      field.schema
       desc:        field.desc
     ], tableview
 

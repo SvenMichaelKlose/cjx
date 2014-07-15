@@ -42,7 +42,7 @@
   name: "items"
   type: "list"
   desc: "Medien"
-  list: [
+  schema: [
     name: "front"
     type: "media"
     desc: "Vorderseite"
@@ -70,7 +70,7 @@
   name:  "blacklist"
   type:  "list"
   desc:  "Blacklist"
-  list: [
+  schema: [
     name: "url"
     type: "url"
   ]
@@ -78,7 +78,7 @@
   name:  "whitelist"
   type:  "list"
   desc:  "Whitelist"
-  list: [
+  schema: [
     name: "url"
     type: "url"
   ]
@@ -92,7 +92,7 @@
   name: "items"
   type: "list"
   desc: "Medien"
-  list: [
+  schema: [
     name: "front"
     type: "media"
     desc: "Vorderseite"
@@ -114,7 +114,7 @@
   name: "items"
   type: "list"
   desc: "Medien"
-  list: [
+  schema: [
     name: "front"
     type: "media"
     desc: "Vorderseite"
@@ -136,7 +136,7 @@
   name: "items"
   type: "list"
   desc: "Medien"
-  list: [
+  schema: [
     name: "front"
     type: "media"
     desc: "Vorderseite"
@@ -159,7 +159,7 @@
   type:  "list"
   limit: 12
   desc:  "Vorderseiten"
-  list: [
+  schema: [
     name: "media"
     type: "media"
   ]
@@ -169,7 +169,7 @@
   name:  "items"
   type:  "list"
   desc:  "Nachrichten"
-  list: [
+  schema: [
     name: "messsage"
     type: "textarea"
     desc: "Nachricht"
@@ -190,7 +190,7 @@
   name:  "pins"
   type:  "list"
   desc:  "Pins"
-  list: [
+  schema: [
     name: "pin"
     type: "location"
     desc: "Pin"
@@ -200,7 +200,7 @@
 @SCHEMAS["wall"] = [
   name:  "list"
   type:  "list"
-  list: [
+  schema: [
     name: "url"
     type: "media"
   ]

@@ -10,7 +10,7 @@ record = -> [
   record_title()
 ]
 
-heading = -> h1().text desc
+heading = -> h2().text desc
 
 @VIEWS_RECORD =
   field_label: field_label

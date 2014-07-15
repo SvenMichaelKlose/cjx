@@ -10,7 +10,6 @@
                                             ]
 
 @schemalist = ->
-  debugger
   schemalist_item ($ x) for x in records
 
 @file = ->
