@@ -20,10 +20,10 @@ schema_names_except = (x) ->
     if name isnt x
       name
 
-group_clients = (xreflist) -> [
+group_clients = (xreflist, x) -> [
   button_add_clients_from_clipboard(),
   with_mixin [
-      xml:      parent.children()
+      xml:      x
       ignore:   schema_names_except "clients"
       xreflist: -> with_mixin [
         record_selector: null
@@ -34,16 +34,26 @@ group_clients = (xreflist) -> [
     ], render_record
 ]
 
-@open_groups = ->
+group = (x) ->
   with_mixin [
       VIEWS_LIST_EDIT
       schema:  SCHEMAS["group"]
       schema_name: "group"
-      records: RECORDS["groups"].children()
+      records: [x]
       parent:  RECORDS["groups"]
       desc:    "Gruppen"
       ignore:  ["clients"]
-    ], -> [
-      tableview()
-      group_clients xreflist
-    ]
+      button_add: null
+      heading: null
+    ], ->
+      div().append_nested tableview(),
+                          group_clients xreflist, x
+
+@open_groups = -> [
+  h1().text "Gruppen"
+  with_mixin
+    schema_name: "group"
+    parent:      RECORDS["groups"]
+    VIEWS_LIST_EDIT.button_add
+  group ($ x) for x in RECORDS["groups"].children()
+]
