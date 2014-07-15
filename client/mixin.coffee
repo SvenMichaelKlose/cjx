@@ -41,7 +41,8 @@ pop_set_or_sets = (sets) ->
     pop()
 
 @with_mixin = (sets, fun) ->
-  push_set_or_sets sets
-  r = fun()
-  pop_set_or_sets sets
-  r
+  if fun?
+    push_set_or_sets sets
+    r = fun()
+    pop_set_or_sets sets
+    r

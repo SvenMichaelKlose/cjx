@@ -1,5 +1,3 @@
-@do_nothing = -> null
-
 @ensure_element = (x) -> if x.length then x
 
 ensure_element_array = (x) ->

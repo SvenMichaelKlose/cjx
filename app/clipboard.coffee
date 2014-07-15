@@ -27,10 +27,9 @@ clipboard_client_by_name = (name) ->
   
 @open_clipboard = ->
   with_mixin [
-    VIEWS_TABLE
-    VIEWS_TABLE_EDIT
-    button_add:  do_nothing
-    button_edit: do_nothing
+    VIEWS_LIST_EDIT
+    button_add:  null
+    button_edit: null
     xml:      RECORDS["clipboard"]
     schema:   SCHEMAS["clipboard"]
     desc:     "Ablage"

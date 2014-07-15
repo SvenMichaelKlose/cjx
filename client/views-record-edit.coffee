@@ -1,4 +1,4 @@
-root = this
+root = @
 
 text_input = ->
   $ "<input>"

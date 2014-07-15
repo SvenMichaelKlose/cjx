@@ -1,4 +1,4 @@
-root = this
+root = @
 
 button_txt_add_clients_from_clipboard = ->
   num = clipboard_items().length
@@ -27,11 +27,9 @@ group_clients = (record, xreflist) -> [
       xml:      parent.children()
       ignore:   schema_names_except "clients"
       xreflist: -> with_mixin [
-          VIEWS_TABLE
-          VIEWS_TABLE_EDIT
-          record_selector: do_nothing
-          heading:         do_nothing
-          button_add:      do_nothing
+          record_selector: null
+          heading:         null
+          button_add:      null
           list_empty: -> div().text "Dieser Gruppe sind noch keine Kunden zugeordnet."
        ], xreflist
     ], render_record
@@ -39,8 +37,7 @@ group_clients = (record, xreflist) -> [
 
 @open_groups = ->
   with_mixin [
-      VIEWS_TABLE
-      VIEWS_TABLE_EDIT
+      VIEWS_LIST_EDIT
       schema:  SCHEMAS["group"]
       schema_name: "group"
       records: RECORDS["groups"].children()

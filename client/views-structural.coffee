@@ -1,4 +1,4 @@
-root = this
+root = @
 
 field_div = -> (div().addClass "field")
 struct_div = -> (div().addClass "struct")
@@ -7,7 +7,7 @@ struct = ->
   struct_div().append (h2().text field.desc),
                       with_mixin {schema: field.data}, render_record
 
-@is_record_type = (x) -> ($.inArray x, ["struct", "xreflist"]) is -1
+@is_record_type = (x) -> ($.inArray x, ["list", "schemalist", "struct", "xreflist"]) is -1
 
 fieldview = ->
   if is_record_type field.type

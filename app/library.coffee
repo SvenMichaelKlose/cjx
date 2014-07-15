@@ -35,8 +35,7 @@ filelist = ->
 
 @open_library = ->
   with_mixin [
-      VIEWS_TABLE
-      VIEWS_TABLE_EDIT
+      VIEWS_LIST_EDIT
       records: RECORDS["library"].children()
       parent:  RECORDS["library"]
       schema:  SCHEMAS["library"]

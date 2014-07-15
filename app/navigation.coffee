@@ -20,11 +20,12 @@ button_add = -> [
 
 @open_navigation = ->
   with_mixin [
-      VIEWS_RECORD_EDIT
+      VIEWS_LIST_EDIT
       schema:  SCHEMAS["navigation"]
       records: (RECORDS["app"].find "navigation").children()
       xml:     RECORDS["app"].find "navigation"
       desc:    "Navigation"
+      list:    null
     ], -> [
       button_add()
       schemalist()
