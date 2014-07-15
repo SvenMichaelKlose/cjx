@@ -13,25 +13,24 @@ button_add_clients_from_clipboard = ->
               i = $ i
               if not (clients.find "[name=#{i.attr "name"}]").length
                 clients.append client_xref i.attr "name"
-            ($ ".arena").empty()
-            open_groups()
+            menu_reopen()
 
 schema_names_except = (x) ->
   for {name} in schema
     if name isnt x
       name
 
-group_clients = (record, xreflist) -> [
+group_clients = (xreflist) -> [
   button_add_clients_from_clipboard(),
   with_mixin [
       xml:      parent.children()
       ignore:   schema_names_except "clients"
       xreflist: -> with_mixin [
-          record_selector: null
-          heading:         null
-          button_add:      null
-          list_empty: -> div().text "Dieser Gruppe sind noch keine Kunden zugeordnet."
-       ], xreflist
+        record_selector: null
+        heading:         null
+        button_add:      null
+        list_empty: -> div().text "Dieser Gruppe sind noch keine Kunden zugeordnet."
+      ], xreflist
     ], render_record
 ]
 
@@ -46,5 +45,5 @@ group_clients = (record, xreflist) -> [
       ignore:  ["clients"]
     ], -> [
       tableview()
-      group_clients record, xreflist
+      group_clients xreflist
     ]

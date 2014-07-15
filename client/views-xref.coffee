@@ -3,7 +3,7 @@ xreflist = ->
     records: (get_referenced_records xml, field)
     schema:  SCHEMAS[field.schema]
     desc:    field.desc
-    list
+    tableview
 
 @VIEWS_XREF =
   xreflist:       xreflist

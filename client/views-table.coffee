@@ -12,7 +12,7 @@ fieldview = (old_record, old_fieldview) ->
         root[field.type]()
 
 record = ->
-  row = tr().addClass "record #{schema}"
+  row = tr().addClass "record #{schema_name}"
   row.append_nested record_selector?(),
                     render_record(),
                     button_edit?(),
