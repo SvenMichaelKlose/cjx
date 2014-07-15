@@ -1,5 +1,4 @@
 @open_preferences = ->
-  debugger
   with_mixin [
       VIEWS_STRUCTURAL
       VIEWS_RECORD_EDIT
@@ -7,5 +6,4 @@
       schema: SCHEMAS["app"]
       desc:   "Einstellungen"
       ignore: ["navigation"]
-    ], ->
-      make_containment().append_nested render_record()
+    ], render_record

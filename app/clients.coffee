@@ -8,6 +8,6 @@
       schema_name: "client"
       desc:   "Kunden"
     ], -> [
-      (make_containment().append_nested list())
+      list()
       button_selected_to_clipboard form()
     ]

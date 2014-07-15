@@ -25,6 +25,7 @@ button_add = -> [
       records: (RECORDS["app"].find "navigation").children()
       xml:     RECORDS["app"].find "navigation"
       desc:    "Navigation"
-    ], ->
-      make_containment().append_nested button_add(),
-                                       schemalist(),
+    ], -> [
+      button_add()
+      schemalist()
+    ]

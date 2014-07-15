@@ -33,10 +33,8 @@ clipboard_client_by_name = (name) ->
     button_edit: do_nothing
     xml:      RECORDS["clipboard"]
     schema:   SCHEMAS["clipboard"]
-  ], -> [
-    ($ ".arena").append h1().text "Ablage"
-    ($ ".arena").append make_containment().append_nested render_record()
-  ]
+    desc:     "Ablage"
+  ], render_record
 
 @button_selected_to_clipboard = (containment) ->
   (button().text "Auswahl in Ablage übernehmen").click (x) ->

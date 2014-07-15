@@ -47,6 +47,7 @@ group_clients = (record, xreflist) -> [
       parent:  RECORDS["groups"]
       desc:    "Gruppen"
       ignore:  ["clients"]
-    ], ->
-      make_containment().append_nested list(),
-                                       group_clients record, xreflist
+    ], -> [
+      list()
+      group_clients record, xreflist
+    ]

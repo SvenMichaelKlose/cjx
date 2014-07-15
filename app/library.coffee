@@ -42,8 +42,10 @@ filelist = ->
       schema:  SCHEMAS["library"]
       desc:    "Bibliothek"
       button_add: button_add
-    ], ->
-      (make_containment().append_nested button_add(), filelist())
+    ], -> [
+      button_add()
+      filelist()
+    ]
 
 update_library_button = ->
   ($ ".menubutton_library").text "Bibliothek (#{($ ".db library > *").length})"

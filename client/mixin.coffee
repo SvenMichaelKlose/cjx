@@ -1,12 +1,15 @@
+root = @
+
 KNOWN_KEYS = []
 STACK = []
 
-root = this
+@get_mixins = ->
+  set = {}
+  set[key] = root[key] for key in KNOWN_KEYS
+  set
 
 save_old = ->
-  mix = {}
-  mix[key] = root[key] for key in KNOWN_KEYS
-  STACK.unshift mix
+  STACK.unshift get_mixins()
 
 add_known_keys = (set) ->
   for key, value of set

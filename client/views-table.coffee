@@ -8,37 +8,38 @@ fieldview = ->
     root[field.type]()
 
 record = ->
-  row = (tr().addClass "record " + schema)
+  row = tr().addClass "record " + schema
   row.append_nested root.record_selector(),
                     root.render_record(),
                     root.button_edit(),
                     root.button_remove()
 
-list_headers = ->
+list_headers = -> [
+  th() if root.record_selector isnt do_nothing
   for {desc, name} in schema
     if not record_is_ignored name
-      (th().text desc)
+      th().text desc
+]
 
 record_table = ->
-  [(list_empty() if not records.length),
-   table().append (thead().append tr().append (th() if root.record_selector isnt do_nothing),
-                                              list_headers()),
-                  tbody().append render_list()]
+   table().append (thead().append tr().append_nested list_headers()),
+                  tbody().append render_list()
 
-heading = ->
-  (h1().text desc)
+heading = -> h1().text desc
 
-list = ->
-  [root.heading(),
-   (root.list_selector() if records.length),
-   root.button_add(),
-   record_table()]
+list = -> [
+  root.heading()
+  root.list_selector() if records.length
+  root.button_add()
+  list_empty() if not records.length
+  record_table()
+]
 
 get_selected_records = (containment) ->
   containment.find ".record_selector:checked"
 
 @get_selected_record_names = (containment) ->
-  (($ x).attr "name" for x in get_selected_records containment)
+  ($ x).attr "name" for x in get_selected_records containment
 
 record_selector = ->
   $ "<input>"
