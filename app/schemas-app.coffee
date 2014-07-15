@@ -31,7 +31,7 @@
   name: "keyboard"
   type: "struct"
   desc: "Keyboard"
-  data: [
+  schema: [
     name: "scaling"
     type: "percent"
     desc: "Skalierung"
@@ -53,7 +53,7 @@
   name: "display"
   type: "struct"
   desc: "Darstellung"
-  data: [
+  schema: [
     name: "resolution"
     type: "selection"
     opts: [
@@ -155,7 +155,7 @@
   name: "direct_mail"
   type: "struct"
   desc: "Direktversand"
-  data: [
+  schema: [
     name: "enabled"
     type: "boolean"
     desc: "Aktiviert?"
@@ -184,7 +184,7 @@
   name: "loop"
   type: "struct"
   desc: "Loop"
-  data: [
+  schema: [
     name: "enabled"
     type: "boolean"
     desc: "Aktiviert?"
@@ -201,7 +201,7 @@
   name: "update"
   type: "struct"
   desc: "Updates"
-  data: [
+  schema: [
     name: "background"
     type: "boolean"
     desc: "Im Hintergrund?"
@@ -216,7 +216,7 @@
   name: "email"
   type: "struct"
   desc: "E–Mail"
-  data: [
+  schema: [
     name: "sender_name"
     type: "textline"
     desc: "Absendername"
@@ -228,7 +228,7 @@
     name: "feedback"
     type: "struct"
     desc: "Feedback"
-    data: [
+    schema: [
       name: "subject"
       type: "textline"
       desc: "Feedback–Betreff"
@@ -241,7 +241,7 @@
     name: "clipboard"
     type: "struct"
     desc: "Ablagen"
-    data: [
+    schema: [
       name: "subject"
       type: "textline"
       desc: "Betreff"

@@ -1,11 +1,11 @@
-element_or_attribute = (parent, {name, attr ,type, value, data }) ->
+element_or_attribute = (parent, {name, attr ,type, value, schema }) ->
   if attr
     parent.attr name, value or ""
     null
   else
     parent.append n = ($ "<#{name}>").text value
     if type is "struct"
-      struct_to_xml n, data
+      struct_to_xml n, schema
     n
 
 struct_to_xml = (parent, fields) ->

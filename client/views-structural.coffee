@@ -5,7 +5,7 @@ struct_div = -> (div().addClass "struct")
 
 struct = ->
   struct_div().append (h2().text field.desc),
-                      with_mixin {schema: field.data}, render_record
+                      with_mixin {schema: field.schema}, render_record
 
 @is_record_type = (x) -> ($.inArray x, ["list", "schemalist", "struct", "xreflist"]) is -1
 
