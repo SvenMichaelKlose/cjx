@@ -6,6 +6,8 @@ element_or_attribute = (parent, {name, attr ,type, value, schema }) ->
     parent.append n = ($ "<#{name}>").text value
     if type is "struct"
       struct_to_xml n, schema
+    else if type is "xschema"
+      struct_to_xml n, SCHEMAS[schema]
     n
 
 struct_to_xml = (parent, fields) ->

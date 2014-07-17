@@ -34,6 +34,10 @@ TYPES =
     step:  1
     desc:  "PLZ"
 
+  url:
+    type:  "textline"
+    desc:  "URL"
+
 @expand_type = (field) ->
   expand_type $.extend field, t if t = TYPES[field.type]
   field

@@ -8,8 +8,7 @@ selection = ->
 
 add = (xml, val) ->
   xml.append generate_xml_from_schema val
-  ($ ".arena").empty()
-  open_navigation()
+  menu_reopen()
 
 button_add = -> [
   s = selection()

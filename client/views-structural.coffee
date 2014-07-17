@@ -7,7 +7,12 @@ struct = ->
   struct_div().append (h2().text field.desc),
                       with_mixin {schema: field.schema}, render_record
 
-@is_record_type = (x) -> ($.inArray x, ["list", "schemalist", "struct", "xreflist"]) is -1
+xschema = ->
+  struct_div().append (h2().text field.desc),
+                      with_mixin {schema: SCHEMAS[field.schema]}, render_record
+
+@is_record_type = (x) -> ($.inArray x, ["list", "schemalist",
+                                        "struct", "xschema", "xreflist"]) is -1
 
 fieldview = ->
   if is_record_type field.type
@@ -22,4 +27,5 @@ list_empty = -> div().text "Leer."
 @VIEWS_STRUCTURAL =
   fieldview:   fieldview
   struct:      struct
+  xschema:     xschema
   list_empty:  list_empty

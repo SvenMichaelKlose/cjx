@@ -1,6 +1,7 @@
 @SCHEMAS["media"] = [
   name: "src"
-  type: "url"
+  type: "file"
+  desc: "Datei"
   attr: true
  ,
   name: "x"
@@ -30,8 +31,28 @@
   desc: "Hintergrundbild"
  ,
   name: "items"
-  type: "file"
+  type: "list"
   desc: "Medien"
+  schema: [
+    name: "item"
+    type: "struct"
+    schema: [
+      name:   "front"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Vorderseite"
+     ,
+      name:   "back"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Rückseite"
+     ,
+      name:   "video"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Video"
+    ]
+  ]
 ]
 
 @SCHEMAS["mediaviewer"] = [
@@ -46,16 +67,20 @@
     name: "item"
     type: "struct"
     schema: [
-      name: "front"
-      type: "media"
-      desc: "Vorderseite"
+      name:   "front"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Vorderseite"
      ,
-      name: "back"
-      type: "media"
-      desc: "Rückseite"
+      name:   "back"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Rückseite"
      ,
-      name: "video"
-      type: "video"
+      name:   "video"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Video"
     ]
   ]
 ]
@@ -97,18 +122,28 @@
   type: "list"
   desc: "Medien"
   schema: [
-    name: "front"
-    type: "media"
-    desc: "Vorderseite"
-   ,
-    name: "back"
-    type: "media"
-    desc: "Rückseite"
-   ,
-    name: "pdf"
-    type: "pdf"
+    name: "item"
+    type: "struct"
+    schema: [
+      name:   "front"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Vorderseite"
+     ,
+      name:   "back"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Rückseite"
+     ,
+      name:   "pdf"
+      type:   "xschema"
+      schema: "media"
+      desc:   "PDF"
+    ]
   ]
 ]
+
+
 
 @SCHEMAS["coverflow"] = [
   name: "background"
@@ -119,18 +154,27 @@
   type: "list"
   desc: "Medien"
   schema: [
-    name: "front"
-    type: "media"
-    desc: "Vorderseite"
-   ,
-    name: "back"
-    type: "media"
-    desc: "Rückseite"
-   ,
-    name: "pdf"
-    type: "pdf"
+    name: "item"
+    type: "struct"
+    schema: [
+      name:   "front"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Vorderseite"
+     ,
+      name:   "back"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Rückseite"
+     ,
+      name:   "pdf"
+      type:   "xschema"
+      schema: "media"
+      desc:   "PDF"
+    ]
   ]
 ]
+
 
 @SCHEMAS["slidebook"] = [
   name: "background"
@@ -141,16 +185,24 @@
   type: "list"
   desc: "Medien"
   schema: [
-    name: "front"
-    type: "media"
-    desc: "Vorderseite"
-   ,
-    name: "back"
-    type: "media"
-    desc: "Rückseite"
-   ,
-    name: "pdf"
-    type: "pdf"
+    name: "item"
+    type: "struct"
+    schema: [
+      name:   "front"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Vorderseite"
+     ,
+      name:   "back"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Rückseite"
+     ,
+      name:   "pdf"
+      type:   "xschema"
+      schema: "media"
+      desc:   "PDF"
+    ]
   ]
 ]
 
