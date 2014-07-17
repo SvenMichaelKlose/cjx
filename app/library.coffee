@@ -4,7 +4,8 @@ button_add = ->
         enctype: "multipart/form-data"
   i = $ "<input>"
         type: "file"
-        name: "file"
+        name: "file[]"
+        multiple: "multiple"
         size: "10"
   s = button().text "Hochladen…"
   f.append (h2().text "Upload"),
@@ -18,12 +19,15 @@ button_add = ->
     x.preventDefault()
     a = $.ajax "/pi/admin/upload.php", p
     a.done (data) ->
-      f = $ "<file>"
-            src: (($ data).find "file").attr "src"
-      ($ ".db library").append f
+      alert "done"
+      debugger
+      for x in ($ data).find "file"
+        ($ ".db library").append $ "<file>", { src: (($ x).attr "src")}
       post_file ($ ".db library"), "library"
-      ($ ".arena").empty()
-      open_library()
+      menu_reopen()
+    a.error (data, status) ->
+      alert "Error: " + status
+      debugger
   f
 
 file = ->

@@ -37,14 +37,14 @@ group_clients = (xreflist, x) -> [
 group = (x) ->
   with_mixin [
       VIEWS_LIST_EDIT
-      schema:  SCHEMAS["group"]
+      schema:      SCHEMAS["group"]
       schema_name: "group"
-      records: [x]
-      parent:  RECORDS["groups"]
-      desc:    "Gruppen"
-      ignore:  ["clients"]
-      button_add: null
-      heading: null
+      records:     [x]
+      parent:      RECORDS["groups"]
+      desc:        "Gruppen"
+      ignore:      ["clients"]
+      button_add:  null
+      heading:     null
     ], ->
       div().append_nested tableview(),
                           group_clients xreflist, x
