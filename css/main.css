@@ -26,6 +26,11 @@ body {
     padding-left: 2em;
 }
 
+.record .record {
+    margin: 0.5em;
+    background: #eee;
+}
+
 .rev {
     color: white;
     font-size: small;
