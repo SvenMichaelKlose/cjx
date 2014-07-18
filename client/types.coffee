@@ -47,5 +47,6 @@ TYPES =
     desc:  "URL"
 
 @expand_type = (field) ->
+  field = $.extend {}, field
   expand_type $.extend field, t if t = TYPES[field.type]
   field
