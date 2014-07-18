@@ -2,8 +2,7 @@ root = @
 
 value    = -> root.value
 boolean  = -> if root.value is "true" then "ja" else "nein"
-password = null
-image    = null
+password = "geheim"
 
 @VIEWS_RECORD_DISPLAY =
   textline:  value
@@ -20,6 +19,5 @@ image    = null
   range:     value
   boolean:   boolean
   textarea:  value
-  image:     image
   selection: value
   user:      value
