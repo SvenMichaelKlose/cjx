@@ -1,15 +1,17 @@
 root = @
 
+fieldcontent = ->
+  if is_record_type field.type
+    [render_field(), measure()]
+  else
+    root[field.type]()
+
 fieldview = (old_record, old_fieldview) ->
   with_mixin [
       fieldview: old_fieldview
       record:    old_record
     ], ->
-      if is_record_type field.type
-        (td().addClass field.name).append_nested render_field(),
-                                                 measure()
-      else
-        root[field.type]()
+      (td().addClass field.name?).append_nested fieldcontent()
 
 record = ->
   row = tr().addClass "record #{schema_name}"
