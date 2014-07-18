@@ -16,3 +16,6 @@ ensure_element_array = (x) ->
 
 $ ->
   $.fn.append_nested = (x...) -> this.append ensure_element_array x
+
+@path_filename = (x) ->
+  x.replace /^.*(\\|\/|\:)/, ''

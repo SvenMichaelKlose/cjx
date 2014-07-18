@@ -31,8 +31,10 @@ button_add = ->
   f
 
 file = ->
+  path = xml.attr "src"
   (div().addClass "record").append button_remove(),
-                                   img().attr {src: (xml.attr "src"), width: "10%"}
+                                   (img().attr {src: path, width: "10%"}),
+                                   label().text path.replace(/^.*(\\|\/|\:)/, '')
 
 filelist = ->
   with_mixin {xml: ($ x)}, file for x in records

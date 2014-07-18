@@ -1,6 +1,7 @@
 file = (x) ->
   src = x.attr "src"
-  i = img().attr {src: src, width: "10%"}
+  i = figure().append (img().attr {src: src, width: "10%"}),
+                      figcaption().text path_filename src
   i.click do (xml) -> (x) ->
     x.preventDefault()
     xml.attr "src", src
