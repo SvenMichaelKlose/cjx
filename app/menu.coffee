@@ -1,12 +1,15 @@
 LAST_ACTION = null
 
 @menu_reopen = ->
+  s = ($ window).scrollTop()
   ($ ".arena").empty()
   ($ ".arena").append make_containment().append_nested LAST_ACTION()
+  s = ($ window).scrollTop s
 
 @menu_open = (action) ->
   LAST_ACTION = action
-  menu_reopen()
+  ($ ".arena").empty()
+  ($ ".arena").append make_containment().append_nested LAST_ACTION()
 
 MENUITEMS = [
   ["clients",     open_clients,     "Kunden" ]
