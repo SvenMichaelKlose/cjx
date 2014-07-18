@@ -6,6 +6,14 @@ TYPES =
     measure: "%"
     desc:    "Prozent"
 
+  degree:
+    type:    "range"
+    min:     0
+    max:     359
+    step:    0.1
+    measure: "°"
+    desc:    "Winkelgrad"
+
   pixel:
     type:    "range"
     min:     0
