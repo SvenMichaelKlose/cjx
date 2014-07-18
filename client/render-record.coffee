@@ -12,7 +12,10 @@ render_field = ->
     v = x.text()
   with_mixin {parent: xml, xml: x, value: v}, fieldview
 
-@render_record = ->
+@render_fields = ->
   for f in schema
     if not record_is_ignored f.name
-      with_mixin {field: f}, render_field
+      with_mixin {field: f}, -> tr().append_nested render_field()
+
+@render_record = ->
+  table().append tbody().append_nested render_fields()

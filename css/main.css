@@ -22,6 +22,10 @@ body {
     margin-right: auto;
 }
 
+.struct {
+    padding-left: 2em;
+}
+
 .rev {
     color: white;
     font-size: small;
