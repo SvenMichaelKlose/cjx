@@ -22,7 +22,9 @@ button_add = ->
       alert "done"
       debugger
       for x in ($ data).find "file"
-        ($ ".db library").append $ "<file>", { src: (($ x).attr "src")}
+        x = $ x
+        d = new Date().valueOf()
+        ($ ".db library").append $ "<file>", {src: (x.attr "src"), date: d}
       post_file ($ ".db library"), "library"
       menu_reopen()
     a.error (data, status) ->
@@ -34,7 +36,7 @@ file = ->
   path = xml.attr "src"
   (div().addClass "record").append button_remove(),
                                    (img().attr {src: path, width: "10%"}),
-                                   label().text path.replace(/^.*(\\|\/|\:)/, '')
+                                   label().text (path_filename path) + " vom " + human_readable_datetime xml.attr "date"
 
 filelist = ->
   with_mixin {xml: ($ x)}, file for x in records

@@ -90,6 +90,10 @@
     name: "src"
     type: "url"
     desc: "Datei"
+   ,
+    name: "date"
+    type: "date"
+    desc: "Erstellungsdatum"
   ]
 
   library: [
