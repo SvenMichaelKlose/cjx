@@ -143,6 +143,66 @@
   ]
 ]
 
+@SCHEMAS["flippic"] = [
+  name: "background"
+  type: "file"
+  desc: "Hintergrundbild"
+ ,
+  name: "items"
+  type: "list"
+  desc: "Medien"
+  schema: [
+    name: "item"
+    type: "struct"
+    schema: [
+      name:   "front"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Vorderseite"
+     ,
+      name:   "back"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Rückseite"
+     ,
+      name:   "media"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Bild/Video/PDF"
+    ]
+  ]
+]
+
+@SCHEMAS["flipbook"] = [
+  name: "background"
+  type: "file"
+  desc: "Hintergrundbild"
+ ,
+  name: "items"
+  type: "list"
+  desc: "Medien"
+  schema: [
+    name: "item"
+    type: "struct"
+    schema: [
+      name:   "front"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Vorderseite"
+     ,
+      name:   "back"
+      type:   "xschema"
+      schema: "media"
+      desc:   "Rückseite"
+     ,
+      name:   "pdf"
+      type:   "xschema"
+      schema: "media"
+      desc:   "PDF"
+    ]
+  ]
+]
+
 
 
 @SCHEMAS["coverflow"] = [
