@@ -48,8 +48,10 @@ record_table = (old_record, old_fieldview) ->
   heading?()
   list_selector?() if records.length
   button_add?()
-  list_empty() if not records.length
-  record_table root.record, root.fieldview
+  if records.length
+    record_table root.record, root.fieldview
+  else
+    list_empty()
 ]
 
 list = ->
