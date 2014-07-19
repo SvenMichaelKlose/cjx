@@ -18,4 +18,4 @@ render_field = ->
       with_mixin {field: f}, -> tr().append_nested render_field()
 
 @render_record = ->
-  table().append tbody().append_nested render_fields()
+  (table().addClass schema_name).append tbody().append_nested render_fields()

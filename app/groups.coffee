@@ -26,6 +26,7 @@ group_clients = (xreflist, x) -> [
       xml:      x
       ignore:   schema_names_except "clients"
       xreflist: -> with_mixin [
+        list_class:      "group_clients"
         record_selector: null
         heading:         null
         button_add:      null

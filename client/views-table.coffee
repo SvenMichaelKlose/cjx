@@ -27,13 +27,22 @@ list_headers = -> [
       th().text desc
 ]
 
+@get_list_class = ->
+  if list_class?
+    list_class
+  else if field?
+    field.name
+  else
+    schema_name
+
 record_table = (old_record, old_fieldview) ->
   with_mixin [
     fieldview: -> fieldview old_record, old_fieldview
     record:    record
   ], ->
-    (table().addClass field?.name).append (thead().append tr().append_nested list_headers()),
-                                          tbody().append render_list()
+    t = table().append (thead().append tr().append_nested list_headers()),
+                       tbody().append render_list()
+    t.addClass get_list_class()
 
 @tableview = -> [
   heading?()

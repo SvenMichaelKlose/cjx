@@ -22,6 +22,11 @@ body {
     margin-right: auto;
 }
 
+.group_clients {
+    margin-left: 2em;
+    background: #eee;
+}
+
 .struct {
     padding-left: 2em;
 }
