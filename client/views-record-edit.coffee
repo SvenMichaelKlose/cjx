@@ -8,12 +8,18 @@ text_input = ->
 
 range = ->
   e = $ "<input>"
+        type:   "text"
         name:   field.name
         value:  value
-  e.spinner
-    min:  field.min
-    max:  field.max
-    step: field.step
+  min = field.min
+  max = field.max
+  step = field.step
+  deferred_setup ->
+    e.spinner
+      min:  min
+      max:  max
+      step: step
+  e
 
 password = ->
   with_mixin [
@@ -30,7 +36,6 @@ boolean = ->
           value: "true"
         ], text_input
   e.attr "checked", "checked" if value is "true"
-  e
 
 textarea = ->
   e = $ "<textarea>"

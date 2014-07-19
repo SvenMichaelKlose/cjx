@@ -1,15 +1,23 @@
 LAST_ACTION = null
+DEFERRED_SETUPS = []
+
+@deferred_setup = (x) ->
+  DEFERRED_SETUPS.push x
+
+@menu_append = ->
+  ($ ".arena").empty()
+  ($ ".arena").append make_containment().append_nested LAST_ACTION()
+  i() for i in DEFERRED_SETUPS
+  DEFERRED_SETUPS = []
 
 @menu_reopen = ->
   s = ($ window).scrollTop()
-  ($ ".arena").empty()
-  ($ ".arena").append make_containment().append_nested LAST_ACTION()
+  menu_append()
   s = ($ window).scrollTop s
 
 @menu_open = (action) ->
   LAST_ACTION = action
-  ($ ".arena").empty()
-  ($ ".arena").append make_containment().append_nested LAST_ACTION()
+  menu_append()
 
 MENUITEMS = [
   ["clients",     open_clients,     "Kunden" ]
