@@ -19,13 +19,13 @@ button_add = ->
     x.preventDefault()
     a = $.ajax "/pi/admin/upload.php", p
     a.done (data) ->
-      alert "done"
-      debugger
-      for x in ($ data).find "file"
+      files = ($ data).find "file"
+      for x in files
         x = $ x
         d = new Date().valueOf()
         ($ ".db library").append $ "<file>", {src: (x.attr "src"), date: d}
-      post_file ($ ".db library"), "library"
+      if files.length
+        post_file ($ ".db library"), "library"
       menu_reopen()
     a.error (data, status) ->
       alert "Error: " + status
