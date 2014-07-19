@@ -35,10 +35,10 @@ clipboard_client_by_name = (name) ->
     desc:     "Ablage"
   ], render_record
 
-@button_selected_to_clipboard = (containment) ->
-  (button().text "Auswahl in Ablage übernehmen").click (x) ->
+@button_selected_to_clipboard = () ->
+  b = (button().text "Auswahl in Ablage übernehmen").click (x) ->
     x.preventDefault()
-    add_to_clipboard get_selected_record_names containment
+    add_to_clipboard get_selected_record_names b.closest ".containment"
 
 @init_clipboard = ->
   ($ ".db").append RECORDS["clipboard"] = generate_xml_from_schema "clipboard"
