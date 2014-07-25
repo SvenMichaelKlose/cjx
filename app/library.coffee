@@ -1,4 +1,4 @@
-button_add = ->
+upload_form = ->
   f = $ "<form>"
         action: ""
         enctype: "multipart/form-data"
@@ -49,7 +49,7 @@ filelist = ->
       schema:  SCHEMAS["library"]
       desc:    "Bibliothek"
     ], -> [
-      button_add()
+      upload_form()
       filelist()
     ]
 

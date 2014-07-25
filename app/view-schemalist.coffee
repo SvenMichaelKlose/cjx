@@ -1,6 +1,9 @@
+heading_module = (name) ->
+  h2().text MODULES[name].name
+
 @schemalist_item = (x) ->
   name = (x.prop "tagName").toLowerCase()
-  (div().addClass "record").append_nested (h2().text MODULES[name].name),
+  (div().addClass "record").append_nested (heading_module name),
                                           with_mixin
                                             schema: SCHEMAS[name]
                                             xml:    x
@@ -11,13 +14,3 @@
 
 @schemalist = ->
   schemalist_item ($ x) for x in records
-
-@file = ->
-  i = img().attr {src: (xml.attr "src"), width: "30%"}
-  b = button().text "Wählen…"
-  t = (div().addClass "thumbs").append_nested library_thumbs()
-  t.hide()
-  b.click (x) ->
-    x.preventDefault()
-    t.toggle()
-  [i, b, t]

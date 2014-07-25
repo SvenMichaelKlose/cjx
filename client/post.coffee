@@ -22,7 +22,7 @@ set_xml = (xml, name, data) ->
     type:     "GET"
     async:    false
     url:      (server_path name)
-    dataType: "html"
+    dataType: "xml"
     success:  (data, status) ->
                 set_xml xml, name, ($ data).first()
 

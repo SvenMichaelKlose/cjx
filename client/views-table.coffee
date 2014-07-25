@@ -8,9 +8,9 @@ fieldcontent = ->
 
 fieldview = (old_record, old_fieldview) ->
   with_mixin [
-      fieldview: old_fieldview
-      record:    old_record
-    ], fieldcontent
+    fieldview: old_fieldview
+    record:    old_record
+  ], fieldcontent
 
 record = ->
   (tr().addClass "record #{schema_name}").append_nested [
@@ -41,7 +41,7 @@ record_table = (old_record, old_fieldview) ->
     record:    record
   ], ->
     t = table().append (thead().append tr().append_nested list_headers()),
-                       tbody().append render_list()
+                       tbody().append_nested render_list()
     t.addClass get_list_class()
 
 @tableview = -> [
@@ -56,11 +56,11 @@ record_table = (old_record, old_fieldview) ->
 
 list = ->
   with_mixin [
-      records:     xml.children()
-      parent:      xml
-      schema:      field.schema
-      desc:        field.desc
-    ], tableview
+    records: xml.children()
+    parent:  xml
+    schema:  field.schema
+    desc:    field.desc
+  ], tableview
 
 @VIEWS_TABLE =
   list: list
