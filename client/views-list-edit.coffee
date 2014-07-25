@@ -39,6 +39,7 @@ edit_button = ->
         xml = (xml.data "referencing_xml") || xml
         xml.remove()
         menu_reopen()
+      e.removeClass "selected"
 
 @VIEWS_LIST_EDIT =
   button_add:      add_button
