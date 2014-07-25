@@ -203,8 +203,6 @@
   ]
 ]
 
-
-
 @SCHEMAS["coverflow"] = [
   name: "background"
   type: "file"
@@ -277,7 +275,8 @@
   desc:  "Vorderseiten"
   schema: [
     name: "media"
-    type: "media"
+    type:   "xschema"
+    schema: "media"
   ]
 ]
 
