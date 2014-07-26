@@ -1,9 +1,11 @@
 @open_clients = ->
+  debugger
+  xroot = xml_root "clients"
   with_mixin [
       VIEWS_LIST_EDIT
       VIEWS_SELECTION
-      records: RECORDS["clients"].children()
-      parent:  RECORDS["clients"]
+      records: xroot.children()
+      parent:  xroot
       schema:  SCHEMAS["client"]
       schema_name: "client"
       desc:    "Kunden"

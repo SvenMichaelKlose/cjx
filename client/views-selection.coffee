@@ -10,7 +10,7 @@ record_selector = ->
   $ "<input>"
     class: "record_selector"
     type:  "checkbox"
-    name:  xml.children().first().text()
+    name:  (xml.children 0).text()
 
 list_selector = ->
   b = button()

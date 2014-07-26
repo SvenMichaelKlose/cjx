@@ -14,7 +14,7 @@ create_record = (parent, schema, schema_name) ->
   parent.prepend if schema_name?
                    generate_xml_from_schema schema_name
                  else
-                   (generate_xml_from_field schema).children().first()
+                   (generate_xml_from_field schema).children 0
 
 add_button = () ->
   do (parent, schema, schema_name) ->

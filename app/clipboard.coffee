@@ -1,5 +1,5 @@
-clipboard_clients = -> $ ".db clipboard clients"
-@clipboard_items = -> clipboard_clients().children()
+clipboard_clients = -> (xml_root "clipboard").children "clients"
+@clipboard_items = (x) -> clipboard_clients().children(x)
 
 menubutton_text = ->
   "Ablage (" + (clipboard_items().length || "leer") + ")"
@@ -8,10 +8,10 @@ update_clipboard_button = ->
   ($ ".menubutton_clipboard").text menubutton_text()
 
 client_by_name = (name) ->
-  (RECORDS["clients"].find "user:contains('#{name}')").parent()
+  ((xml_root "clients").find "user:contains('#{name}')").parent()
 
 clipboard_client_by_name = (name) ->
-  clipboard_clients().children "[name='#{name}']"
+  clipboard_items "[name='#{name}']"
 
 @client_xref = (name) ->
   if ensure_element client_by_name name
@@ -30,7 +30,7 @@ clipboard_client_by_name = (name) ->
     VIEWS_LIST_EDIT
     button_add:  null
     button_edit: null
-    xml:      RECORDS["clipboard"]
+    xml:      xml_root "clipboard"
     schema:   SCHEMAS["clipboard"]
     desc:     "Ablage"
   ], render_record
@@ -41,6 +41,6 @@ clipboard_client_by_name = (name) ->
     add_to_clipboard get_selected_record_names b.closest ".containment"
 
 @init_clipboard = ->
-  ($ ".db").append RECORDS["clipboard"] = generate_xml_from_schema "clipboard"
-  $(".db clipboard").bind "DOMSubtreeModified", update_clipboard_button
+  set_xml_doc "clipboard", generate_xml_from_schema "clipboard"
+  (xml_root "clipboard").bind "DOMSubtreeModified", update_clipboard_button
   update_clipboard_button()

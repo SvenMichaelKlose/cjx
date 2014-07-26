@@ -23,9 +23,9 @@ upload_form = ->
       for x in files
         x = $ x
         d = new Date().valueOf()
-        ($ ".db library").append $ "<file>", {src: (x.attr "src"), date: d}
+        (xml_root "library").append $ "<file>", {src: (x.attr "src"), date: d}
       if files.length
-        post_file ($ ".db library"), "library"
+        post_file (xml_root "library"), "library"
       menu_reopen()
     a.error (data, status) ->
       alert "Error: " + status
@@ -42,10 +42,11 @@ filelist = ->
   with_mixin {xml: ($ x)}, file for x in records
 
 @open_library = ->
+  xroot = xml_root "library"
   with_mixin [
       VIEWS_LIST_EDIT
-      records: RECORDS["library"].children()
-      parent:  RECORDS["library"]
+      records: xroot.children()
+      parent:  xroot
       schema:  SCHEMAS["library"]
       desc:    "Bibliothek"
     ], -> [
@@ -54,8 +55,8 @@ filelist = ->
     ]
 
 update_library_button = ->
-  ($ ".menubutton_library").text "Bibliothek (#{($ ".db library > *").length})"
+  ($ ".menubutton_library").text "Bibliothek (#{(xml_root "library").children().length})"
 
 @init_library = ->
-  $(".db library").bind "DOMSubtreeModified", update_library_button
+  (xml_root "library").bind "DOMSubtreeModified", update_library_button
   update_library_button()

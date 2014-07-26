@@ -41,7 +41,7 @@ group = (x) ->
       schema:      SCHEMAS["group"]
       schema_name: "group"
       records:     [x]
-      parent:      RECORDS["groups"]
+      parent:      xml_root "groups"
       desc:        "Gruppen"
       ignore:      ["clients"]
       button_add:  null
@@ -54,7 +54,7 @@ group = (x) ->
   h2().text "Gruppen"
   with_mixin
     schema_name: "group"
-    parent:      RECORDS["groups"]
+    parent:      xml_root "groups"
     VIEWS_LIST_EDIT.button_add
-  group ($ x) for x in RECORDS["groups"].children()
+  group ($ x) for x in (xml_root "groups").children()
 ]

@@ -8,4 +8,4 @@ file = (x) ->
     menu_reopen()
 
 @library_thumbs = ->
-  file ($ x) for x in RECORDS["library"].children()
+  file ($ x) for x in (xml_root "library").children()

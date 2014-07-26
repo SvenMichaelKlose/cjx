@@ -2,7 +2,7 @@ xref_selector = (xml, field) ->
   "#{field.id_field}:contains('#{xml.attr "name"}')"
 
 @get_referenced_record = (xml, field) ->
-  (RECORDS[field.records].find xref_selector xml, field).parent()
+  ((xml_root field.records).find xref_selector xml, field).parent()
 
 @get_referenced_records = (xml, field) ->
   for xref in xml.children()
