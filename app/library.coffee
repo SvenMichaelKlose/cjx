@@ -25,7 +25,7 @@ upload_form = ->
         d = new Date().valueOf()
         (xml_root "library").append $ "<file>", {src: (x.attr "src"), date: d}
       if files.length
-        post_file (xml_root "library"), "library"
+        post_file "library"
       menu_reopen()
     a.error (data, status) ->
       alert "Error: " + status

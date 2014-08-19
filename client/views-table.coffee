@@ -56,10 +56,11 @@ record_table = (old_record, old_fieldview) ->
 
 list = ->
   with_mixin [
-    records: xml.children()
-    parent:  xml
-    schema:  field.schema
-    desc:    field.desc
+    records:     xml.children()
+    parent:      xml
+    schema:      field.schema
+    schema_name: null
+    desc:        field.desc
   ], tableview
 
 @VIEWS_TABLE =

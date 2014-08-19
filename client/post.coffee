@@ -5,7 +5,7 @@ outerHTML = (x) ->
 
 @post_file = (name) ->
   serializer = new XMLSerializer()
-  xmlstr = serializer.serializeToString XMLDOCS[name].context
+  xmlstr = serializer.serializeToString XMLDOCS[name]
   xhr = $.post (server_path name), x: xmlstr, name
   xhr.done (data, status) ->
     null   # Mark record as being transmitted.

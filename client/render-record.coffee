@@ -3,12 +3,6 @@
 @record_is_ignored = (name) ->
   ($.inArray name, ignore) isnt -1
 
-#get_child = (x, name) ->
-#  name = name.toUpperCase()
-#  for child in x.context.children
-#    if child.tagName is name
-#      return $ child
-
 render_field = ->
   if field.attr
     x = xml

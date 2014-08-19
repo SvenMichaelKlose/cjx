@@ -4,20 +4,21 @@ open_record = (xml, schema) ->
   menu_open ->
     ($ ".arena").append f = form()
     f.append_nested with_mixin [
-        VIEWS_RECORD
-        VIEWS_RECORD_EDIT
-        xml:    xml
-        schema: schema
-      ], render_record
+                        VIEWS_RECORD
+                        VIEWS_RECORD_EDIT
+                        xml:    xml
+                        schema: schema
+                      ], render_record
 
 create_record = (parent, schema, schema_name) ->
+  doc = xml_document parent
   parent.prepend if schema_name?
-                   generate_xml_from_schema schema_name
+                   generate_xml_from_schema schema_name, doc
                  else
-                   (generate_xml_from_field schema).children 0
+                   (generate_xml_from_field schema, doc).children 0
 
 add_button = () ->
-  do (parent, schema, schema_name) ->
+  do (parent, schema) ->
     (button().text "Neu").click (x) ->
       x.preventDefault()
       create_record parent, schema, schema_name
@@ -42,5 +43,5 @@ edit_button = ->
       e.removeClass "selected"
 
 @VIEWS_LIST_EDIT =
-  button_add:      add_button
-  button_edit:     edit_button
+  button_add:   add_button
+  button_edit:  edit_button

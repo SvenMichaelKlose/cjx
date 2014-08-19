@@ -41,6 +41,6 @@ clipboard_client_by_name = (name) ->
     add_to_clipboard get_selected_record_names b.closest ".containment"
 
 @init_clipboard = ->
-  set_xml_doc "clipboard", generate_xml_from_schema "clipboard"
+  init_xml_doc_from_schema "clipboard"
   (xml_root "clipboard").bind "DOMSubtreeModified", update_clipboard_button
   update_clipboard_button()
