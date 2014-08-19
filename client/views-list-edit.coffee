@@ -4,11 +4,11 @@ open_record = (xml, schema) ->
   menu_open ->
     ($ ".arena").append f = form()
     f.append_nested with_mixin [
-                        VIEWS_RECORD
-                        VIEWS_RECORD_EDIT
-                        xml:    xml
-                        schema: schema
-                      ], render_record
+                      VIEWS_RECORD
+                      VIEWS_RECORD_EDIT
+                      xml:    xml
+                      schema: schema
+                    ], render_record
 
 create_record = (parent, schema, schema_name) ->
   doc = xml_document parent

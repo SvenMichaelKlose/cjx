@@ -30,9 +30,9 @@ clipboard_client_by_name = (name) ->
     VIEWS_LIST_EDIT
     button_add:  null
     button_edit: null
-    xml:      xml_root "clipboard"
-    schema:   SCHEMAS["clipboard"]
-    desc:     "Ablage"
+    xml:         xml_root "clipboard"
+    schema:      SCHEMAS["clipboard"]
+    desc:        "Ablage"
   ], render_record
 
 @button_selected_to_clipboard = () ->

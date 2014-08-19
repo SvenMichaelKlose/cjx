@@ -22,17 +22,17 @@ schema_names_except = (x) ->
 
 group_clients = (xreflist, x) -> [
   button_add_clients_from_clipboard(),
-  with_mixin [
-      xml:      x
-      ignore:   schema_names_except "clients"
-      xreflist: -> with_mixin [
-        list_class:      "group_clients"
-        record_selector: null
-        heading:         null
-        button_add:      null
-        list_empty: -> div().text "Dieser Gruppe sind noch keine Kunden zugeordnet."
-      ], xreflist
-    ], render_record
+  with_mixin
+    xml:      x
+    ignore:   schema_names_except "clients"
+    xreflist: -> with_mixin
+      list_class:      "group_clients"
+      record_selector: null
+      heading:         null
+      button_add:      null
+      list_empty: -> div().text "Dieser Gruppe sind noch keine Kunden zugeordnet."
+      xreflist
+    render_record
 ]
 
 group = (x) ->
