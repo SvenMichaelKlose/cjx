@@ -4,6 +4,9 @@ DEFERRED_SETUPS = []
 @deferred_setup = (x) ->
   DEFERRED_SETUPS.push x
 
+make_containment = ->
+  ($ "<form>").addClass "containment"
+
 @menu_append = ->
   ($ ".arena").empty()
   ($ ".arena").append make_containment().append_nested LAST_ACTION()
