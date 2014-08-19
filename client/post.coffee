@@ -3,8 +3,10 @@ server_path = (name) -> "/pi/" + ID_CLIENT + "/" + name
 outerHTML = (x) ->
   (div().append x.clone()).html()
 
-@post_file = (xml, name) ->
-  xhr = $.post (server_path name), x: outerHTML (xml_root name), name
+@post_file = (name) ->
+  serializer = new XMLSerializer()
+  xmlstr = serializer.serializeToString XMLDOCS[name].context
+  xhr = $.post (server_path name), x: xmlstr, name
   xhr.done (data, status) ->
     null   # Mark record as being transmitted.
   xhr.fail (data, status) ->
@@ -12,7 +14,7 @@ outerHTML = (x) ->
     debugger
 
 @post_records = ->
-  post_file xml, name for name, xml of RECORDS
+  post_file name for name of XMLDOCS
 
 @get_file = (name) ->
   xhr = $.ajax
