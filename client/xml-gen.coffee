@@ -13,7 +13,7 @@ element_or_attribute = (parent, {name, attr ,type, value, schema }) ->
 struct_to_xml = (parent, fields) ->
   element_or_attribute parent, f for f in fields
 
-@generate_xml_from_schema = (schema_name, doc) ->
+@generate_xml_from_schema_name = (schema_name, doc) ->
   parent = $ doc.createElement schema_name
   struct_to_xml parent, SCHEMAS[schema_name]
   parent

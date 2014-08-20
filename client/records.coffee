@@ -15,6 +15,6 @@
 @init_xml_doc = (name) ->
   set_xml_doc name, create_xml_document name
 
-@init_xml_doc_from_schema = (name) ->
+@init_xml_doc_from_schema_name = (name) ->
   init_xml_doc name
-  (xml_root name).replaceWith generate_xml_from_schema name, XMLDOCS[name]
+  (xml_root name).replaceWith generate_xml_from_schema_name name, XMLDOCS[name]

@@ -1,5 +1,4 @@
 @open_clients = ->
-  debugger
   xroot = xml_root "clients"
   with_mixin [
       VIEWS_LIST_EDIT

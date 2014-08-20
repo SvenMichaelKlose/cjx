@@ -7,7 +7,7 @@ selection = ->
   select().append (option m.name, name for name, m of MODULES)
 
 add = (xml, val) ->
-  xml.append generate_xml_from_schema val, xml_document xml
+  xml.append generate_xml_from_schema_name val, xml_document xml
   menu_reopen()
 
 button_add = -> [

@@ -13,7 +13,7 @@ open_record = (xml, schema) ->
 create_record = (parent, schema, schema_name) ->
   doc = xml_document parent
   parent.prepend if schema_name?
-                   generate_xml_from_schema schema_name, doc
+                   generate_xml_from_schema_name schema_name, doc
                  else
                    (generate_xml_from_field schema, doc).children 0
 
