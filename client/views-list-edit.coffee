@@ -12,10 +12,10 @@ open_record = (xml, schema) ->
 
 create_record = (parent, schema, schema_name) ->
   doc = xml_document parent
-  parent.prepend if schema_name?
-                   generate_xml_from_schema_name schema_name, doc
+  parent.prepend if schema?
+                   generate_xml_from_field schema, doc
                  else
-                   (generate_xml_from_field schema, doc).children 0
+                   generate_xml_from_schema_name schema_name, doc
 
 add_button = () ->
   do (parent, schema) ->
