@@ -59,7 +59,7 @@ This is a description of the global mixins used by the views.
 The schema of the record(s) rendered. It's an array of objects
 that the describe the record's field.
 
-      schema:  SCHEMAS["address"]
+    schema:  SCHEMAS["address"]
 
 ## parent
 
