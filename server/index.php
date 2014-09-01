@@ -1,9 +1,21 @@
 <?php
 // Author: Sven Michael Klose <pixel@copei.de>
 
-$PATH_IMPLODE_START = 1;
-$XML_ROOT_DIR = "/wwwroot/copei.de/www/pi/xml";
-$ROLE = "superadmin";
+include 'config.php':
+
+$parsed  = parse_url (remove_multiple_slashes ($_SERVER['REQUEST_URI']));
+if (isset ($parsed["query"])) {
+    $values  = explode ('&', html_entity_decode ($parsed["query"]));
+    foreach ($values as $i) {
+        $x = explode('=', $i);
+        $_GET[$x[0]] = $x[1];
+    }
+}
+
+$location = explode_path ($parsed["path"]);
+$ID_CLIENT = $location[$PATH_IMPLODE_START + 1];
+$SCHEMA = $location[$PATH_IMPLODE_START + 2];
+#$path = implode_path ($location, $PATH_IMPLODE_START + 2, sizeof ($location));
 
 function remove_multiple_slashes ($x)
 {
@@ -21,20 +33,6 @@ function implode_path ($location, $start, $end)
     for ($i = $start; $i < $end; $i++)
 	    $path .= "/" . $location[$i];
     return $path;
-}
-
-function fetch_permissions ()
-{
-    $permissions = xml_fetch ($XML_ROOT_DIR . "/permissions.xml");
-}
-
-function check_permission ()
-{
-/*
-    if ($ROLE == "superadmin" || $ID_CLIENT == $id_client)
-        return;
-    exit;
-*/
 }
 
 function make_xml_path ()
@@ -59,14 +57,12 @@ function make_file_path ()
 
 function save_xml_file ()
 {
-    check_permission ();
     file_put_contents (make_xml_path (), $_POST['x']);
     exit;
 }
 
 function load_xml_file ()
 {
-    check_permission ();
     $path = make_xml_path ();
 
     if (!file_exists ($path)) {
@@ -82,24 +78,9 @@ function load_xml_file ()
 
 function upload_file ($where)
 {
-    check_permission ();
     file_put_contents (make_file_path ($id_client, $schema_name), $data);
     exit;
 }
-
-$parsed  = parse_url (remove_multiple_slashes ($_SERVER['REQUEST_URI']));
-if (isset ($parsed["query"])) {
-    $values  = explode ('&', html_entity_decode ($parsed["query"]));
-    foreach ($values as $i) {
-        $x = explode('=', $i);
-        $_GET[$x[0]] = $x[1];
-    }
-}
-
-$location = explode_path ($parsed["path"]);
-$ID_CLIENT = $location[$PATH_IMPLODE_START + 1];
-$SCHEMA = $location[$PATH_IMPLODE_START + 2];
-#$path = implode_path ($location, $PATH_IMPLODE_START + 2, sizeof ($location));
 
 if (!$ID_CLIENT)
     echo "Who's there?";
@@ -111,5 +92,4 @@ if ($_POST)
     save_xml_file ();
 else
     load_xml_file ();
-
 ?>
