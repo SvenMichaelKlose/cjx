@@ -1,9 +1,9 @@
-server_path = (name) -> "/pi/" + ID_CLIENT + "/" + name
+server_path = (name) -> SERVER_PATH + "/" + ID_CLIENT + "/" + name
 
 outerHTML = (x) ->
   (div().append x.clone()).html()
 
-@post_file = (name) ->
+@save_document = (name) ->
   serializer = new XMLSerializer()
   xmlstr = serializer.serializeToString XMLDOCS[name]
   xhr = $.post (server_path name), x: xmlstr, name
@@ -13,10 +13,10 @@ outerHTML = (x) ->
     alert "Couldn't post #{name}: #{status}"
     debugger
 
-@post_records = ->
-  post_file name for name of XMLDOCS
+@save_documents = ->
+  save_document name for name of XMLDOCS
 
-@get_file = (name) ->
+@load_document = (name) ->
   xhr = $.ajax
     type:     "GET"
     async:    false
@@ -25,5 +25,5 @@ outerHTML = (x) ->
     success:  (data, status) ->
                 set_xml_doc name, data
 
-@get_records = (names) ->
-  get_file name for name in names
+@load_documents = (names) ->
+  load_document name for name in names
