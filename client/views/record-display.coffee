@@ -4,7 +4,7 @@ field_div = -> (div().addClass "field")
 
 inline = -> [
   td().append_nested field_label()
-  td().append_nested hook_field xml, field, render_field()
+  td().append_nested xml.connect_input field, render_field()
   td().append_nested measure()
 ]
 
