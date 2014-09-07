@@ -1,18 +1,13 @@
-field_label = ->
+fieldLabel = ->
   (label().attr "for", field.name).text field.desc + ":"
 
 measure = ->
-  span().text m if m = (expand_type field).measure
+  span().text m if m = (expandType field).measure
 
-record_title = -> h2().text desc
-
-record = -> [
-  record_title()
-]
-
-heading = -> h2().text desc
+heading = ->
+  h2().text desc
 
 @VIEWS_RECORD =
-  field_label: field_label
+  fieldLabel:  fieldLabel
   measure:     measure
   heading:     heading

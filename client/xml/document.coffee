@@ -1,20 +1,20 @@
 @XMLDOCS = {}
 
-@xml_document = (x) ->
+@XMLDocument = (x) ->
   x.context.ownerDocument || x.context
 
-@xml_root = (name) ->
+@XMLDocumentRoot = (name) ->
   $ ($ XMLDOCS[name]).children 0
 
-@create_xml_document = (name) ->
+@createXMLDocument = (name) ->
   $.parseXML "<#{name}/>"
 
-@set_xml_doc = (name, xmldoc) ->
+@setXMLDocument = (name, xmldoc) ->
   XMLDOCS[name] = xmldoc
 
-@init_xml_doc = (name) ->
-  set_xml_doc name, create_xml_document name
+@initXMLDocument = (name) ->
+  setXMLDocument name, createXMLDocument name
 
-@init_xml_doc_from_schema_name = (name) ->
-  init_xml_doc name
-  (xml_root name).replaceWith generate_xml_from_schema_name name, XMLDOCS[name]
+@initXMLDocumentFromSchemaName = (name) ->
+  initXMLDocument name
+  (xml_root name).replaceWith generateXMLFromSchemaName name, XMLDOCS[name]

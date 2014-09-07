@@ -1,38 +1,38 @@
 root = @
 
-open_record = (xml, schema) ->
-  page_call ->
-    with_mixin [
+openRecord = (xml, schema) ->
+  pageCall ->
+    withMixin [
       VIEWS_RECORD
       VIEWS_RECORD_EDIT
       xml:    xml
       schema: schema
     ], -> [
-      render_record(),
-      button_page_back()
+      renderRecord(),
+      buttonPageBack()
     ]
 
-create_record = (parent, schema, schema_name) ->
-  doc = xml_document parent
+createRecord = (parent, schema, schemaName) ->
+  doc = XMLDocument parent
   parent.prepend if schema?
-                   generate_xml_from_field schema, doc
+                   generateXMLFromField schema, doc
                  else
-                   generate_xml_from_schema_name schema_name, doc
+                   generateXMLFromSchemaName schemaName, doc
 
-add_button = () ->
+addButton = () ->
   do (parent, schema) ->
     (button().text "Create").click (x) ->
       x.preventDefault()
-      create_record parent, schema, schema_name
-      page_reopen()
+      createRecord parent, schema, schemaName
+      pageReopen()
 
-edit_button = ->
+editButton = ->
   do (xml, schema) ->
     (button().text "Edit").click (x) ->
       x.preventDefault()
-      open_record xml, schema
+      openRecord xml, schema
 
-@button_remove = ->
+@buttonRemove = ->
   do (xml) ->
     (button().text "Remove").click (x) ->
       x.preventDefault()
@@ -41,9 +41,9 @@ edit_button = ->
       if confirm "Do you really want to remove this record?"
         xml = (xml.data "referencing_xml") || xml
         xml.remove()
-        page_reopen()
+        pageReopen()
       e.removeClass "selected"
 
 @VIEWS_LIST_EDIT =
-  button_add:   add_button
-  button_edit:  edit_button
+  buttonAdd:   addButton
+  buttonEdit:  editButton

@@ -1,8 +1,8 @@
 xreflist = ->
-  with_mixin
-    records:     get_referenced_records xml, field
+  withMixin
+    records:     getReferencedRecords xml, field
     schema:      SCHEMAS[field.schema]
-    schema_name: null
+    schemaName:  null
     desc:        field.desc
     tableview
 

@@ -3,15 +3,15 @@ root = @
 KNOWN_KEYS = []
 STACK = []
 
-@get_mixins = ->
+@getMixins = ->
   set = {}
   set[key] = root[key] for key in KNOWN_KEYS
   set
 
-save_old = ->
-  STACK.unshift get_mixins()
+saveOld = ->
+  STACK.unshift getMixins()
 
-add_known_keys = (set) ->
+addKnownKeys = (set) ->
   for key, value of set
     if $.inArray key, KNOWN_KEYS is -1
       KNOWN_KEYS.push key
@@ -19,14 +19,14 @@ add_known_keys = (set) ->
 apply = (set) ->
   root[key] = value for key, value of set
 
-@set_mixins = (sets) -> apply set for set in sets
+@setMixins = (sets) -> apply set for set in sets
 
 push = (set) ->
-  add_known_keys set
-  save_old()
+  addKnownKeys set
+  saveOld()
   apply set
 
-push_set_or_sets = (sets) ->
+pushSetOrSets = (sets) ->
   if $.isArray sets
     push set for set in sets
   else
@@ -34,15 +34,15 @@ push_set_or_sets = (sets) ->
 
 pop = -> apply STACK.shift()
 
-pop_set_or_sets = (sets) ->
+popSetOrSets = (sets) ->
   if $.isArray sets
     pop() for set in sets
   else
     pop()
 
-@with_mixin = (sets, fun) ->
+@withMixin = (sets, fun) ->
   if fun?
-    push_set_or_sets sets
+    pushSetOrSets sets
     r = fun()
-    pop_set_or_sets sets
+    popSetOrSets sets
     r

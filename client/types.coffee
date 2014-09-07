@@ -46,7 +46,7 @@ TYPES =
     type:  "textline"
     desc:  "URL"
 
-@expand_type = (field) ->
+@expandType = (field) ->
   field = $.extend {}, field
-  expand_type $.extend field, t if t = TYPES[field.type]
+  expandType $.extend field, t if t = TYPES[field.type]
   field

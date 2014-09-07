@@ -1,2 +1,2 @@
-@path_filename = (x) ->
+@pathFilename = (x) ->
   x.replace /^.*(\\|\/|\:)/, ''

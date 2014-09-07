@@ -2,25 +2,25 @@ root = @
 
 @PAGE_VIEW = null
 
-@page_reopen = ->
+@pageReopen = ->
   ($ document.body).empty()
   ($ document.body).append PAGE_VIEW[0]()
 
-@page_open = (x) ->
+@pageOpen = (x) ->
   root.PAGE_VIEW = [x]
-  page_reopen()
+  pageReopen()
 
-@page_call = (x) ->
+@pageCall = (x) ->
   root.PAGE_VIEW.unshift x
-  page_reopen()
+  pageReopen()
 
-@page_return = () ->
+@pageReturn = () ->
   root.PAGE_VIEW.shift()
-  page_reopen()
+  pageReopen()
 
-@button_page_back = () ->
+@buttonPageBack = () ->
   b = button().text "Back"
   b.click (x) ->
     x.preventDefault()
-    page_return()
+    pageReturn()
   b

@@ -1,28 +1,28 @@
 root = @
 
-struct_div = -> div().addClass "struct"
+structDiv = -> div().addClass "struct"
 
 struct = ->
-  struct_div().append (h2().text field.desc),
-                      with_mixin
-                        schema:      field.schema
-                        schema_name: null
-                        render_record
+  structDiv().append (h2().text field.desc),
+                     withMixin
+                       schema:      field.schema
+                       schemaName:  null
+                       renderRecord
 
 xschema = ->
-  struct_div().append (h2().text field.desc),
-                      with_mixin
-                        schema:      SCHEMAS[field.schema]
-                        schema_name: field.schema
-                        render_record
+  structDiv().append (h2().text field.desc),
+                     withMixin
+                       schema:      SCHEMAS[field.schema]
+                       schemaName:  field.schema
+                       renderRecord
 
-vector_types = ["list", "schemalist", "struct", "xschema", "xreflist"]
+VECTOR_TYPES = ["list", "schemalist", "struct", "xschema", "xreflist"]
 
-@is_record_type = (x) -> ($.inArray x, vector_types) is -1
+@isRecordType = (x) -> ($.inArray x, VECTOR_TYPES) is -1
 
-list_empty = -> div().text "Empty."
+listEmpty = -> div().text "Empty."
 
 @VIEWS_STRUCTURAL =
-  struct:      struct
-  xschema:     xschema
-  list_empty:  list_empty
+  struct:     struct
+  xschema:    xschema
+  listEmpty:  listEmpty

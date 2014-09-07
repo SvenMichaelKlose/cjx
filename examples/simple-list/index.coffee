@@ -31,21 +31,21 @@ root = @
     desc:   "Password"
   ]
 
-view_clients = ->
-  xroot = xml_root "clients"
-  with_mixin [
+viewClients = ->
+  xroot = XMLDocumentRoot "clients"
+  withMixin [
     VIEWS_LIST_EDIT
     VIEWS_SELECTION
     records:     xroot.children()
     parent:      xroot
     schema:      SCHEMAS["client"]
-    schema_name: "client"
+    schemaName:  "client"
     desc:        "Clients"
   ], tableview
 
 $ ->
-  init_xml_doc "clients"
-  set_mixins [
+  initXMLDocument "clients"
+  setMixins [
     field: null
     VIEWS_RECORD
     VIEWS_RECORD_DISPLAY
@@ -53,4 +53,4 @@ $ ->
     VIEWS_TABLE
     VIEWS_XREF
   ]
-  page_open view_clients
+  pageOpen viewClients

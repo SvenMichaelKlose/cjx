@@ -1,6 +1,6 @@
 root = @
 
-text_input = ->
+textInput = ->
   $ "<input>"
     type:   field.type
     name:   field.name
@@ -14,7 +14,7 @@ range = ->
   min = field.min
   max = field.max
   step = field.step
-  deferred_setup ->
+  deferredSetup ->
     e.spinner
       min:  min
       max:  max
@@ -22,19 +22,19 @@ range = ->
   e
 
 password = ->
-  with_mixin
+  withMixin
     field:
       type: "password"
       name: name
-    text_input
+    textInput
 
 boolean = ->
-  e = with_mixin
+  e = withMixin
         field:
           type: "checkbox"
           name: name
         value: "true"
-        text_input
+        textInput
   e.attr "checked", "checked" if value is "true"
 
 textarea = ->
@@ -44,7 +44,7 @@ textarea = ->
         rows: field.rows || 12
   e.text value
 
-image_selection = ->
+imageSelection = ->
   $ "<img>"
     src: value
 
@@ -57,19 +57,19 @@ selection = ->
   select().append (option txt, value for txt in field.opts)
 
 @VIEWS_RECORD_EDIT =
-  textline:   text_input
-  tel:        text_input
-  zip_de:     text_input
-  percent:    text_input
-  pixel:      text_input
-  seconds:    text_input
-  minutes:    text_input
-  color:      text_input
-  email:      text_input
+  textline:   textInput
+  tel:        textInput
+  zipDE:      textInput
+  percent:    textInput
+  pixel:      textInput
+  seconds:    textInput
+  minutes:    textInput
+  color:      textInput
+  email:      textInput
   password:   password
   range:      range
   boolean:    boolean
   textarea:   textarea
-  image:      image_selection
+  image:      imageSelection
   selection:  selection
-  user:       text_input
+  user:       textInput

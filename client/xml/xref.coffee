@@ -1,11 +1,11 @@
-xref_selector = (xml, field) ->
-  "#{field.id_field}:contains('#{xml.attr "name"}')"
+xrefSelector = (xml, field) ->
+  "#{field.idField}:contains('#{xml.attr "name"}')"
 
-@get_referenced_record = (xml, field) ->
-  ((xml_root field.records).find xref_selector xml, field).parent()
+@getReferencedRecord = (xml, field) ->
+  ((XMLDocumentRoot field.records).find xrefSelector xml, field).parent()
 
-@get_referenced_records = (xml, field) ->
+@getReferencedRecords = (xml, field) ->
   for xref in xml.children()
-    x = get_referenced_record ($ xref), field
+    x = getReferencedRecord ($ xref), field
     x.data "referencing_xml", xref
     x

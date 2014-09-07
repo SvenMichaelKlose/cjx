@@ -1,5 +1,5 @@
 $ ->
-  $.fn.connect_input = ({type, attr, name}, elm) ->
+  $.fn.connectInput = ({type, attr, name}, elm) ->
     xml = this
     if elm instanceof jQuery
       h = (x) ->

@@ -1,20 +1,20 @@
 root = @
 
-field_div = -> (div().addClass "field")
+fieldDiv = -> (div().addClass "field")
 
 inline = -> [
-  td().append field_label()
-  td().append xml.connect_input field, render_field()
+  td().append fieldLabel()
+  td().append xml.connectInput field, renderField()
   td().append measure()
 ]
 
 block = -> [
-#  td().append field_label()
+#  td().append fieldLabel()
   (td().attr "colspan", 2).append root[field.type]()
 ]
 
 fieldview = ->
-  if is_record_type field.type
+  if isRecordType field.type
     inline()
   else
     block()
@@ -27,7 +27,7 @@ password = -> "secret"
   fieldview: fieldview
   textline:  value
   tel:       value
-  zip_de:    value
+  zipDE:     value
   percent:   value
   pixel:     value
   seconds:   value

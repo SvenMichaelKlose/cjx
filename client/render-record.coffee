@@ -1,21 +1,21 @@
 @ignore = []
 
-@record_is_ignored = (name) ->
+@recordIsIgnored = (name) ->
   ($.inArray name, ignore) isnt -1
 
-render_field = ->
+renderField = ->
   if field.attr
     x = xml
     v = xml.attr field.name
   else
     x = xml.children field.name
     v = x.text()
-  with_mixin {parent: xml, xml: x, value: v}, fieldview
+  withMixin {parent: xml, xml: x, value: v}, fieldview
 
-@render_fields = ->
+@renderFields = ->
   for f in schema
-    if not record_is_ignored f.name
-      with_mixin {field: f}, -> tr().append render_field()
+    if not recordIsIgnored f.name
+      withMixin {field: f}, -> tr().append renderField()
 
-@render_record = ->
-  (table().addClass schema_name).append tbody().append render_fields()
+@renderRecord = ->
+  (table().addClass schemaName).append tbody().append renderFields()
