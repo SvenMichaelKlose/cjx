@@ -20,8 +20,8 @@ fieldview = ->
     block()
 
 value    = -> root.value
-boolean  = -> if root.value is "true" then "ja" else "nein"
-password = -> "geheim"
+boolean  = -> if root.value is "true" then "yes" else "no"
+password = -> "secret"
 
 @VIEWS_RECORD_DISPLAY =
   fieldview: fieldview
