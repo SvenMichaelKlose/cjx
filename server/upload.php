@@ -1,5 +1,6 @@
 <?
-$FILES_ROOT = "/wwwroot/copei.de/www/pi/files/";
+include 'config.php';
+
 echo "<textarea data-type=\"text/xml\"><files>";
 for ($i = 0; $i < sizeof ($_FILES["file"]["name"]); $i++) {
   $name = $_FILES["file"]["name"][$i];
