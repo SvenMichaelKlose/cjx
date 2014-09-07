@@ -17,12 +17,12 @@ list_selector = ->
   set = (to) ->
     ((b.closest ".containment").find ".record_selector").prop "checked", to
   select_on_click = ->
-    (b.text "Alle auswählen").click (x) ->
+    (b.text "Select all").click (x) ->
       x.preventDefault()
       unselect_on_click()
       set true
   unselect_on_click = ->
-    (b.text "Alle abwählen").click (x) ->
+    (b.text "Unselect all").click (x) ->
       x.preventDefault()
       select_on_click()
       set false
