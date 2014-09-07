@@ -1,6 +1,7 @@
 # Copyright
 
 Copyright (c) 2014 Sven Michael Klose <pixel@hugbox.org>
+
 This software is distributed under the MIT license.
 See file LICENSE for details.
 
