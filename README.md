@@ -34,9 +34,10 @@ objects whose keys are the global variable names. For example:
     render_bar
 ```
 
-sets the global variable foo to 1, calls function render_bar()
-and restores foo afterwards.  Given that all views are already in
-the global namespace you could render an XML document this way:
+sets the global variable ```foo``` to 1, calls function
+```render_bar()``` and restores foo afterwards.  Given that all
+views are already in the global namespace you could render an XML
+document this way:
 
 ```
   with_mixin
@@ -50,16 +51,16 @@ editor views already prepared for you:
 ```
   with_mixin [
     V_EDIT
-    xml: ($ ".myxmldoc") # Yeah. Get used to jQuery, dude! B)
+    xml: ($ ".myxmldoc")
   ], render_record
 ```
 
 However, with this CMS' set of views it's not that super-simple.
 It also takes a "schema" which describes the XML document, so you
 get headings, labels and just the right views appropriate for
-certain data types.  It's just the first view (render_record()
-in this case) which you have to specify. Adding a schema is
-pretty straightforward as well:
+certain data types.  It's just the first view
+(```render_record()``` in this case) which you have to specify.
+Adding a schema is pretty straightforward as well:
 
 ```
   with_mixin [
@@ -70,7 +71,7 @@ pretty straightforward as well:
 ```
 
 
-# Global mixins
+# Global variables
 
 ## SCHEMAS
 
