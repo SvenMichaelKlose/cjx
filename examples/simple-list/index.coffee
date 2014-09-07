@@ -43,16 +43,6 @@ view_clients = ->
     desc:        "Clients"
   ], tableview
 
-@PAGE_VIEW = null
-
-@page_reopen = ->
-  ($ document.body).empty()
-  ($ document.body).append PAGE_VIEW()
-
-@page_open = (x) ->
-  root.PAGE_VIEW = x
-  page_reopen()
-
 $ ->
   init_xml_doc "clients"
   set_mixins [

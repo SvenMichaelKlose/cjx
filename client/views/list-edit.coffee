@@ -1,14 +1,16 @@
 root = @
 
 open_record = (xml, schema) ->
-  page_open ->
-    ($ "body").append f = form()
-    f.append with_mixin [
-               VIEWS_RECORD
-               VIEWS_RECORD_EDIT
-               xml:    xml
-               schema: schema
-             ], render_record
+  page_call ->
+    with_mixin [
+      VIEWS_RECORD
+      VIEWS_RECORD_EDIT
+      xml:    xml
+      schema: schema
+    ], -> [
+      render_record(),
+      button_page_back()
+    ]
 
 create_record = (parent, schema, schema_name) ->
   doc = xml_document parent
