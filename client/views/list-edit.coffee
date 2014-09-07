@@ -19,24 +19,24 @@ create_record = (parent, schema, schema_name) ->
 
 add_button = () ->
   do (parent, schema) ->
-    (button().text "Neu").click (x) ->
+    (button().text "New").click (x) ->
       x.preventDefault()
       create_record parent, schema, schema_name
       menu_reopen()
 
 edit_button = ->
   do (xml, schema) ->
-    (button().text "bearbeiten").click (x) ->
+    (button().text "Edit").click (x) ->
       x.preventDefault()
       open_record xml, schema
 
 @button_remove = ->
   do (xml) ->
-    (button().text "entfernen").click (x) ->
+    (button().text "Remove").click (x) ->
       x.preventDefault()
       e = ($ x.target).closest ".record"
       e.addClass "selected"
-      if confirm "Diesen Eintrag wirklich entfernen?"
+      if confirm "Do you really want to remove this record?"
         xml = (xml.data "referencing_xml") || xml
         xml.remove()
         menu_reopen()
