@@ -21,7 +21,7 @@ create_record = (parent, schema, schema_name) ->
 
 add_button = () ->
   do (parent, schema) ->
-    (button().text "New").click (x) ->
+    (button().text "Create").click (x) ->
       x.preventDefault()
       create_record parent, schema, schema_name
       page_reopen()
