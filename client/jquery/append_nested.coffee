@@ -1,6 +1,6 @@
 @ensure_element = (x) -> if x.length then x
 
-ensure_element_array = (x) ->
+flatten_nested_arrays = (x) ->
   if not $.isArray x
     return x
   r = []
@@ -15,5 +15,6 @@ ensure_element_array = (x) ->
   r
 
 $ ->
-  $.fn.append_nested = (x...) ->
-    this.append ensure_element_array x
+  old_append = $.fn.append
+  $.fn.append = (x...) ->
+    old_append.call this, flatten_nested_arrays x

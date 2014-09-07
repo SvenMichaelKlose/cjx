@@ -15,7 +15,7 @@ render_field = ->
 @render_fields = ->
   for f in schema
     if not record_is_ignored f.name
-      with_mixin {field: f}, -> tr().append_nested render_field()
+      with_mixin {field: f}, -> tr().append render_field()
 
 @render_record = ->
-  (table().addClass schema_name).append tbody().append_nested render_fields()
+  (table().addClass schema_name).append tbody().append render_fields()

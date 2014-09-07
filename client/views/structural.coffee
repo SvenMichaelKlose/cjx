@@ -20,7 +20,7 @@ vector_types = ["list", "schemalist", "struct", "xschema", "xreflist"]
 
 @is_record_type = (x) -> ($.inArray x, vector_types) is -1
 
-list_empty = -> div().text "Leer."
+list_empty = -> div().text "Empty."
 
 @VIEWS_STRUCTURAL =
   struct:      struct

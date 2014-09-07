@@ -13,11 +13,11 @@ fieldview = (old_record, old_fieldview) ->
     fieldcontent
 
 record = ->
-  (tr().addClass "record #{schema_name}").append_nested [
-    td().append_nested record_selector() if record_selector?
-    td().append_nested x for x in render_fields()
-    td().append_nested button_edit() if button_edit?
-    td().append_nested button_remove() if button_remove?
+  (tr().addClass "record #{schema_name}").append [
+    td().append record_selector() if record_selector?
+    td().append x for x in render_fields()
+    td().append button_edit() if button_edit?
+    td().append button_remove() if button_remove?
   ]
 
 list_headers = -> [
@@ -40,8 +40,8 @@ record_table = (old_record, old_fieldview) ->
     fieldview: -> fieldview old_record, old_fieldview
     record:    record
     ->
-      t = table().append (thead().append tr().append_nested list_headers()),
-                         tbody().append_nested render_list()
+      t = table().append (thead().append tr().append list_headers()),
+                         tbody().append render_list()
       t.addClass get_list_class()
 
 @tableview = -> [

@@ -3,14 +3,14 @@ root = @
 field_div = -> (div().addClass "field")
 
 inline = -> [
-  td().append_nested field_label()
-  td().append_nested xml.connect_input field, render_field()
-  td().append_nested measure()
+  td().append field_label()
+  td().append xml.connect_input field, render_field()
+  td().append measure()
 ]
 
 block = -> [
-#  td().append_nested field_label()
-  (td().attr "colspan", 2).append_nested root[field.type]()
+#  td().append field_label()
+  (td().attr "colspan", 2).append root[field.type]()
 ]
 
 fieldview = ->
