@@ -22,11 +22,12 @@ is the PHP scripts which didn't get no love.
 
 # How it works
 
-The functions that generate the HTML are called 'views'.  They
+The functions that generate the HTML are called "views".  They
 take their context information from global variables that are set
-up temporarily with function with_mixin().  The views themselves
-are also specified this way.  with_mixin() takes an array of
-objects whose keys are the global variable names. For example:
+up temporarily with function ```with_mixin()```.  The views
+themselves are also specified this way.  ```with_mixin()``` takes
+an array of objects whose keys are the global variable names.
+For example:
 
 ```
   with_mixin
@@ -34,7 +35,7 @@ objects whose keys are the global variable names. For example:
     render_bar
 ```
 
-sets the global variable ```foo``` to 1, calls function
+sets the global variable ```foo``` to ```1```, calls function
 ```render_bar()``` and restores foo afterwards.  Given that all
 views are already in the global namespace you could render an XML
 document this way:
@@ -84,8 +85,8 @@ This is a description of the global mixins used by the views.
 
 ## schema
 
-The schema of the record(s) rendered.  It's an array of objects
-that the describe the record's field.
+The schema of the record rendered.  It's an array of objects
+which describes the record's fields.
 
 ```
     schema:  SCHEMAS["address"]
@@ -102,9 +103,9 @@ become children of this node.  For example:
 
 ## records
 
-An array of XML records that render_records() is supposed to
-display.  Requires 'schema' and 'parent'.  The most common
-use case for it is:
+An array of XML records that ```render_records()```  is supposed
+to display.  Requires ```schema``` and ```parent```.  The most
+common use case is:
 
 ```
     records: parent.children()
